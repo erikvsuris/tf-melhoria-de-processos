@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_O_Fluxo_AGES" name="O Fluxo AGES" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.33.0">
+  <bpmn:documentation>Modelo atual reconstruído a partir de ProcessosAGES-ProcessoAGES-v6.png, Papeis_Responsabilidades_v4.pdf e do enunciado MPS2026_2_TF_Enunciado.pdf. Os rótulos das etapas e atividades seguem os materiais anexos; as propostas de melhoria do README não estão incorporadas.</bpmn:documentation>
+  <bpmn:collaboration id="Collaboration_AGES">
+    <bpmn:participant id="Participant_AGES" name="O FLUXO AGES (ATUAL)" processRef="Process_AGES" />
+    <bpmn:participant id="Participant_Stakeholders" name="Stakeholders" />
+    <bpmn:messageFlow id="MF_Idea" sourceRef="Participant_Stakeholders" targetRef="S1_IdeaPresentation" />
+    <bpmn:messageFlow id="MF_ProjectIntro" name="Apresentação dos projetos" sourceRef="Participant_Stakeholders" targetRef="S2_ProjectIntro" />
+    <bpmn:messageFlow id="MF_S0Presentation" sourceRef="S2_Presentation" targetRef="Participant_Stakeholders" />
+    <bpmn:messageFlow id="MF_FinalPresentation" sourceRef="S4_FinalPresentation" targetRef="Participant_Stakeholders" />
+    <bpmn:textAnnotation id="Etapa_1">
+      <bpmn:text>Etapa 1: Semestre que antecede a execução do projeto na AGES</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Etapa_2">
+      <bpmn:text>Etapa 2: Organização e kick-off do projeto</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Etapa_3">
+      <bpmn:text>Etapa 3: Sprints iniciais e Revisão intermediária</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Sprints_1_2">
+      <bpmn:text>Sprints 1 e 2</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Apos_Sprint_1">
+      <bpmn:text>Após a sprint 1</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Sprints_3_4">
+      <bpmn:text>Sprints 3 e 4</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Etapa_4">
+      <bpmn:text>Etapa 4: Encerramento</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Semana_Final">
+      <bpmn:text>Semana Final</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:collaboration>
+  <bpmn:message id="Message_Idea" name="Apresentação da Ideia pelos stakeholder" />
+  <bpmn:process id="Process_AGES" name="O Fluxo AGES" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_AGES">
+      <bpmn:lane id="Lane_1" name="Coordenação">
+        <bpmn:flowNodeRef>Start_Idea</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_IdeaPresentation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_ValidateIdea</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_Semester</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_Meetings</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_Requirements</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_Charter</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S1_Gateway</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Intro</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_2" name="Professor Orientador">
+        <bpmn:flowNodeRef>End_AGES</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_OneOnOne</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_OneOnOne</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_Progress</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Process</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_3" name="Aluno">
+        <bpmn:flowNodeRef>S3_Sprint2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_Sprint3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_Sprint4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_Retro</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_FinalReport</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_FinalPresentation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_Sprint1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Join</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Presentation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_WorkJoin</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Studies</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_PlanningDocs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Architecture</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_ReqMockups</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_WorkSplit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_Split</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_ProjectIntro</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_4" name="AGES IV">
+        <bpmn:flowNodeRef>S4_Bancas</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="F22" sourceRef="S2_Studies" targetRef="S2_Join" />
+    <bpmn:sequenceFlow id="F20" sourceRef="S2_WorkJoin" targetRef="S2_Presentation" />
+    <bpmn:sequenceFlow id="F19" sourceRef="S2_PlanningDocs" targetRef="S2_WorkJoin" />
+    <bpmn:sequenceFlow id="F18" sourceRef="S2_Architecture" targetRef="S2_WorkJoin" />
+    <bpmn:sequenceFlow id="F17" sourceRef="S2_ReqMockups" targetRef="S2_WorkJoin" />
+    <bpmn:sequenceFlow id="F16" sourceRef="S2_WorkSplit" targetRef="S2_PlanningDocs" />
+    <bpmn:sequenceFlow id="F15" sourceRef="S2_WorkSplit" targetRef="S2_Architecture" />
+    <bpmn:sequenceFlow id="F14" sourceRef="S2_WorkSplit" targetRef="S2_ReqMockups" />
+    <bpmn:sequenceFlow id="F13" sourceRef="S2_Split" targetRef="S2_WorkSplit" />
+    <bpmn:sequenceFlow id="F12" sourceRef="S2_Split" targetRef="S2_Studies" />
+    <bpmn:sequenceFlow id="F11" sourceRef="S2_ProjectIntro" targetRef="S2_Split" />
+    <bpmn:sequenceFlow id="F10" sourceRef="S2_Process" targetRef="S2_ProjectIntro" />
+    <bpmn:sequenceFlow id="F9" sourceRef="S2_Intro" targetRef="S2_Process" />
+    <bpmn:sequenceFlow id="F21" sourceRef="S2_Presentation" targetRef="S2_Join" />
+    <bpmn:sequenceFlow id="F23" sourceRef="S2_Join" targetRef="S3_Sprint1" />
+    <bpmn:sequenceFlow id="F24" sourceRef="S3_Sprint1" targetRef="S3_Progress" />
+    <bpmn:sequenceFlow id="F25" sourceRef="S3_Progress" targetRef="S3_OneOnOne" />
+    <bpmn:sequenceFlow id="F26" sourceRef="S3_OneOnOne" targetRef="S3_Sprint2" />
+    <bpmn:sequenceFlow id="F29" sourceRef="S3_Sprint4" targetRef="S4_Bancas" />
+    <bpmn:sequenceFlow id="F30" sourceRef="S4_Bancas" targetRef="S4_Retro" />
+    <bpmn:sequenceFlow id="F33" sourceRef="S4_FinalPresentation" targetRef="S4_OneOnOne" />
+    <bpmn:sequenceFlow id="F34" sourceRef="S4_OneOnOne" targetRef="End_AGES" />
+    <bpmn:endEvent id="End_AGES" name="Fim" />
+    <bpmn:task id="S4_OneOnOne" name="ONE on ONE (com os alunos)" />
+    <bpmn:task id="S4_Bancas" name="Apresentação das BANCAS" />
+    <bpmn:task id="S3_OneOnOne" name="ONE on ONE (com os alunos)" />
+    <bpmn:callActivity id="S3_Sprint2" name="Sprint Duas Semanas" calledElement="Process_Sprint">
+      <bpmn:documentation>Representa a Sprint 2 no agrupamento “Sprints 1 e 2”.</bpmn:documentation>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="S3_Sprint3" name="Sprint Duas Semanas" calledElement="Process_Sprint">
+      <bpmn:documentation>Representa a Sprint 3 no agrupamento “Sprints 3 e 4”.</bpmn:documentation>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="S3_Sprint4" name="Sprint Duas Semanas" calledElement="Process_Sprint">
+      <bpmn:documentation>Representa a Sprint 4 no agrupamento “Sprints 3 e 4”.</bpmn:documentation>
+    </bpmn:callActivity>
+    <bpmn:task id="S4_Retro" name="Retrospectiva geral da AGES + Confraternização" />
+    <bpmn:task id="S4_FinalReport" name="Entrega Relatório Final" />
+    <bpmn:task id="S4_FinalPresentation" name="Apresentação dos projetos da AGES (estudantes + stakeholders + professores)" />
+    <bpmn:sequenceFlow id="F27" sourceRef="S3_Sprint2" targetRef="S3_Sprint3" />
+    <bpmn:sequenceFlow id="F28" sourceRef="S3_Sprint3" targetRef="S3_Sprint4" />
+    <bpmn:sequenceFlow id="F31" sourceRef="S4_Retro" targetRef="S4_FinalReport" />
+    <bpmn:sequenceFlow id="F32" sourceRef="S4_FinalReport" targetRef="S4_FinalPresentation" />
+    <bpmn:task id="S3_Progress" name="Entrega Relatório de Andamento" />
+    <bpmn:callActivity id="S3_Sprint1" name="Sprint Duas Semanas" calledElement="Process_Sprint">
+      <bpmn:documentation>Representa a Sprint 1 no agrupamento “Sprints 1 e 2”.</bpmn:documentation>
+    </bpmn:callActivity>
+    <bpmn:parallelGateway id="S2_Join" name="" />
+    <bpmn:task id="S2_Presentation" name="Apresentação para stakeholders" />
+    <bpmn:parallelGateway id="S2_WorkJoin" name="" />
+    <bpmn:task id="S2_Studies" name="Estudos das tecnologias utilizadas nos projetos (linguagens e metodologias TDD, BDD, Code review, pair programming, etc..)" />
+    <bpmn:task id="S2_PlanningDocs" name="EAP / Cronograma / Plano de Comunicação / U.S. (AGES IV)" />
+    <bpmn:task id="S2_Architecture" name="Definição Arquitetura ou revisão (AGES III)" />
+    <bpmn:task id="S2_ReqMockups" name="Documentação dos Requisitos e Mockups (Time)" />
+    <bpmn:parallelGateway id="S2_WorkSplit" name="" />
+    <bpmn:parallelGateway id="S2_Split" name="" />
+    <bpmn:task id="S2_ProjectIntro" name="Apresentação dos projetos pelos stakeholders" />
+    <bpmn:task id="S2_Process" name="Apresentação do Processo da AGES, responsabilidades e artefatos, apresentação dos relatórios (sprint, andamento e final)" />
+    <bpmn:startEvent id="Start_Idea" name="Início" />
+    <bpmn:receiveTask id="S1_IdeaPresentation" name="Apresentação da Ideia pelos stakeholder" messageRef="Message_Idea" />
+    <bpmn:task id="S1_ValidateIdea" name="Validação da Ideia" />
+    <bpmn:task id="S1_Semester" name="Definição do semestre que o projeto irá ser executado">
+      <bpmn:incoming>F8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1uqpujp</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="S1_Meetings" name="Reuniões mensais com os Stakeholders">
+      <bpmn:incoming>Flow_1uqpujp</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="S1_Requirements" name="Validação dos Requisitos" />
+    <bpmn:task id="S1_Charter" name="Elaboração do Termo de Abertura de Projetos" />
+    <bpmn:exclusiveGateway id="S1_Gateway" name="">
+      <bpmn:documentation>A fonte mostra o ciclo entre reuniões mensais, validação dos requisitos e elaboração do termo, mas não explicita a condição para iniciar a execução. O gateway com saídas Sim/Não é uma interpretação para representar a transição entre Etapa 1 e Etapa 2.</bpmn:documentation>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="S2_Intro" name="Apresentação Inicial AGES e do Fluxo AGES." />
+    <bpmn:sequenceFlow id="F0" sourceRef="Start_Idea" targetRef="S1_IdeaPresentation" />
+    <bpmn:sequenceFlow id="F1" sourceRef="S1_IdeaPresentation" targetRef="S1_ValidateIdea" />
+    <bpmn:sequenceFlow id="F2" sourceRef="S1_ValidateIdea" targetRef="S1_Semester" />
+    <bpmn:sequenceFlow id="F8" name="Não" sourceRef="S1_Gateway" targetRef="S1_Semester" />
+    <bpmn:sequenceFlow id="Flow_1uqpujp" sourceRef="S1_Semester" targetRef="S1_Meetings" />
+    <bpmn:sequenceFlow id="F4" sourceRef="S1_Meetings" targetRef="S1_Requirements" />
+    <bpmn:sequenceFlow id="F5" sourceRef="S1_Requirements" targetRef="S1_Charter" />
+    <bpmn:sequenceFlow id="F6" sourceRef="S1_Charter" targetRef="S1_Gateway" />
+    <bpmn:sequenceFlow id="F7" name="Sim" sourceRef="S1_Gateway" targetRef="S2_Intro" />
+  </bpmn:process>
+  <bpmn:process id="Process_Sprint" name="Sprint Duas Semanas" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Sprint">
+      <bpmn:lane id="Sprint_Lane_1" name="Professor Orientador">
+        <bpmn:flowNodeRef>Sprint_Meeting</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Sprint_Lane_2" name="Aluno">
+        <bpmn:flowNodeRef>Sprint_Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Planning</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Split</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Development</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Join</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Delivery</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Retro</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_Report</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Sprint_End</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Sprint_Start" name="Início" />
+    <bpmn:task id="Sprint_Planning" name="Planning" />
+    <bpmn:parallelGateway id="Sprint_Split" name="" />
+    <bpmn:task id="Sprint_Meeting" name="Aula Meeting" />
+    <bpmn:task id="Sprint_Development" name="Desenvolvimento Documentação" />
+    <bpmn:parallelGateway id="Sprint_Join" name="" />
+    <bpmn:task id="Sprint_Delivery" name="Entrega para os Stakeholders" />
+    <bpmn:task id="Sprint_Retro" name="Retrospectiva" />
+    <bpmn:task id="Sprint_Report" name="Entrega do relatório da Sprint" />
+    <bpmn:endEvent id="Sprint_End" name="Fim" />
+    <bpmn:sequenceFlow id="Sprint_F1" sourceRef="Sprint_Start" targetRef="Sprint_Planning" />
+    <bpmn:sequenceFlow id="Sprint_F2" sourceRef="Sprint_Planning" targetRef="Sprint_Split" />
+    <bpmn:sequenceFlow id="Sprint_F3" sourceRef="Sprint_Split" targetRef="Sprint_Meeting" />
+    <bpmn:sequenceFlow id="Sprint_F4" sourceRef="Sprint_Split" targetRef="Sprint_Development" />
+    <bpmn:sequenceFlow id="Sprint_F5" sourceRef="Sprint_Meeting" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="Sprint_F6" sourceRef="Sprint_Development" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="Sprint_F7" sourceRef="Sprint_Join" targetRef="Sprint_Delivery" />
+    <bpmn:sequenceFlow id="Sprint_F8" sourceRef="Sprint_Delivery" targetRef="Sprint_Retro" />
+    <bpmn:sequenceFlow id="Sprint_F9" sourceRef="Sprint_Retro" targetRef="Sprint_Report" />
+    <bpmn:sequenceFlow id="Sprint_F10" sourceRef="Sprint_Report" targetRef="Sprint_End" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_O_Fluxo_AGES" name="O Fluxo AGES">
+    <bpmndi:BPMNPlane id="Plane_O_Fluxo_AGES" bpmnElement="Collaboration_AGES">
+      <bpmndi:BPMNShape id="DI_Participant_AGES" bpmnElement="Participant_AGES" isHorizontal="true" isExpanded="true">
+        <dc:Bounds x="160" y="120" width="5560" height="790" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_4" bpmnElement="Lane_4" isHorizontal="true">
+        <dc:Bounds x="190" y="770" width="5530" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_3" bpmnElement="Lane_3" isHorizontal="true">
+        <dc:Bounds x="190" y="450" width="5530" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_2" bpmnElement="Lane_2" isHorizontal="true">
+        <dc:Bounds x="190" y="310" width="5530" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_1" bpmnElement="Lane_1" isHorizontal="true">
+        <dc:Bounds x="190" y="120" width="5530" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_End_AGES" bpmnElement="End_AGES">
+        <dc:Bounds x="5622" y="352" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5631" y="388" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S4_OneOnOne" bpmnElement="S4_OneOnOne">
+        <dc:Bounds x="5377" y="335" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S4_Bancas" bpmnElement="S4_Bancas">
+        <dc:Bounds x="4727" y="795" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_OneOnOne" bpmnElement="S3_OneOnOne">
+        <dc:Bounds x="3827" y="335" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_Sprint2" bpmnElement="S3_Sprint2">
+        <dc:Bounds x="4012" y="530" width="155" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_Sprint3" bpmnElement="S3_Sprint3">
+        <dc:Bounds x="4252" y="530" width="155" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_Sprint4" bpmnElement="S3_Sprint4">
+        <dc:Bounds x="4492" y="530" width="155" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S4_Retro" bpmnElement="S4_Retro">
+        <dc:Bounds x="4720" y="530" width="180" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S4_FinalReport" bpmnElement="S4_FinalReport">
+        <dc:Bounds x="4942" y="530" width="155" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S4_FinalPresentation" bpmnElement="S4_FinalPresentation">
+        <dc:Bounds x="5152" y="530" width="195" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_Progress" bpmnElement="S3_Progress">
+        <dc:Bounds x="3617" y="335" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S3_Sprint1" bpmnElement="S3_Sprint1">
+        <dc:Bounds x="3492" y="530" width="155" height="70" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Join" bpmnElement="S2_Join">
+        <dc:Bounds x="3385" y="540" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Presentation" bpmnElement="S2_Presentation">
+        <dc:Bounds x="3172" y="530" width="155" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_WorkJoin" bpmnElement="S2_WorkJoin">
+        <dc:Bounds x="3035" y="540" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Studies" bpmnElement="S2_Studies">
+        <dc:Bounds x="2730" y="680" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_PlanningDocs" bpmnElement="S2_PlanningDocs">
+        <dc:Bounds x="2730" y="605" width="200" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Architecture" bpmnElement="S2_Architecture">
+        <dc:Bounds x="2730" y="535" width="200" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_ReqMockups" bpmnElement="S2_ReqMockups">
+        <dc:Bounds x="2730" y="465" width="200" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_WorkSplit" bpmnElement="S2_WorkSplit">
+        <dc:Bounds x="2595" y="540" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Split" bpmnElement="S2_Split">
+        <dc:Bounds x="2455" y="540" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_ProjectIntro" bpmnElement="S2_ProjectIntro">
+        <dc:Bounds x="2222" y="530" width="175" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Process" bpmnElement="S2_Process">
+        <dc:Bounds x="2210" y="326" width="200" height="88" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Start_Idea" bpmnElement="Start_Idea">
+        <dc:Bounds x="272" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="277" y="258" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_IdeaPresentation" bpmnElement="S1_IdeaPresentation">
+        <dc:Bounds x="445" y="206" width="170" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_ValidateIdea" bpmnElement="S1_ValidateIdea">
+        <dc:Bounds x="725" y="208" width="150" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_Semester" bpmnElement="S1_Semester">
+        <dc:Bounds x="955" y="206" width="170" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_Meetings" bpmnElement="S1_Meetings">
+        <dc:Bounds x="1197" y="206" width="165" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_Requirements" bpmnElement="S1_Requirements">
+        <dc:Bounds x="1435" y="206" width="150" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_Charter" bpmnElement="S1_Charter">
+        <dc:Bounds x="1655" y="206" width="170" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S1_Gateway" bpmnElement="S1_Gateway" isMarkerVisible="true">
+        <dc:Bounds x="1885" y="215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_S2_Intro" bpmnElement="S2_Intro">
+        <dc:Bounds x="2000" y="206" width="160" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_F9" bpmnElement="F9">
+        <di:waypoint x="2080" y="274" />
+        <di:waypoint x="2080" y="370" />
+        <di:waypoint x="2210" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F10" bpmnElement="F10">
+        <di:waypoint x="2310" y="414" />
+        <di:waypoint x="2310" y="530" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F11" bpmnElement="F11">
+        <di:waypoint x="2397" y="565" />
+        <di:waypoint x="2455" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F12" bpmnElement="F12">
+        <di:waypoint x="2480" y="590" />
+        <di:waypoint x="2480" y="720" />
+        <di:waypoint x="2730" y="720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F13" bpmnElement="F13">
+        <di:waypoint x="2505" y="565" />
+        <di:waypoint x="2595" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F14" bpmnElement="F14">
+        <di:waypoint x="2620" y="540" />
+        <di:waypoint x="2620" y="495" />
+        <di:waypoint x="2730" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F15" bpmnElement="F15">
+        <di:waypoint x="2645" y="565" />
+        <di:waypoint x="2730" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F16" bpmnElement="F16">
+        <di:waypoint x="2620" y="590" />
+        <di:waypoint x="2620" y="635" />
+        <di:waypoint x="2730" y="635" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F17" bpmnElement="F17">
+        <di:waypoint x="2930" y="495" />
+        <di:waypoint x="3035" y="495" />
+        <di:waypoint x="3035" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F18" bpmnElement="F18">
+        <di:waypoint x="2930" y="565" />
+        <di:waypoint x="3035" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F19" bpmnElement="F19">
+        <di:waypoint x="2930" y="635" />
+        <di:waypoint x="3035" y="635" />
+        <di:waypoint x="3035" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F20" bpmnElement="F20">
+        <di:waypoint x="3085" y="565" />
+        <di:waypoint x="3172" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F22" bpmnElement="F22">
+        <di:waypoint x="2930" y="720" />
+        <di:waypoint x="3410" y="720" />
+        <di:waypoint x="3410" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F21" bpmnElement="F21">
+        <di:waypoint x="3327" y="565" />
+        <di:waypoint x="3385" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F23" bpmnElement="F23">
+        <di:waypoint x="3435" y="565" />
+        <di:waypoint x="3492" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F24" bpmnElement="F24">
+        <di:waypoint x="3570" y="530" />
+        <di:waypoint x="3570" y="370" />
+        <di:waypoint x="3617" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F25" bpmnElement="F25">
+        <di:waypoint x="3782" y="370" />
+        <di:waypoint x="3827" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F26" bpmnElement="F26">
+        <di:waypoint x="3910" y="405" />
+        <di:waypoint x="3910" y="565" />
+        <di:waypoint x="4012" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F29" bpmnElement="F29">
+        <di:waypoint x="4570" y="600" />
+        <di:waypoint x="4570" y="830" />
+        <di:waypoint x="4727" y="830" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F30" bpmnElement="F30">
+        <di:waypoint x="4810" y="795" />
+        <di:waypoint x="4810" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F33" bpmnElement="F33">
+        <di:waypoint x="5250" y="530" />
+        <di:waypoint x="5250" y="370" />
+        <di:waypoint x="5377" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F34" bpmnElement="F34">
+        <di:waypoint x="5542" y="370" />
+        <di:waypoint x="5622" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F27" bpmnElement="F27">
+        <di:waypoint x="4167" y="565" />
+        <di:waypoint x="4252" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F28" bpmnElement="F28">
+        <di:waypoint x="4407" y="565" />
+        <di:waypoint x="4492" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F31" bpmnElement="F31">
+        <di:waypoint x="4900" y="565" />
+        <di:waypoint x="4942" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F32" bpmnElement="F32">
+        <di:waypoint x="5097" y="565" />
+        <di:waypoint x="5152" y="565" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F0" bpmnElement="F0">
+        <di:waypoint x="308" y="240" />
+        <di:waypoint x="445" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F1" bpmnElement="F1">
+        <di:waypoint x="615" y="240" />
+        <di:waypoint x="725" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F2" bpmnElement="F2">
+        <di:waypoint x="875" y="240" />
+        <di:waypoint x="955" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F8" bpmnElement="F8">
+        <di:waypoint x="1910" y="215" />
+        <di:waypoint x="1910" y="160" />
+        <di:waypoint x="1040" y="160" />
+        <di:waypoint x="1040" y="206" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1464" y="143" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uqpujp_di" bpmnElement="Flow_1uqpujp">
+        <di:waypoint x="1125" y="240" />
+        <di:waypoint x="1197" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F4" bpmnElement="F4">
+        <di:waypoint x="1362" y="240" />
+        <di:waypoint x="1435" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F5" bpmnElement="F5">
+        <di:waypoint x="1585" y="240" />
+        <di:waypoint x="1655" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F6" bpmnElement="F6">
+        <di:waypoint x="1825" y="240" />
+        <di:waypoint x="1885" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F7" bpmnElement="F7">
+        <di:waypoint x="1935" y="240" />
+        <di:waypoint x="2000" y="240" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1958" y="215" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DI_Participant_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false">
+        <dc:Bounds x="160" y="950" width="5250" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Etapa_1" bpmnElement="Etapa_1">
+        <dc:Bounds x="390" y="85" width="1200" height="45" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Etapa_2" bpmnElement="Etapa_2">
+        <dc:Bounds x="1655" y="85" width="1300" height="45" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_MF_Idea" bpmnElement="MF_Idea">
+        <di:waypoint x="530" y="950" />
+        <di:waypoint x="530" y="274" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_ProjectIntro" bpmnElement="MF_ProjectIntro">
+        <di:waypoint x="2310" y="950" />
+        <di:waypoint x="2310" y="600" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2281" y="765" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_S0Presentation" bpmnElement="MF_S0Presentation">
+        <di:waypoint x="3250" y="600" />
+        <di:waypoint x="3250" y="950" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_FinalPresentation" bpmnElement="MF_FinalPresentation">
+        <di:waypoint x="5250" y="600" />
+        <di:waypoint x="5250" y="950" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="DI_Semana_Final" bpmnElement="Semana_Final">
+        <dc:Bounds x="4657" y="430" width="840" height="25" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Etapa_3" bpmnElement="Etapa_3">
+        <dc:Bounds x="3347" y="85" width="1100" height="45" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Etapa_4" bpmnElement="Etapa_4">
+        <dc:Bounds x="4467" y="85" width="1100" height="45" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Apos_Sprint_1" bpmnElement="Apos_Sprint_1">
+        <dc:Bounds x="3610" y="280" width="350" height="25" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprints_1_2" bpmnElement="Sprints_1_2">
+        <dc:Bounds x="3390" y="420" width="700" height="25" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprints_3_4" bpmnElement="Sprints_3_4">
+        <dc:Bounds x="4097" y="420" width="350" height="25" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Sprint_Duas_Semanas" name="Sprint Duas Semanas">
+    <bpmndi:BPMNPlane id="Plane_Sprint_Duas_Semanas" bpmnElement="Process_Sprint">
+      <bpmndi:BPMNShape id="DI_Sprint_Lane_1" bpmnElement="Sprint_Lane_1" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1450" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Lane_2" bpmnElement="Sprint_Lane_2" isHorizontal="true">
+        <dc:Bounds x="0" y="150" width="1450" height="220" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Start" bpmnElement="Sprint_Start">
+        <dc:Bounds x="40" y="230" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Planning" bpmnElement="Sprint_Planning">
+        <dc:Bounds x="110" y="215" width="145" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Split" bpmnElement="Sprint_Split">
+        <dc:Bounds x="290" y="222" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Meeting" bpmnElement="Sprint_Meeting">
+        <dc:Bounds x="390" y="35" width="150" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Development" bpmnElement="Sprint_Development">
+        <dc:Bounds x="390" y="290" width="180" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Join" bpmnElement="Sprint_Join">
+        <dc:Bounds x="620" y="235" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Delivery" bpmnElement="Sprint_Delivery">
+        <dc:Bounds x="720" y="290" width="165" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Retro" bpmnElement="Sprint_Retro">
+        <dc:Bounds x="925" y="290" width="145" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_Report" bpmnElement="Sprint_Report">
+        <dc:Bounds x="1105" y="290" width="165" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Sprint_End" bpmnElement="Sprint_End">
+        <dc:Bounds x="1320" y="305" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_Sprint_F1" bpmnElement="Sprint_F1">
+        <di:waypoint x="76" y="248" />
+        <di:waypoint x="110" y="247" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F2" bpmnElement="Sprint_F2">
+        <di:waypoint x="255" y="247" />
+        <di:waypoint x="290" y="247" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F3" bpmnElement="Sprint_F3">
+        <di:waypoint x="340" y="247" />
+        <di:waypoint x="365" y="247" />
+        <di:waypoint x="365" y="67" />
+        <di:waypoint x="390" y="67" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F4" bpmnElement="Sprint_F4">
+        <di:waypoint x="340" y="247" />
+        <di:waypoint x="365" y="247" />
+        <di:waypoint x="365" y="324" />
+        <di:waypoint x="390" y="324" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F5" bpmnElement="Sprint_F5">
+        <di:waypoint x="540" y="67" />
+        <di:waypoint x="580" y="67" />
+        <di:waypoint x="580" y="260" />
+        <di:waypoint x="620" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F6" bpmnElement="Sprint_F6">
+        <di:waypoint x="570" y="324" />
+        <di:waypoint x="595" y="324" />
+        <di:waypoint x="595" y="260" />
+        <di:waypoint x="620" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F7" bpmnElement="Sprint_F7">
+        <di:waypoint x="670" y="260" />
+        <di:waypoint x="695" y="260" />
+        <di:waypoint x="695" y="324" />
+        <di:waypoint x="720" y="324" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F8" bpmnElement="Sprint_F8">
+        <di:waypoint x="885" y="324" />
+        <di:waypoint x="925" y="324" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F9" bpmnElement="Sprint_F9">
+        <di:waypoint x="1070" y="324" />
+        <di:waypoint x="1105" y="324" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Sprint_F10" bpmnElement="Sprint_F10">
+        <di:waypoint x="1270" y="324" />
+        <di:waypoint x="1320" y="323" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -25,7 +25,13 @@ Substituir o Warm-Up atual por uma adaptação de Design Sprint, mantendo o trab
 ## Papéis e responsabilidades
 
 - **AGES IV Coordenador:** coordena o trabalho dos grupos.
-- **Demais AGES IV:** atuam como líderes/gestores de cada squad e são responsáveis pelos épicos.
-- **AGES III:** atuam como líderes técnicos de cada squad.
-- **AGES I e II:** participam das atividades do grupo e, na construção do protótipo de alta fidelidade, implementam o protótipo conforme a divisão proposta.
+- **Demais AGES IV:** atuam como líderes/gestores de cada squad e criam e especificam os épicos, compostos por uma ou mais User Stories (USs). A gerência também cuida das features/histórias e de sua priorização.
+- **AGES III:** atuam como Tech Leads de cada squad, com autonomia técnica. Trazem o conhecimento de arquitetura — componentes, serviços, infraestrutura e dependências entre módulos — para aproximar os requisitos do trabalho técnico. Junto com o restante da squad, auxiliam na decomposição das USs em tasks: unidades técnicas de trabalho necessárias para concluir as histórias e, consequentemente, os épicos.
+- **AGES I e II:** compõem a equipe da squad, executam as tasks e se reportam ao AGES III.
+
+## Planejamento e colaboração
+
+- Todos os membros — AGES I, II, III e IV — participam da planning, realizada logo após o encontro com stakeholders na review, além das atividades de especificação e priorização.
+- A gerência (AGES IV) mantém a responsabilidade pelos épicos e features/histórias; a equipe da squad, com liderança técnica do AGES III, organiza o trabalho técnico em tasks.
+- A participação conjunta busca reduzir a distância entre os requisitos e sua implementação, incorporando desde o planejamento o conhecimento técnico do AGES III sobre arquitetura e dependências.
 

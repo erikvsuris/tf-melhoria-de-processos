@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Proposto" name="O Fluxo AGES Proposto" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto">
+  <bpmn:documentation>Rascunho de alto nível para o Resultado 1 do TF de Melhoria de Processos. Baseado no processo atual anexado e nas propostas registradas no README. O modelo de trabalho com Double Diamond é uma adaptação proposta pelo grupo: Coordenação e Stakeholders conduzem descoberta/definição; a equipe AGES I–IV atua no desenvolvimento/entrega. Sprint 0 é representada como Spike/PoC iterativa, com apoio de IA, revisão humana e validação com usuários. Detalhes ainda sujeitos a revisão.</bpmn:documentation>
+  <bpmn:collaboration id="Collaboration_Proposto">
+    <bpmn:participant id="Participant_Proposto" name="O FLUXO AGES PROPOSTO" processRef="Process_Proposto" />
+    <bpmn:participant id="Participant_Stakeholders" name="Stakeholders" />
+    <bpmn:participant id="Participant_Usuarios" name="Usuários" />
+    <bpmn:messageFlow id="MF_Ideia" name="Ideia" sourceRef="Participant_Stakeholders" targetRef="A_Ideia" />
+    <bpmn:messageFlow id="MF_Requisitos" name="Esclarecimentos e validação" sourceRef="A_ReqStakeholders" targetRef="Participant_Stakeholders" />
+    <bpmn:messageFlow id="MF_PoC" name="Demonstração da PoC" sourceRef="A_DemoPoC" targetRef="Participant_Stakeholders" />
+    <bpmn:messageFlow id="MF_Usuario" name="Uso observado e feedback" sourceRef="A_ValidarUsuarios" targetRef="Participant_Usuarios" />
+    <bpmn:messageFlow id="MF_Entrega" name="Demonstrações e entregas" sourceRef="A_EntregaSprint" targetRef="Participant_Stakeholders" />
+    <bpmn:textAnnotation id="Note_Etapa1"><bpmn:text>Etapa 1: Semestre que antecede a execução do projeto na AGES</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Etapa2"><bpmn:text>Etapa 2: Organização e kick-off do projeto</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Sprint0"><bpmn:text>Sprint 0 — Spike/PoC (proposta)</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Diamond1"><bpmn:text>Double Diamond — Descobrir/Definir: Coordenação e Stakeholders</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Diamond2"><bpmn:text>Double Diamond — Desenvolver/Entregar: equipe AGES I–IV</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Etapa3"><bpmn:text>Etapa 3: Sprints iniciais e Revisão intermediária</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Note_Etapa4"><bpmn:text>Etapa 4: Encerramento</bpmn:text></bpmn:textAnnotation>
+  </bpmn:collaboration>
+  <bpmn:message id="Message_Ideia" name="Apresentação da Ideia pelos stakeholder" />
+  <bpmn:process id="Process_Proposto" name="O Fluxo AGES Proposto" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Proposto">
+      <bpmn:lane id="Lane_Coordenacao" name="Coordenação"><bpmn:flowNodeRef>Start</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Ideia</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ValidarIdeia</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Semestre</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ReqStakeholders</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ValidarReq</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Termo</bpmn:flowNodeRef><bpmn:flowNodeRef>G_Aprovado</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Intro</bpmn:flowNodeRef><bpmn:flowNodeRef>A_EntregaSprint</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Andamento</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Bancas</bpmn:flowNodeRef><bpmn:flowNodeRef>A_RetroGeral</bpmn:flowNodeRef><bpmn:flowNodeRef>A_RelatorioFinal</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ApresentacaoFinal</bpmn:flowNodeRef><bpmn:flowNodeRef>End</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="Lane_Professor" name="Professor Orientador"><bpmn:flowNodeRef>A_OneOnOne</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="Lane_AGESIV" name="AGES IV"><bpmn:flowNodeRef>A_MapearCore</bpmn:flowNodeRef><bpmn:flowNodeRef>A_EpicosUS</bpmn:flowNodeRef><bpmn:flowNodeRef>A_CoordPoC</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Planning</bpmn:flowNodeRef><bpmn:flowNodeRef>A_RetroSprint</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="Lane_AGESIII" name="AGES III"><bpmn:flowNodeRef>A_DecomporTasks</bpmn:flowNodeRef><bpmn:flowNodeRef>A_DesignSystem</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ConfigIA</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ReviewAprovar</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="Lane_AGESI_II" name="AGES I e II"><bpmn:flowNodeRef>A_PrototipoIA</bpmn:flowNodeRef><bpmn:flowNodeRef>A_DemoPoC</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ValidarUsuarios</bpmn:flowNodeRef><bpmn:flowNodeRef>G_PoCValidada</bpmn:flowNodeRef><bpmn:flowNodeRef>A_AjustarPoC</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Sprints</bpmn:flowNodeRef></bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Início" />
+    <bpmn:receiveTask id="A_Ideia" name="Apresentação da Ideia pelos stakeholder" messageRef="Message_Ideia" />
+    <bpmn:task id="A_ValidarIdeia" name="Validação da Ideia" />
+    <bpmn:task id="A_Semestre" name="Definição do semestre que o projeto irá ser executado" />
+    <bpmn:task id="A_ReqStakeholders" name="Reuniões com os Stakeholders: elicitar requisitos funcionais e não funcionais (qualidade, segurança, desempenho e restrições)" />
+    <bpmn:task id="A_ValidarReq" name="Validação dos Requisitos" />
+    <bpmn:task id="A_Termo" name="Elaboração do Termo de Abertura de Projetos" />
+    <bpmn:exclusiveGateway id="G_Aprovado" name="Projeto aprovado e pronto para execução?" />
+    <bpmn:task id="A_Intro" name="Apresentação Inicial AGES e do Fluxo AGES." />
+    <bpmn:task id="A_MapearCore" name="Mapear o core do produto e definir o MVP com participação da equipe AGES I–IV" />
+    <bpmn:task id="A_EpicosUS" name="AGES IV especificam épicos e User Stories" />
+    <bpmn:task id="A_DecomporTasks" name="AGES III, I e II decompõem User Stories em tasks e verificam arquitetura/dependências" />
+    <bpmn:task id="A_CoordPoC" name="AGES IV coordenam a Spike/PoC e o trabalho das squads" />
+    <bpmn:task id="A_DesignSystem" name="Preparar design system: variables, styles e componentes com base na identidade visual" />
+    <bpmn:task id="A_ConfigIA" name="Configurar ambiente e agente de IA para apoiar a construção do protótipo" />
+    <bpmn:task id="A_PrototipoIA" name="Construir protótipo funcional de alta fidelidade com apoio de IA (fluxos core; backend ausente ou dados mockados)" />
+    <bpmn:task id="A_ReviewAprovar" name="Code review AGES III e aprovação de AGES III e AGES IV para cada task; reprovação retorna para correção" />
+    <bpmn:task id="A_DemoPoC" name="Demonstração da PoC aos Stakeholders e coleta de feedback" />
+    <bpmn:task id="A_ValidarUsuarios" name="Validar com usuários: observar o uso do protótipo e registrar feedback (técnica a definir)" />
+    <bpmn:exclusiveGateway id="G_PoCValidada" name="Core/PoC atende aos critérios acordados?" />
+    <bpmn:task id="A_AjustarPoC" name="Ajustar protótipo, tasks e histórias com base nos achados" />
+    <bpmn:task id="A_Planning" name="Planning colaborativa: priorizar histórias e selecionar tasks" />
+    <bpmn:callActivity id="A_Sprints" name="Sprints regulares (ciclo de duas semanas)" calledElement="Process_Sprint_Proposto" />
+    <bpmn:task id="A_EntregaSprint" name="Entrega para os Stakeholders" />
+    <bpmn:task id="A_RetroSprint" name="Retrospectiva" />
+    <bpmn:task id="A_Andamento" name="Entrega Relatório de Andamento" />
+    <bpmn:task id="A_OneOnOne" name="ONE on ONE (com os alunos)" />
+    <bpmn:task id="A_Bancas" name="Apresentação das BANCAS" />
+    <bpmn:task id="A_RetroGeral" name="Retrospectiva geral da AGES + Confraternização" />
+    <bpmn:task id="A_RelatorioFinal" name="Entrega Relatório Final" />
+    <bpmn:task id="A_ApresentacaoFinal" name="Apresentação dos projetos da AGES (estudantes + stakeholders + professores)" />
+    <bpmn:endEvent id="End" name="Fim" />
+    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Ideia" />
+    <bpmn:sequenceFlow id="F02" sourceRef="A_Ideia" targetRef="A_ValidarIdeia" />
+    <bpmn:sequenceFlow id="F03" sourceRef="A_ValidarIdeia" targetRef="A_Semestre" />
+    <bpmn:sequenceFlow id="F04" sourceRef="A_Semestre" targetRef="A_ReqStakeholders" />
+    <bpmn:sequenceFlow id="F05" sourceRef="A_ReqStakeholders" targetRef="A_ValidarReq" />
+    <bpmn:sequenceFlow id="F06" sourceRef="A_ValidarReq" targetRef="A_Termo" />
+    <bpmn:sequenceFlow id="F07" sourceRef="A_Termo" targetRef="G_Aprovado" />
+    <bpmn:sequenceFlow id="F08" name="Sim" sourceRef="G_Aprovado" targetRef="A_Intro" />
+    <bpmn:sequenceFlow id="F09" name="Revisar requisitos" sourceRef="G_Aprovado" targetRef="A_ReqStakeholders" />
+    <bpmn:sequenceFlow id="F10" sourceRef="A_Intro" targetRef="A_MapearCore" />
+    <bpmn:sequenceFlow id="F11" sourceRef="A_MapearCore" targetRef="A_EpicosUS" />
+    <bpmn:sequenceFlow id="F12" sourceRef="A_EpicosUS" targetRef="A_DecomporTasks" />
+    <bpmn:sequenceFlow id="F13" sourceRef="A_DecomporTasks" targetRef="A_CoordPoC" />
+    <bpmn:sequenceFlow id="F14" sourceRef="A_CoordPoC" targetRef="A_DesignSystem" />
+    <bpmn:sequenceFlow id="F15" sourceRef="A_DesignSystem" targetRef="A_ConfigIA" />
+    <bpmn:sequenceFlow id="F16" sourceRef="A_ConfigIA" targetRef="A_PrototipoIA" />
+    <bpmn:sequenceFlow id="F17" sourceRef="A_PrototipoIA" targetRef="A_ReviewAprovar" />
+    <bpmn:sequenceFlow id="F18" sourceRef="A_ReviewAprovar" targetRef="A_DemoPoC" />
+    <bpmn:sequenceFlow id="F19" sourceRef="A_DemoPoC" targetRef="A_ValidarUsuarios" />
+    <bpmn:sequenceFlow id="F20" sourceRef="A_ValidarUsuarios" targetRef="G_PoCValidada" />
+    <bpmn:sequenceFlow id="F21" name="Não: iterar" sourceRef="G_PoCValidada" targetRef="A_AjustarPoC" />
+    <bpmn:sequenceFlow id="F22" sourceRef="A_AjustarPoC" targetRef="A_PrototipoIA" />
+    <bpmn:sequenceFlow id="F23" name="Sim" sourceRef="G_PoCValidada" targetRef="A_Planning" />
+    <bpmn:sequenceFlow id="F24" sourceRef="A_Planning" targetRef="A_Sprints" />
+    <bpmn:sequenceFlow id="F25" sourceRef="A_Sprints" targetRef="A_EntregaSprint" />
+    <bpmn:sequenceFlow id="F26" sourceRef="A_EntregaSprint" targetRef="A_RetroSprint" />
+    <bpmn:sequenceFlow id="F27" sourceRef="A_RetroSprint" targetRef="A_Andamento" />
+    <bpmn:sequenceFlow id="F28" sourceRef="A_Andamento" targetRef="A_OneOnOne" />
+    <bpmn:sequenceFlow id="F29" sourceRef="A_OneOnOne" targetRef="A_Bancas" />
+    <bpmn:sequenceFlow id="F30" sourceRef="A_Bancas" targetRef="A_RetroGeral" />
+    <bpmn:sequenceFlow id="F31" sourceRef="A_RetroGeral" targetRef="A_RelatorioFinal" />
+    <bpmn:sequenceFlow id="F32" sourceRef="A_RelatorioFinal" targetRef="A_ApresentacaoFinal" />
+    <bpmn:sequenceFlow id="F33" sourceRef="A_ApresentacaoFinal" targetRef="End" />
+  </bpmn:process>
+  <bpmn:process id="Process_Sprint_Proposto" name="Sprint regular de duas semanas" isExecutable="false">
+    <bpmn:startEvent id="Sprint_Start" name="Início" />
+    <bpmn:task id="Sprint_Planning" name="Planning colaborativa" />
+    <bpmn:task id="Sprint_Work" name="Desenvolvimento e documentação (tasks com IA quando aplicável; code review e aprovação AGES III/IV)" />
+    <bpmn:task id="Sprint_Meeting" name="Aula Meeting" />
+    <bpmn:parallelGateway id="Sprint_Split" />
+    <bpmn:parallelGateway id="Sprint_Join" />
+    <bpmn:task id="Sprint_Delivery" name="Entrega para os Stakeholders" />
+    <bpmn:task id="Sprint_Retro" name="Retrospectiva" />
+    <bpmn:task id="Sprint_Report" name="Entrega do relatório da Sprint" />
+    <bpmn:endEvent id="Sprint_End" name="Fim" />
+    <bpmn:sequenceFlow id="SF1" sourceRef="Sprint_Start" targetRef="Sprint_Planning" />
+    <bpmn:sequenceFlow id="SF2" sourceRef="Sprint_Planning" targetRef="Sprint_Split" />
+    <bpmn:sequenceFlow id="SF3" sourceRef="Sprint_Split" targetRef="Sprint_Work" />
+    <bpmn:sequenceFlow id="SF4" sourceRef="Sprint_Split" targetRef="Sprint_Meeting" />
+    <bpmn:sequenceFlow id="SF5" sourceRef="Sprint_Work" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="SF6" sourceRef="Sprint_Meeting" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="SF7" sourceRef="Sprint_Join" targetRef="Sprint_Delivery" />
+    <bpmn:sequenceFlow id="SF8" sourceRef="Sprint_Delivery" targetRef="Sprint_Retro" />
+    <bpmn:sequenceFlow id="SF9" sourceRef="Sprint_Retro" targetRef="Sprint_Report" />
+    <bpmn:sequenceFlow id="SF10" sourceRef="Sprint_Report" targetRef="Sprint_End" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_Proposto" name="O Fluxo AGES Proposto">
+    <bpmndi:BPMNPlane id="Plane_Proposto" bpmnElement="Collaboration_Proposto">
+      <bpmndi:BPMNShape id="DI_Pool" bpmnElement="Participant_Proposto" isHorizontal="true" isExpanded="true"><dc:Bounds x="100" y="100" width="6100" height="960" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_LaneCoord" bpmnElement="Lane_Coordenacao" isHorizontal="true"><dc:Bounds x="130" y="100" width="6070" height="230" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_LaneProf" bpmnElement="Lane_Professor" isHorizontal="true"><dc:Bounds x="130" y="330" width="6070" height="130" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_LaneIV" bpmnElement="Lane_AGESIV" isHorizontal="true"><dc:Bounds x="130" y="460" width="6070" height="150" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_LaneIII" bpmnElement="Lane_AGESIII" isHorizontal="true"><dc:Bounds x="130" y="610" width="6070" height="160" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_LaneI_II" bpmnElement="Lane_AGESI_II" isHorizontal="true"><dc:Bounds x="130" y="770" width="6070" height="290" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false"><dc:Bounds x="100" y="1110" width="6100" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Users" bpmnElement="Participant_Usuarios" isHorizontal="true" isExpanded="false"><dc:Bounds x="100" y="1220" width="6100" height="90" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Start" bpmnElement="Start"><dc:Bounds x="175" y="197" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Ideia" bpmnElement="A_Ideia"><dc:Bounds x="360" y="169" width="190" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ValidarIdeia" bpmnElement="A_ValidarIdeia"><dc:Bounds x="545" y="169" width="175" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Semestre" bpmnElement="A_Semestre"><dc:Bounds x="730" y="169" width="175" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ReqStakeholders" bpmnElement="A_ReqStakeholders"><dc:Bounds x="915" y="169" width="220" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ValidarReq" bpmnElement="A_ValidarReq"><dc:Bounds x="1100" y="169" width="170" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Termo" bpmnElement="A_Termo"><dc:Bounds x="1285" y="169" width="205" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_G_Aprovado" bpmnElement="G_Aprovado"><dc:Bounds x="1470" y="178" width="54" height="54" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Intro" bpmnElement="A_Intro"><dc:Bounds x="1655" y="169" width="175" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_MapearCore" bpmnElement="A_MapearCore"><dc:Bounds x="1840" y="499" width="205" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_EpicosUS" bpmnElement="A_EpicosUS"><dc:Bounds x="2025" y="499" width="195" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_DecomporTasks" bpmnElement="A_DecomporTasks"><dc:Bounds x="2210" y="644" width="215" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_CoordPoC" bpmnElement="A_CoordPoC"><dc:Bounds x="2395" y="499" width="185" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_DesignSystem" bpmnElement="A_DesignSystem"><dc:Bounds x="2580" y="644" width="220" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ConfigIA" bpmnElement="A_ConfigIA"><dc:Bounds x="2765" y="644" width="205" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_PrototipoIA" bpmnElement="A_PrototipoIA"><dc:Bounds x="2950" y="849" width="235" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ReviewAprovar" bpmnElement="A_ReviewAprovar"><dc:Bounds x="3135" y="644" width="220" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_DemoPoC" bpmnElement="A_DemoPoC"><dc:Bounds x="3320" y="849" width="180" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ValidarUsuarios" bpmnElement="A_ValidarUsuarios"><dc:Bounds x="3505" y="849" width="225" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_G_PoCValidada" bpmnElement="G_PoCValidada"><dc:Bounds x="3690" y="858" width="54" height="54" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_AjustarPoC" bpmnElement="A_AjustarPoC"><dc:Bounds x="3875" y="849" width="195" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Planning" bpmnElement="A_Planning"><dc:Bounds x="4060" y="499" width="200" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Sprints" bpmnElement="A_Sprints"><dc:Bounds x="4245" y="849" width="230" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_EntregaSprint" bpmnElement="A_EntregaSprint"><dc:Bounds x="4430" y="169" width="180" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_RetroSprint" bpmnElement="A_RetroSprint"><dc:Bounds x="4615" y="499" width="165" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Andamento" bpmnElement="A_Andamento"><dc:Bounds x="4800" y="169" width="185" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_OneOnOne" bpmnElement="A_OneOnOne"><dc:Bounds x="4985" y="354" width="180" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_Bancas" bpmnElement="A_Bancas"><dc:Bounds x="5170" y="169" width="185" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_RetroGeral" bpmnElement="A_RetroGeral"><dc:Bounds x="5355" y="169" width="225" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_RelatorioFinal" bpmnElement="A_RelatorioFinal"><dc:Bounds x="5540" y="169" width="185" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_A_ApresentacaoFinal" bpmnElement="A_ApresentacaoFinal"><dc:Bounds x="5725" y="169" width="240" height="72" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_End" bpmnElement="End"><dc:Bounds x="5910" y="187" width="36" height="36" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Note_Etapa1" bpmnElement="Note_Etapa1"><dc:Bounds x="240" y="30" width="950" height="42" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Note_Etapa2" bpmnElement="Note_Etapa2"><dc:Bounds x="1730" y="30" width="620" height="42" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Note_Sprint0" bpmnElement="Note_Sprint0"><dc:Bounds x="2550" y="30" width="570" height="42" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Diamond1" bpmnElement="Note_Diamond1"><dc:Bounds x="250" y="75" width="1050" height="42" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Diamond2" bpmnElement="Note_Diamond2"><dc:Bounds x="2500" y="75" width="920" height="42" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Note_Etapa3" bpmnElement="Note_Etapa3"><dc:Bounds x="4300" y="30" width="650" height="42" /></bpmndi:BPMNShape>
+<bpmndi:BPMNShape id="DI_Note_Etapa4" bpmnElement="Note_Etapa4"><dc:Bounds x="5450" y="30" width="300" height="42" /></bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id="DI_F01" bpmnElement="F01"><di:waypoint x="211" y="215" /><di:waypoint x="360" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F02" bpmnElement="F02"><di:waypoint x="550" y="205" /><di:waypoint x="545" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F03" bpmnElement="F03"><di:waypoint x="720" y="205" /><di:waypoint x="730" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F04" bpmnElement="F04"><di:waypoint x="905" y="205" /><di:waypoint x="915" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F05" bpmnElement="F05"><di:waypoint x="1135" y="205" /><di:waypoint x="1100" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F06" bpmnElement="F06"><di:waypoint x="1270" y="205" /><di:waypoint x="1285" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F07" bpmnElement="F07"><di:waypoint x="1490" y="205" /><di:waypoint x="1470" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F08" bpmnElement="F08"><di:waypoint x="1524" y="205" /><di:waypoint x="1567" y="135" /><di:waypoint x="1698" y="135" /><di:waypoint x="1698" y="205" /><di:waypoint x="1702" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F09" bpmnElement="F09"><di:waypoint x="1524" y="205" /><di:waypoint x="1549" y="100" /><di:waypoint x="1025" y="100" /><di:waypoint x="1025" y="169" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F10" bpmnElement="F10"><di:waypoint x="1830" y="205" /><di:waypoint x="1840" y="535" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F11" bpmnElement="F11"><di:waypoint x="2045" y="535" /><di:waypoint x="2025" y="535" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F12" bpmnElement="F12"><di:waypoint x="2220" y="535" /><di:waypoint x="2210" y="680" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F13" bpmnElement="F13"><di:waypoint x="2425" y="680" /><di:waypoint x="2395" y="535" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F14" bpmnElement="F14"><di:waypoint x="2580" y="535" /><di:waypoint x="2580" y="680" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F15" bpmnElement="F15"><di:waypoint x="2800" y="680" /><di:waypoint x="2765" y="680" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F16" bpmnElement="F16"><di:waypoint x="2970" y="680" /><di:waypoint x="2950" y="885" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F17" bpmnElement="F17"><di:waypoint x="3185" y="885" /><di:waypoint x="3135" y="680" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F18" bpmnElement="F18"><di:waypoint x="3355" y="680" /><di:waypoint x="3320" y="885" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F19" bpmnElement="F19"><di:waypoint x="3500" y="885" /><di:waypoint x="3505" y="885" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F20" bpmnElement="F20"><di:waypoint x="3730" y="885" /><di:waypoint x="3690" y="885" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F21" bpmnElement="F21"><di:waypoint x="3717" y="912" /><di:waypoint x="3717" y="955" /><di:waypoint x="3972" y="955" /><di:waypoint x="3972" y="849" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F22" bpmnElement="F22"><di:waypoint x="3972" y="849" /><di:waypoint x="3972" y="800" /><di:waypoint x="3068" y="800" /><di:waypoint x="3068" y="921" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F23" bpmnElement="F23"><di:waypoint x="3744" y="885" /><di:waypoint x="3787" y="815" /><di:waypoint x="4115" y="815" /><di:waypoint x="4115" y="535" /><di:waypoint x="4120" y="535" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F24" bpmnElement="F24"><di:waypoint x="4260" y="535" /><di:waypoint x="4245" y="885" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F25" bpmnElement="F25"><di:waypoint x="4475" y="885" /><di:waypoint x="4430" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F26" bpmnElement="F26"><di:waypoint x="4610" y="205" /><di:waypoint x="4615" y="535" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F27" bpmnElement="F27"><di:waypoint x="4780" y="535" /><di:waypoint x="4800" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F28" bpmnElement="F28"><di:waypoint x="4985" y="205" /><di:waypoint x="4985" y="390" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F29" bpmnElement="F29"><di:waypoint x="5165" y="390" /><di:waypoint x="5170" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F30" bpmnElement="F30"><di:waypoint x="5355" y="205" /><di:waypoint x="5355" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F31" bpmnElement="F31"><di:waypoint x="5580" y="205" /><di:waypoint x="5540" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F32" bpmnElement="F32"><di:waypoint x="5725" y="205" /><di:waypoint x="5725" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_F33" bpmnElement="F33"><di:waypoint x="5965" y="205" /><di:waypoint x="5910" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_MF_Ideia" bpmnElement="MF_Ideia"><di:waypoint x="130" y="1155" /><di:waypoint x="455" y="205" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_MF_Requisitos" bpmnElement="MF_Requisitos"><di:waypoint x="1025" y="205" /><di:waypoint x="130" y="1155" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_MF_PoC" bpmnElement="MF_PoC"><di:waypoint x="3410" y="885" /><di:waypoint x="130" y="1155" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_MF_Usuario" bpmnElement="MF_Usuario"><di:waypoint x="3618" y="885" /><di:waypoint x="130" y="1265" /></bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id="DI_MF_Entrega" bpmnElement="MF_Entrega"><di:waypoint x="4520" y="205" /><di:waypoint x="130" y="1155" /></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

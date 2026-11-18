@@ -9,11 +9,17 @@ Notas iniciais do grupo para a proposta do Trabalho Final de Melhoria de Process
 
 ## Redesenho do Sprint 0
 
-Substituir o Warm-Up atual por uma adaptação de Design Sprint, mantendo o trabalho iterativo e colaborativo em vez de concentrar as definições em uma sequência que possa tornar o processo cascata.
+Substituir o Warm-Up atual por uma adaptação de Inception, com práticas de Design Sprint e validação rápida, mantendo o trabalho iterativo e colaborativo em vez de concentrar as definições em uma sequência que possa tornar o processo cascata.
+
+### Inception como propósito da Sprint 0
+
+- Entender Inception como um momento estruturado de alinhamento entre as pessoas envolvidas sobre problema, usuários, proposta de solução e o MVP a construir — não apenas como apresentação inicial, estudo de ferramentas ou preparação logística. A Lean Inception é descrita por seu autor como um workshop colaborativo para alinhar a proposta de solução e definir o MVP; suas práticas podem ser adaptadas ao contexto e ao tempo da Sprint 0 ([referência](https://caroli.org/lean-inception-3/)).
+- Na proposta, a Sprint 0 combina esse alinhamento com uma Spike/PoC: depois de mapear e priorizar o core, a equipe constrói um protótipo funcional e o valida com Stakeholders/usuários. O resultado esperado é aprendizado e feedback que reduzam incerteza e orientem o backlog das sprints seguintes; não é necessário concluir um produto com backend.
+- O User Story Mapping e o brainstorming com Stakeholders ajudam a formar entendimento comum do problema e do MVP. A equipe então consolida as histórias, explicita hipóteses e dependências e prepara uma PoC que permita validar os fluxos de maior risco ou valor.
 
 1. **Apresentação e integração:** apresentar a equipe e seus membros. Prever conversas 1:1 com AGES IV ao longo do projeto.
-2. **Elicitação com stakeholders:** no primeiro encontro com os stakeholders, elicitar requisitos com a participação de todos os membros do grupo.
-3. **Mapeamento e priorização:** realizar brainstorming com toda a equipe, construir o User Story Map e definir o core do produto (MVP).
+2. **Elicitação com stakeholders:** no encontro de elicitação, todos os membros do grupo participam junto aos Stakeholders. Fazer uma dinâmica de brainstorming para levantar requisitos e construir colaborativamente o User Story Map, com participação dos Stakeholders.
+3. **Consolidação, análise e priorização:** após o encontro, a equipe consolida o User Story Map, analisa as histórias e requisitos levantados, prioriza o backlog e define o core do produto (MVP), considerando também o retorno dos Stakeholders.
 4. **Protótipos de baixa fidelidade:** dividir a equipe em grupos menores, de 2 a 4 pessoas, para criar wireframes dos fluxos core.
 5. **Wireflows:** desenhar os fluxos de navegação entre os wireframes.
 6. **Protótipo de alta fidelidade e preparação do ambiente:**
@@ -21,6 +27,12 @@ Substituir o Warm-Up atual por uma adaptação de Design Sprint, mantendo o trab
    - AGES III preparam o design system, configuram o Figma e configuram o agente de IA;
    - AGES I e II constroem o protótipo.
 7. **Validação:** etapa mencionada nas notas originais como “Validação com”; participantes e forma de validação ainda precisam ser definidos.
+
+## Ordem proposta para os encontros iniciais
+
+- **Ordem atual, conforme anotação do grupo:** apresentação da AGES → apresentação do projeto/equipe → reunião de elicitação com Stakeholders.
+- **Ordem proposta:** apresentação da AGES → reunião de elicitação com Stakeholders (brainstorming e User Story Mapping colaborativo) → apresentação do projeto/equipe.
+- A mudança antecipa a conversa sobre necessidades e requisitos. Depois da elicitação, a equipe consolida e analisa o mapa, prioriza as histórias e define o core/MVP; os resultados podem ser retomados com os Stakeholders para alinhamento.
 
 ## Papéis e responsabilidades
 
@@ -50,8 +62,14 @@ Esta síntese alinha o BPMN atual (`O_Fluxo_AGES_Atual.bpmn`) ao material visual
 
 Assim, os nomes e agrupamentos das etapas permanecem fiéis ao Anexo 1, enquanto a informação mais recente do grupo sobre o momento das bancas fica identificada como correção da sequência representada no material original.
 
+### Requisitos não funcionais no Pré-AGES
+
+- Durante a **Etapa 1: Semestre que antecede a execução do projeto na AGES**, a Coordenação deve elicitar e validar com os Stakeholders os requisitos não funcionais relevantes ao projeto, aproveitando as `Reuniões mensais com os Stakeholders` e a `Validação dos Requisitos` do processo atual.
+- Registrar esses requisitos com critérios verificáveis e exemplos de aceitação, conforme o contexto do projeto: por exemplo, segurança e privacidade, desempenho, disponibilidade, usabilidade, acessibilidade, manutenibilidade ou restrições de plataforma. A lista deve ser acordada com os Stakeholders, não presumida como igual para todos os projetos.
+- Esses acordos devem integrar os requisitos e o Termo de Abertura antes do início do trabalho da equipe AGES. Na etapa seguinte, servem de entrada para arquitetura e planejamento da PoC; na validação, ajudam a definir o que precisa ser demonstrado ou medido, mesmo quando o protótipo usa dados mockados ou não possui backend.
+
 - **Descoberta antes da entrada da equipe:** adaptar a referência ao “modelo Gartner” trazida pelo grupo, usando o Double Diamond na relação entre Coordenação e Stakeholders. A Coordenação conduz Descobrir/Definir, valida requisitos funcionais e não funcionais e esclarece critérios de qualidade, segurança, desempenho e demais restrições. A equipe discente AGES I–IV concentra sua atuação no segundo diamante — Desenvolver/Entregar soluções — depois desse alinhamento inicial.
-- **Sprint 0 como Spike/PoC:** substituir o Warm-Up por uma investigação prática do core/MVP. A equipe pode construir um protótipo funcional, ainda que sem backend ou usando dados mockados, para representar os fluxos principais e permitir que Stakeholders experimentem a solução e deem feedback específico. Lean Inception e Lean Startup ficam como alternativas de abordagem a discutir; o rascunho não assume uma delas como decisão fechada.
+- **Sprint 0 como Inception + Spike/PoC:** incorporar práticas de Lean Inception para alinhar problema, usuários, solução e MVP, e então investigar o core por meio de um protótipo funcional. A equipe pode construir uma PoC sem backend ou usando dados mockados, para representar os fluxos principais e permitir que Stakeholders/usuários experimentem a solução e deem feedback específico. Lean Startup pode complementar a validação de hipóteses; a combinação de práticas ainda será decidida pelo grupo.
 - **Trabalho da Sprint 0:** AGES IV coordena o fluxo de construção do protótipo; AGES III prepara o design system (incluindo variables e styles com base na identidade visual) e o ambiente/agente de IA; AGES I e II usam IA como apoio para construir os protótipos de alta fidelidade dos fluxos trabalhados pelas squads. O protótipo pode incluir interação e dados simulados, sem exigir implementação do backend.
 - **Revisão técnica e gerencial:** cada task passa por code review do AGES III e aprovação do AGES III e do AGES IV antes de ser considerada concluída. Se houver ajustes, retorna para execução e nova revisão. Nas sprints seguintes, o mesmo ponto de controle deve fazer parte do fluxo de desenvolvimento.
 - **Validação com usuários ao final da Sprint 0:** observar usuários representativos usando o protótipo e registrar dúvidas, dificuldades e feedback. Observação e uso são uma técnica candidata; a técnica de UX, os participantes, os critérios de sucesso e a decisão de seguir/iterar ainda precisam ser combinados com Stakeholders.
@@ -60,7 +78,7 @@ Assim, os nomes e agrupamentos das etapas permanecem fiéis ao Anexo 1, enquanto
 
 ### Pontos para decidir durante a revisão
 
-- Se o grupo adota Lean Inception, Lean Startup ou somente práticas selecionadas de cada uma.
+- Quais práticas de Lean Inception serão usadas na Sprint 0 e se práticas de Lean Startup serão combinadas para testar hipóteses da PoC.
 - Qual técnica de validação de UX será aplicada, quem serão os usuários e quais critérios indicam que a PoC pode avançar.
 - Como os requisitos não funcionais serão registrados, priorizados e verificados nas tarefas e entregas.
 - Como serão definidos os limites de uso do agente de IA, os dados de entrada permitidos e a revisão dos artefatos gerados.

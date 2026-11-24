@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Abstrato" name="O Fluxo AGES Proposto Abstrato" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-abstrato">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Abstrato" name="Fluxo AGES" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-abstrato">
   <bpmn:documentation>Processo geral abstrato proposto para a equipe AGES. O diagrama não impõe metodologia, Sprint 0, cerimônias ou cadência específicas. AGES IV define e adapta o processo próprio da equipe; AGES III oferece liderança técnica e habilitação como Enabling Team; a equipe executa conforme os acordos. O processo escolhido e seus resultados são avaliáveis na banca. Este BPMN é distinto da instância concreta descrita em O_Fluxo_AGES_Proposto_Sugerido.bpmn.</bpmn:documentation>
   <bpmn:collaboration id="Collaboration_AGES_Abstrato">
-    <bpmn:participant id="Participant_Processo" name="O FLUXO AGES PROPOSTO ABSTRATO" processRef="Processo_Abstrato" />
-    <bpmn:participant id="Participant_Stakeholders" name="Coordenação / Stakeholders" />
+    <bpmn:participant id="Participant_Processo" name="Fluxo AGES" processRef="Processo_Abstrato" />
+    <bpmn:participant id="Participant_Stakeholders" name="Coordenação e Stakeholders" />
     <bpmn:messageFlow id="MF_Contexto" name="Objetivos, contexto e restrições" sourceRef="Participant_Stakeholders" targetRef="A_Contexto" />
     <bpmn:messageFlow id="MF_Feedback" name="Feedback sobre resultados e adequação do processo" sourceRef="A_Avaliar" targetRef="Participant_Stakeholders" />
   </bpmn:collaboration>
-  <bpmn:process id="Processo_Abstrato" name="O Fluxo AGES Proposto Abstrato" isExecutable="false">
+  <bpmn:process id="Processo_Abstrato" name="Fluxo AGES" isExecutable="false">
     <bpmn:laneSet id="LaneSet_Abstrato">
-      <bpmn:lane id="Lane_AGESIV" name="AGES IV — Gestão e definição do processo">
+      <bpmn:lane id="Lane_AGESIV" name="AGES IV">
         <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Contexto</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_DefinirMetodo</bpmn:flowNodeRef>
@@ -22,28 +22,28 @@
         <bpmn:flowNodeRef>G_Concluido</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_AGESIII" name="AGES III — Tech Lead / Enabling Team">
+      <bpmn:lane id="Lane_AGESIII" name="AGES III">
         <bpmn:flowNodeRef>A_AnalisarTecnico</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_HabilitarTecnico</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Equipe" name="Equipe AGES I–IV">
+      <bpmn:lane id="Lane_Equipe" name="Equipe AGES">
         <bpmn:flowNodeRef>A_Executar</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="Start" name="Projeto/equipe designados" />
-    <bpmn:task id="A_Contexto" name="Alinhar objetivos, contexto, restrições e critérios do projeto com Coordenação/Stakeholders" />
-    <bpmn:task id="A_AnalisarTecnico" name="Analisar necessidades técnicas, arquitetura e capacidades de plataforma; aconselhar AGES IV" />
-    <bpmn:task id="A_DefinirMetodo" name="Definir/adaptar metodologia, etapas, papéis, cerimônias, artefatos, cadência e acordos da equipe" />
-    <bpmn:task id="A_DefinirPoliticasIA" name="Definir guardrails, processos e políticas de uso da IA" />
-    <bpmn:exclusiveGateway id="G_ClarezaViabilidade" name="Processo claro e tecnicamente viável?" />
-    <bpmn:task id="A_HabilitarTecnico" name="AGES III viabiliza tecnicamente o processo acordado e habilita recursos de plataforma/IA necessários" />
-    <bpmn:task id="A_Comunicar" name="Comunicar acordos de trabalho à equipe; explicitar processo escolhido e critérios de acompanhamento" />
-    <bpmn:task id="A_Executar" name="Executar o trabalho segundo o processo e os acordos definidos para esta equipe" />
-    <bpmn:task id="A_Avaliar" name="Revisar entregas, feedback, métricas e adequação do processo com a equipe e Stakeholders" />
-    <bpmn:exclusiveGateway id="G_Ajustar" name="O processo precisa ser ajustado?" />
-    <bpmn:task id="A_AjustarProcesso" name="AGES IV revisa e adapta o processo com apoio técnico de AGES III e participação da equipe" />
+    <bpmn:task id="A_Contexto" name="Alinhar objetivos e restrições" />
+    <bpmn:task id="A_AnalisarTecnico" name="Analisar viabilidade técnica e plataforma" />
+    <bpmn:task id="A_DefinirMetodo" name="Definir processo da equipe" />
+    <bpmn:task id="A_DefinirPoliticasIA" name="Definir políticas de IA" />
+    <bpmn:exclusiveGateway id="G_ClarezaViabilidade" name="Processo viável?" />
+    <bpmn:task id="A_HabilitarTecnico" name="Habilitar recursos técnicos e de IA" />
+    <bpmn:task id="A_Comunicar" name="Comunicar acordos à equipe" />
+    <bpmn:task id="A_Executar" name="Executar processo acordado" />
+    <bpmn:task id="A_Avaliar" name="Avaliar entregas e processo" />
+    <bpmn:exclusiveGateway id="G_Ajustar" name="Ajustar processo?" />
+    <bpmn:task id="A_AjustarProcesso" name="Ajustar processo" />
     <bpmn:exclusiveGateway id="G_Concluido" name="Projeto concluído?" />
-    <bpmn:endEvent id="End" name="Processo encerrado" />
+    <bpmn:endEvent id="End" name="Fim" />
     <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Contexto" />
     <bpmn:sequenceFlow id="F02" sourceRef="A_Contexto" targetRef="A_AnalisarTecnico" />
     <bpmn:sequenceFlow id="F03" sourceRef="A_AnalisarTecnico" targetRef="A_DefinirMetodo" />
@@ -61,7 +61,7 @@
     <bpmn:sequenceFlow id="F15" name="Não" sourceRef="G_Concluido" targetRef="A_Executar" />
     <bpmn:sequenceFlow id="F16" name="Sim" sourceRef="G_Concluido" targetRef="End" />
   </bpmn:process>
-  <bpmndi:BPMNDiagram id="Diagram_AGES_Abstrato" name="O Fluxo AGES Proposto Abstrato">
+  <bpmndi:BPMNDiagram id="Diagram_AGES_Abstrato" name="Fluxo AGES">
     <bpmndi:BPMNPlane id="Plane_AGES_Abstrato" bpmnElement="Collaboration_AGES_Abstrato">
       <bpmndi:BPMNShape id="DI_Participant_Processo" bpmnElement="Participant_Processo" isHorizontal="true" isExpanded="true"><dc:Bounds x="100" y="100" width="3650" height="570" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_Lane_AGESIV" bpmnElement="Lane_AGESIV" isHorizontal="true"><dc:Bounds x="130" y="100" width="3620" height="190" /></bpmndi:BPMNShape>

@@ -7,7 +7,7 @@ Este README reúne o entendimento do grupo, a referência do processo atual e as
 O trabalho terá três BPMNs relacionados, mas com propósitos distintos. O BPMN atual continua como referência de comparação.
 
 1. **O Fluxo AGES Atual — referência *as is*.** `O_Fluxo_AGES_Atual.bpmn` reconstrói o fluxo dos materiais da AGES e do Anexo 1. Serve para entender o ponto de partida, não para prescrever a melhoria.
-2. **O Fluxo AGES Proposto Abstrato — BPMN adicional.** `O_Fluxo_AGES_Proposto_Abstrato.bpmn` apresenta o processo geral, sem impor metodologia ou conjunto fixo de cerimônias. Mostra como a equipe se organiza e executa o trabalho e, sobretudo, como o AGES IV define/adapta o processo, cerimônias, políticas, artefatos e acordos de trabalho para aquela equipe. Esse processo é uma *sandbox*: dá autonomia ao AGES IV dentro das responsabilidades e guardrails acordados. O AGES III viabiliza tecnicamente o trabalho como Tech Lead/*Enabling Team*. A definição e aplicação desse processo próprio são parte do que se espera avaliar na banca.
+2. **Fluxo AGES — BPMN abstrato adicional.** `O_Fluxo_AGES_Proposto_Abstrato.bpmn` apresenta o processo geral, sem impor metodologia ou conjunto fixo de cerimônias. Mostra como a equipe se organiza e executa o trabalho e, sobretudo, como o AGES IV define/adapta o processo, cerimônias, políticas, artefatos e acordos de trabalho para aquela equipe. Esse processo é uma *sandbox*: dá autonomia ao AGES IV dentro das responsabilidades e guardrails acordados. O AGES III viabiliza tecnicamente o trabalho como Tech Lead/*Enabling Team*. A definição e aplicação desse processo próprio são parte do que se espera avaliar na banca.
 3. **O Fluxo AGES Proposto Sugerido — Resultado 1 do enunciado.** `O_Fluxo_AGES_Proposto_Sugerido.bpmn` é um primeiro rascunho de uma instância concreta: a sugestão do grupo para um fluxo de desenvolvimento que inclui IA. É um modelo idealizado para discutir e testar, inspirado pela referência ao modelo Gartner trazida pelo grupo, pelo Double Diamond, Inception e outras práticas. Será refinado a partir destas notas e não deve ser interpretado como a única metodologia obrigatória para todas as equipes AGES.
 4. **Resultado 2 — especificação de uma atividade.** Depois de escolher a etapa/atividade, detalhar seu propósito, os papéis envolvidos, o propósito dos artefatos e a estrutura/conteúdo de cada artefato. Esse detalhamento explica uma parte da instância do Resultado 1, sem substituir o BPMN abstrato nem a autonomia do AGES IV.
 
@@ -30,7 +30,7 @@ Esta síntese cruza `O_Fluxo_AGES_Atual.bpmn`, `ProcessosAGES-ProcessoAGES-v6.pn
 - Registrar critérios verificáveis e exemplos de aceitação conforme o contexto: por exemplo, segurança e privacidade, desempenho, disponibilidade, usabilidade, acessibilidade, manutenibilidade e restrições de plataforma. Os critérios são acordados com Stakeholders, não presumidos iguais em todos os projetos.
 - Esses acordos entram nos requisitos e no Termo de Abertura antes do início do trabalho da equipe. Depois orientam arquitetura, configuração das ferramentas e agente de IA, planejamento da PoC e sua validação, mesmo quando o protótipo usa dados mockados ou não tem backend.
 
-## O Fluxo AGES Proposto Abstrato
+## Fluxo AGES
 
 Este é o nível geral que deve expressar a melhoria de governança proposta. O diagrama não deve fixar que toda equipe use Sprint 0, Scrum, Design Sprint, a mesma cadência ou os mesmos artefatos. Deve explicitar que AGES IV configura e mantém o processo de trabalho para sua equipe dentro dos objetivos, restrições e responsabilidades combinados.
 
@@ -57,7 +57,7 @@ Esta seção descreve a configuração concreta que o grupo propõe para ilustra
 - **Ordem sugerida:** apresentação da AGES → elicitação com Stakeholders → apresentação do projeto/equipe. A mudança antecipa a escuta do cliente.
 - **Elicitação colaborativa:** todos os níveis AGES e Stakeholders participam do levantamento de requisitos, com dinâmica de brainstorming.
 - **User Story Mapping em dois momentos:** primeiro, brainstorming e construção do mapa com cliente/Stakeholders; depois, a equipe se reúne sem o cliente para consolidar e analisar o mapa, priorizar histórias e definir o MVP como um fluxo core ponta a ponta, transversal aos componentes da aplicação. Retomar decisões importantes com Stakeholders para confirmar o entendimento.
-- **Formação de squads:** após o trabalho coletivo, dividir a equipe em squads com níveis AGES mistos. Os níveis são “tribos” de conhecimento; as squads desenvolvem uma PoC cada. Cada AGES IV lidera uma squad; um deles também assume coordenação transversal e rotaciona entre squads.
+- **Formação de squads:** após o trabalho coletivo, dividir a equipe em squads com níveis AGES mistos. Os níveis são “tribos” de conhecimento; as squads desenvolvem uma PoC cada. Cada AGES IV é gestor de uma squad, e um deles também exerce a coordenação do projeto de forma transversal às squads.
 - **Wireframing e wireflowing:** cada squad cria wireframes dos fluxos core e representa ligações e transições entre telas.
 - **Preparação do ambiente de prototipação:** AGES IV define a direção visual e coordena a construção da PoC; AGES III prepara design system, variables, styles, componentes e Figma com base na identidade visual, além de configurar tecnicamente o agente de IA conforme os guardrails definidos pela gestão.
 - **Uma PoC por squad:** cada squad transforma o fluxo core em protótipo funcional e experimentável. AGES I e II usam IA na ideação, prototipação e desenvolvimento. O backend é opcional; dados podem ser mockados. O objetivo é testar o conceito e revelar riscos, não concluir o produto.
@@ -69,7 +69,7 @@ Esta seção descreve a configuração concreta que o grupo propõe para ilustra
 
 ### Método de critique e alinhamento com Stakeholders
 
-- Conduzir uma sessão de *design critique* facilitada pelo AGES IV coordenador transversal. A dinâmica **I Like, I Wish, What If** (o que funciona, o que poderia melhorar, que possibilidades explorar) é um formato possível, com comentários dirigidos ao artefato e não às pessoas. A Stanford d.school oferece orientação para estruturar feedback construtivo ([guia de feedback](https://dschool.stanford.edu/tools/how-to-give-feedback); [I Like, I Wish, What If](https://dschool.sfo3.digitaloceanspaces.com/documents/dschool_bootleg_deck_2018_final_sm2-6.pdf)).
+- Conduzir uma sessão de *design critique* facilitada pelo AGES IV coordenador do projeto. A dinâmica **I Like, I Wish, What If** (o que funciona, o que poderia melhorar, que possibilidades explorar) é um formato possível, com comentários dirigidos ao artefato e não às pessoas. A Stanford d.school oferece orientação para estruturar feedback construtivo ([guia de feedback](https://dschool.stanford.edu/tools/how-to-give-feedback); [I Like, I Wish, What If](https://dschool.sfo3.digitaloceanspaces.com/documents/dschool_bootleg_deck_2018_final_sm2-6.pdf)).
 - Agrupar comentários, relacioná-los aos objetivos do MVP e requisitos acordados, e explicitar divergências de valor, uso e viabilidade técnica. AGES III esclarece implicações técnicas; AGES IV facilita; Stakeholders decidem prioridades do produto. Votação pode indicar preferências, mas não substitui a decisão do cliente.
 - Fechar com direção acordada, justificativa, responsável pela decisão, itens a validar e dissensos ainda abertos. Consenso significa entendimento compartilhado da decisão, não esconder divergências nem exigir que todos tenham a mesma preferência. Uma prática de *design studio* recomenda registrar áreas de acordo e desacordo ao trabalhar com Stakeholders ([guia do Digital.gov](https://digital.gov/guides/research-collaboration/aligning/engagement)).
 
@@ -91,14 +91,57 @@ Esta seção descreve a configuração concreta que o grupo propõe para ilustra
 
 ## Resultado 2: especificação de uma atividade
 
-O Resultado 2 detalha uma atividade de uma etapa do processo. A especificação apresenta:
+### Atividade selecionada
 
-- propósito da atividade;
-- papéis envolvidos e suas responsabilidades;
-- propósito de cada artefato usado ou produzido;
-- estrutura e conteúdo de cada artefato.
+**Construir, demonstrar e validar a PoC de uma squad na Sprint 0.** Esta atividade detalha um recorte da Inception representada em alto nível no Fluxo AGES Proposto Sugerido. O BPMN mantém as fases principais, enquanto esta especificação explicita as subtarefas, responsabilidades e artefatos.
 
-Uma atividade de Inception/PoC da Sprint 0 é coerente com a instância sugerida, por reunir Stakeholders, squads, uso de IA, pareamento e validação. A atividade detalhada mantém alinhamento com a abstração do processo geral e com a instância apresentada no Resultado 1.
+### Propósito
+
+Construir uma PoC por squad para tornar experimentável o fluxo core ponta a ponta definido no User Story Mapping. A PoC deve apoiar a validação de hipóteses e requisitos, incluindo critérios não funcionais pertinentes, e gerar feedback de Stakeholders e usuários antes das sprints regulares. Pode usar dados mockados e não requer backend completo.
+
+### Papéis envolvidos
+
+| Papel | Responsabilidades na atividade |
+|---|---|
+| AGES IV gestor da squad | Prioriza épicos e histórias, coordena a PoC da squad, define o objetivo e os critérios de validação, garante alinhamento com Stakeholders e conduz a demonstração. |
+| AGES IV coordenador do projeto | Coordena transversalmente o trabalho entre squads, facilita a critique conjunta e registra decisões ou divergências que afetam o MVP transversal. |
+| AGES III Tech Lead / Enabling Team | Define e comunica decisões técnicas da squad, verifica arquitetura e dependências, prepara design system e ambiente/agente de IA sob os guardrails dos AGES IV, e realiza code review e aprovação técnica das tasks. |
+| AGES I e II | Desenvolvem wireframes, wireflows e a PoC em pares, usam IA de forma crítica, verificam o que foi gerado e demonstram evidências de atendimento aos critérios de aceite e à Definition of Done. |
+| Stakeholders | Participam da elicitação e do User Story Mapping, avaliam a PoC na demonstração, respondem ao formulário de NPS e registram feedback de produto. |
+| Usuários representativos | Experimentam os fluxos da PoC enquanto a equipe observa o uso, as dúvidas e as dificuldades, sem que a facilitação da sessão induza as respostas. |
+
+O pareamento pode cruzar níveis, como AGES IV com AGES I, AGES II com AGES III, AGES III com AGES I ou AGES IV com AGES II. Cada task assistida por IA é tratada como uma unidade de WIP compartilhada por um par, com WIP de 0,5 por integrante. O par revisa critérios de aceite e Definition of Done durante o trabalho, e a IA não substitui code review nem aprovação dos responsáveis.
+
+### Subtarefas e sequência de trabalho
+
+1. **Selecionar o fluxo core da squad.** Partir do User Story Map colaborativo, confirmar com Stakeholders a jornada prioritária e definir objetivo, hipóteses e requisitos a validar.
+2. **Preparar a squad e os critérios.** AGES IV confirma histórias prioritárias e critérios de aceite, enquanto AGES III verifica dependências técnicas, define restrições da PoC e habilita design system, Figma e agente de IA conforme as políticas estabelecidas.
+3. **Desenhar o fluxo.** A squad produz wireframes e wireflows que cobrem o caminho core ponta a ponta, e revisa com AGES IV e AGES III antes de construir a PoC.
+4. **Construir a PoC em pares.** AGES I e II desenvolvem com apoio de IA, alternam driver e navigator e validam criticamente a saída da ferramenta. Os pares incorporam testes ou evidências adequados ao protótipo e atendem aos critérios de aceite e à Definition of Done.
+5. **Revisar e aprovar as tasks.** AGES III realiza code review e aprovação técnica, enquanto AGES IV verifica alinhamento com o objetivo e os critérios de produto. Tasks reprovadas retornam ao par para ajuste e nova revisão.
+6. **Demonstrar cada PoC e conduzir a critique.** Cada squad apresenta a solução aos Stakeholders. A critique estrutura feedback sobre o artefato, registra convergências e divergências e resulta numa decisão de direção com justificativa, responsáveis e ações.
+7. **Validar com usuários.** Observar usuários representativos tentando completar os fluxos core, registrar evidências e comparar os resultados com as hipóteses e critérios acordados.
+8. **Consolidar feedback e atualizar a proposta.** Atualizar histórias, prioridades, riscos e plano das próximas sprints. O registro da decisão informa se a PoC atende ao objetivo ou precisa de ajuste.
+
+### Artefatos da atividade
+
+| Artefato | Finalidade | Conteúdo mínimo |
+|---|---|---|
+| User Story Map e definição do MVP | Registrar a jornada, o fluxo transversal core e a fatia priorizada para a PoC. | Persona ou perfil de usuário, atividades da jornada, histórias, sequência ponta a ponta, recorte do MVP, prioridades, hipóteses e itens fora do escopo. |
+| Backlog da PoC e critérios de aceite | Orientar o trabalho da squad e permitir verificar cada task. | Épico e história relacionados, task, prioridade, responsável/par, critérios de aceite verificáveis, dependências, requisito não funcional associado e Definition of Done aplicável. |
+| Guardrails e configuração de IA | Orientar o uso permitido e registrar como a plataforma foi habilitada. | Política aplicável, ferramentas/agentes autorizados, limites de dados, configuração relevante, restrições de segurança e responsável por AGES IV/III. |
+| Wireframes e wireflows | Representar telas e transições do fluxo core antes da PoC. | Telas, estados, entradas e saídas, transições, caminhos alternativos relevantes, dados simulados e ligação às histórias/critério de aceite. |
+| PoC da squad | Permitir que Stakeholders e usuários experimentem a proposta. | Fluxo core navegável, versão identificada, componentes e dados mockados assinalados, requisitos atendidos, limitações conhecidas e instruções de demonstração. |
+| Registro de pair programming e code review | Evidenciar autoria compartilhada, revisão crítica e aprovação das tasks. | Task/versão, integrantes e níveis do par, alternância driver/navigator, uso de IA relevante, testes/evidências, critérios verificados, revisor AGES III, aprovação técnica e aprovação de AGES IV ou ajustes solicitados. |
+| Protocolo e registro de validação com usuários | Orientar observação e preservar evidências do teste da PoC. | Objetivo, perfil dos participantes, cenários/tarefas, instruções neutras, observações sem interpretação, dificuldades, dúvidas, resultados por critério e achados prioritários. |
+| Formulário NPS e síntese da Sprint Review | Medir satisfação dos Stakeholders e reunir feedback a cada review. | Pergunta padrão de recomendação em escala de 0 a 10, identificação opcional do projeto, comentário aberto sobre pontos fortes e oportunidades, cálculo do NPS, principais temas e ações propostas. |
+| Registro da critique e decisão | Consolidar a direção acordada após a demo de cada PoC. | Versão demonstrada, feedback por tema, convergências, divergências, decisão, justificativa, responsável, riscos e ações para o backlog. |
+
+O formulário NPS é enviado aos Stakeholders após cada Sprint Review, e a síntese das respostas integra a retrospectiva interna da equipe e o planejamento da sprint seguinte. O NPS é acompanhado junto dos comentários e temas qualitativos, pois a pontuação isolada não explica as causas da satisfação ou insatisfação.
+
+### Critérios de conclusão
+
+A atividade é concluída quando cada squad possui uma PoC demonstrável do fluxo core, as tasks associadas têm code review e aprovações registradas, os testes e critérios de aceite possuem evidências, e os feedbacks de Stakeholders e usuários estão consolidados em decisões e ações para o backlog.
 
 ## Parâmetros e acordos registrados na instância sugerida
 
@@ -108,4 +151,5 @@ Uma atividade de Inception/PoC da Sprint 0 é coerente com a instância sugerida
 - O pareamento é a unidade de execução para tarefas apoiadas por IA; a proposta representa WIP 0,5 por integrante e uma task compartilhada pelo par. Os pares são rotacionados para distribuir conhecimento entre níveis.
 - A duração, o entregável e a revisão de cada bloco curto são acordados colaborativamente na planning de cada sprint, considerando o tempo restante e os ciclos de feedback previstos.
 - A validação da PoC usa observação de usuários e feedback de Stakeholders; os critérios de avanço e os registros das decisões fazem parte dos acordos de trabalho da equipe.
+- Após toda Sprint Review, Stakeholders recebem formulário de NPS, e a equipe usa pontuações e comentários para identificar forças, dificuldades e mudanças para o ciclo seguinte. Cada sprint segue um ciclo de planejar, executar, verificar e agir, de modo que as melhorias identificadas sejam incorporadas progressivamente.
 - AGES IV registra o processo configurado para sua equipe, seus acordos e os resultados observados, oferecendo base para a reflexão e avaliação na banca.

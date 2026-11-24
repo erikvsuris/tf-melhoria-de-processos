@@ -37,9 +37,9 @@
     <bpmn:exclusiveGateway id="G_Aprovado" name="Projeto aprovado e pronto para execução?" />
     <bpmn:task id="A_Intro" name="Apresentação Inicial AGES e do Fluxo AGES." />
     <bpmn:task id="A_MapearCore" name="User Story Mapping: brainstorming de requisitos e jornada com Stakeholders; equipe consolida, analisa e prioriza o MVP e o fluxo core ponta a ponta" />
-    <bpmn:task id="A_EpicosUS" name="AGES IV especificam épicos/USs e formam squads de níveis mistos; cada IV lidera uma squad e um deles coordena transversalmente em rotação" />
+    <bpmn:task id="A_EpicosUS" name="AGES IV especificam épicos/USs e formam squads de níveis mistos; cada IV é gestor de uma squad e um deles coordena o projeto transversalmente" />
     <bpmn:task id="A_DecomporTasks" name="AGES III, I e II decompõem User Stories em tasks e verificam arquitetura/dependências" />
-    <bpmn:task id="A_CoordPoC" name="AGES IV lideram squads, coordenam transversalmente a Spike/PoC em rotação e definem guardrails/processos/políticas de IA" />
+    <bpmn:task id="A_CoordPoC" name="AGES IV gerenciam suas squads; o coordenador do projeto articula a Spike/PoC transversalmente e define guardrails/processos/políticas de IA" />
     <bpmn:task id="A_DesignSystem" name="Preparar design system: variables, styles e componentes com base na identidade visual" />
     <bpmn:task id="A_ConfigIA" name="AGES III como Enabling Team de engenharia de plataforma: viabilizar políticas de IA e configurar ambiente/agente para as squads" />
     <bpmn:task id="A_PrototipoIA" name="Wireframing/wireflowing e construção, em pares inter-níveis com IA, de uma PoC por squad (fluxo core; backend opcional/dados mockados; WIP 0,5)" />

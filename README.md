@@ -1,85 +1,111 @@
-# Ideias de melhoria para o Fluxo AGES
+# Proposta de melhoria do processo AGES
 
-Notas iniciais do grupo para a proposta do Trabalho Final de Melhoria de Processos. Estas ideias ainda devem ser discutidas e consolidadas antes de serem incorporadas ao fluxo BPMN e ao detalhamento da etapa escolhida.
+Este README reúne o entendimento do grupo, a referência do processo atual e as decisões em discussão para o Trabalho Final de Melhoria de Processos. A proposta deve ser lida em níveis diferentes: primeiro, um processo geral que dá autonomia para cada AGES IV configurar o modo de trabalho de sua equipe; depois, uma instância concreta sugerida pelo grupo; por fim, a especificação detalhada de uma atividade.
 
-## Participação dos grupos
+## Separação lógica dos modelos e resultados
 
-- Promover a participação coletiva de todos os membros do grupo — AGES I, II, III e IV — desde a elicitação e análise até a especificação dos requisitos.
-- Realizar demonstrações a cada entrega para cada grupo.
+O trabalho terá três BPMNs relacionados, mas com propósitos distintos. O BPMN atual continua como referência de comparação.
 
-## Redesenho do Sprint 0
+1. **O Fluxo AGES Atual — referência *as is*.** `O_Fluxo_AGES_Atual.bpmn` reconstrói o fluxo dos materiais da AGES e do Anexo 1. Serve para entender o ponto de partida, não para prescrever a melhoria.
+2. **O Fluxo AGES Proposto Abstrato — BPMN adicional.** `O_Fluxo_AGES_Proposto_Abstrato.bpmn` apresenta o processo geral, sem impor metodologia ou conjunto fixo de cerimônias. Mostra como a equipe se organiza e executa o trabalho e, sobretudo, como o AGES IV define/adapta o processo, cerimônias, políticas, artefatos e acordos de trabalho para aquela equipe. Esse processo é uma *sandbox*: dá autonomia ao AGES IV dentro das responsabilidades e guardrails acordados. O AGES III viabiliza tecnicamente o trabalho como Tech Lead/*Enabling Team*. A definição e aplicação desse processo próprio são parte do que se espera avaliar na banca.
+3. **O Fluxo AGES Proposto Sugerido — Resultado 1 do enunciado.** `O_Fluxo_AGES_Proposto_Sugerido.bpmn` é um primeiro rascunho de uma instância concreta: a sugestão do grupo para um fluxo de desenvolvimento que inclui IA. É um modelo idealizado para discutir e testar, inspirado pela referência ao modelo Gartner trazida pelo grupo, pelo Double Diamond, Inception e outras práticas. Será refinado a partir destas notas e não deve ser interpretado como a única metodologia obrigatória para todas as equipes AGES.
+4. **Resultado 2 — especificação de uma atividade.** Depois de escolher a etapa/atividade, detalhar seu propósito, os papéis envolvidos, o propósito dos artefatos e a estrutura/conteúdo de cada artefato. Esse detalhamento explica uma parte da instância do Resultado 1, sem substituir o BPMN abstrato nem a autonomia do AGES IV.
 
-Substituir o Warm-Up atual por uma adaptação de Inception, com práticas de Design Sprint e validação rápida, mantendo o trabalho iterativo e colaborativo em vez de concentrar as definições em uma sequência que possa tornar o processo cascata.
+O objetivo dessa separação é distinguir **quem define o método de trabalho** (AGES IV no processo geral), **uma configuração possível desse método** (a instância proposta pelo grupo para o Resultado 1) e **como executar uma atividade específica** (Resultado 2). A equipe pode adaptar a instância às necessidades do projeto, mantendo explícitos os acordos e decisões.
 
-### Inception como propósito da Sprint 0
+O BPMN abstrato é adicional e complementar: ele explica a autonomia de AGES IV para desenhar o processo da própria equipe. O BPMN sugerido preserva a proposta concreta que o grupo vem construindo — Inception/Sprint 0, squads, pareamento, IA, PoCs e ciclos de feedback — como uma possível instância dessa autonomia.
 
-- Entender Inception como um momento estruturado de alinhamento entre as pessoas envolvidas sobre problema, usuários, proposta de solução e o MVP a construir — não apenas como apresentação inicial, estudo de ferramentas ou preparação logística. A Lean Inception é descrita por seu autor como um workshop colaborativo para alinhar a proposta de solução e definir o MVP; suas práticas podem ser adaptadas ao contexto e ao tempo da Sprint 0 ([referência](https://caroli.org/lean-inception-3/)).
-- Na proposta, a Sprint 0 combina esse alinhamento com uma Spike/PoC: depois de mapear e priorizar o core, a equipe constrói um protótipo funcional e o valida com Stakeholders/usuários. O resultado esperado é aprendizado e feedback que reduzam incerteza e orientem o backlog das sprints seguintes; não é necessário concluir um produto com backend.
-- O User Story Mapping e o brainstorming com Stakeholders ajudam a formar entendimento comum do problema e do MVP. A equipe então consolida as histórias, explicita hipóteses e dependências e prepara uma PoC que permita validar os fluxos de maior risco ou valor.
+## Referência: etapas do fluxo atual
 
-1. **Apresentação e integração:** apresentar a equipe e seus membros. Prever conversas 1:1 com AGES IV ao longo do projeto.
-2. **Elicitação com stakeholders:** no encontro de elicitação, todos os membros do grupo participam junto aos Stakeholders. Fazer uma dinâmica de brainstorming para levantar requisitos e construir colaborativamente o User Story Map, com participação dos Stakeholders.
-3. **Consolidação, análise e priorização:** após o encontro, a equipe consolida o User Story Map, analisa as histórias e requisitos levantados, prioriza o backlog e define o core do produto (MVP), considerando também o retorno dos Stakeholders.
-4. **Protótipos de baixa fidelidade:** dividir a equipe em grupos menores, de 2 a 4 pessoas, para criar wireframes dos fluxos core.
-5. **Wireflows:** desenhar os fluxos de navegação entre os wireframes.
-6. **Protótipo de alta fidelidade e preparação do ambiente:**
-   - AGES IV definem o protótipo de alta fidelidade;
-   - AGES III preparam o design system, configuram o Figma e configuram o agente de IA;
-   - AGES I e II constroem o protótipo.
-7. **Validação:** etapa mencionada nas notas originais como “Validação com”; participantes e forma de validação ainda precisam ser definidos.
+Esta síntese cruza `O_Fluxo_AGES_Atual.bpmn`, `ProcessosAGES-ProcessoAGES-v6.png` e o Anexo 1 de `MPS2026_2_TF_Enunciado.pdf`. Os nomes das etapas são os do Anexo 1. **Pré-AGES** é apenas um apelido usado nas notas para o período de identificação, seleção e definição do projeto.
 
-## Ordem proposta para os encontros iniciais
-
-- **Ordem atual, conforme anotação do grupo:** apresentação da AGES → apresentação do projeto/equipe → reunião de elicitação com Stakeholders.
-- **Ordem proposta:** apresentação da AGES → reunião de elicitação com Stakeholders (brainstorming e User Story Mapping colaborativo) → apresentação do projeto/equipe.
-- A mudança antecipa a conversa sobre necessidades e requisitos. Depois da elicitação, a equipe consolida e analisa o mapa, prioriza as histórias e define o core/MVP; os resultados podem ser retomados com os Stakeholders para alinhamento.
-
-## Papéis e responsabilidades
-
-- **AGES IV Coordenador:** coordena o trabalho dos grupos.
-- **Demais AGES IV:** atuam como líderes/gestores de cada squad e criam e especificam os épicos, compostos por uma ou mais User Stories (USs). A gerência também cuida das features/histórias e de sua priorização.
-- **AGES III:** atuam como Tech Leads de cada squad, com autonomia técnica. Trazem o conhecimento de arquitetura — componentes, serviços, infraestrutura e dependências entre módulos — para aproximar os requisitos do trabalho técnico. Junto com o restante da squad, auxiliam na decomposição das USs em tasks: unidades técnicas de trabalho necessárias para concluir as histórias e, consequentemente, os épicos.
-- **AGES I e II:** compõem a equipe da squad, executam as tasks e se reportam ao AGES III.
-
-## Planejamento e colaboração
-
-- Todos os membros — AGES I, II, III e IV — participam da planning, realizada logo após o encontro com stakeholders na review, além das atividades de especificação e priorização.
-- A gerência (AGES IV) mantém a responsabilidade pelos épicos e features/histórias; a equipe da squad, com liderança técnica do AGES III, organiza o trabalho técnico em tasks.
-- A participação conjunta busca reduzir a distância entre os requisitos e sua implementação, incorporando desde o planejamento o conhecimento técnico do AGES III sobre arquitetura e dependências.
-
-## Direcionamento para o fluxo proposto
-
-Estas notas orientam o primeiro rascunho de **O Fluxo AGES Proposto**. O arquivo `O_Fluxo_AGES_Atual.bpmn` permanece como referência do processo atual; as propostas devem ser avaliadas contra ele, sem misturar as duas versões. O rascunho está em `O_Fluxo_AGES_Proposto.bpmn`.
-
-## Etapas do fluxo atual
-
-Esta síntese alinha o BPMN atual (`O_Fluxo_AGES_Atual.bpmn`) ao material visual `ProcessosAGES-ProcessoAGES-v6.png` e ao Anexo 1 do enunciado. Os nomes das quatro etapas abaixo são os do Anexo 1. **Pré-AGES** é usado aqui somente como apelido para o processo de identificação, seleção e definição de projetos que antecede a execução.
-
-1. **Etapa 1: Identificação, seleção e definição de projetos: Semestre que antecede a execução do projeto na AGES.** O material mostra `Apresentação da Ideia pelos stakeholder`, `Validação da Ideia`, `Definição do semestre que o projeto irá ser executado`, `Reuniões mensais com os Stakeholders`, `Validação dos Requisitos` e `Elaboração do Termo de Abertura de Projetos`. As reuniões, validação dos requisitos e elaboração do termo aparecem em um ciclo de alinhamento antes da execução.
-2. **Etapa 2: Organização e kick-off do projeto.** Na `Semana Inicial`, aparecem `Apresentação Inicial AGES e do Fluxo AGES.` e `Apresentação do Processo da AGES, responsabilidades e artefatos, apresentação dos relatórios (sprint, andamento e final)`. O `Warm Up (Sprint 0)` começa com `Apresentação dos projetos pelos stakeholders`; em seguida, o material apresenta `Documentação dos Requisitos e Mockups (Time)`, `Definição Arquitetura ou revisão (AGES III)` e `EAP / Cronograma / Plano de Comunicação / U.S. (AGES IV)`, antes de `Apresentação para stakeholders`. Também registra `Estudos das tecnologias utilizadas nos projetos (linguagens e metodologias TDD, BDD, Code review, pair programming, etc..)`. O BPMN atual representa os três trabalhos intermediários em paralelo.
-3. **Etapa 3: Sprints iniciais e Revisão intermediária.** O material agrupa `Sprints 1 e 2`, apresenta um ponto `Após a sprint 1` e depois agrupa `Sprints 3 e 4`. Cada `Sprint Duas Semanas` contém `Planning`; `Aula Meeting` e `Desenvolvimento Documentação` em paralelo; `Entrega para os Stakeholders`; `Retrospectiva`; e `Entrega do relatório da Sprint`. Após a Sprint 1 também ocorrem `Entrega Relatório de Andamento` e `ONE on ONE (com os alunos)`. No BPMN atual, esse ONE on ONE está na lane `Professor Orientador`; as anotações do grupo especificam que é individual, com cada aluno.
-4. **Etapa 4: Encerramento.** O material registra `Retrospectiva geral da AGES + Confraternização`, `Entrega Relatório Final`, `Apresentação dos projetos da AGES (estudantes + stakeholders + professores)` e `ONE on ONE (com os alunos)` na `Semana Final`. O BPMN atual posiciona a apresentação das bancas após os Sprints 3 e 4 e antes dessa semana. **Correção informada pelo grupo:** na prática, `Apresentação das BANCAS` para AGES IV acontece depois das atividades da Semana Final. Manter essa diferença explícita nas anotações até atualizar o diagrama de referência; no fluxo proposto, representar as bancas após a semana final.
-
-Assim, os nomes e agrupamentos das etapas permanecem fiéis ao Anexo 1, enquanto a informação mais recente do grupo sobre o momento das bancas fica identificada como correção da sequência representada no material original.
+1. **Etapa 1: Semestre que antecede a execução do projeto na AGES.** O processo visual de identificação, seleção e definição mostra `Apresentação da Ideia pelos stakeholder`, `Validação da Ideia`, `Definição do semestre que o projeto irá ser executado`, `Reuniões mensais com os Stakeholders`, `Validação dos Requisitos` e `Elaboração do Termo de Abertura de Projetos`. Reuniões, validação de requisitos e elaboração do termo compõem um ciclo de alinhamento antes da execução.
+2. **Etapa 2: Organização e kick-off do projeto.** Na `Semana Inicial`, aparecem `Apresentação Inicial AGES e do Fluxo AGES.` e `Apresentação do Processo da AGES, responsabilidades e artefatos, apresentação dos relatórios (sprint, andamento e final)`. No `Warm Up (Sprint 0)`, o material mostra `Apresentação dos projetos pelos stakeholders`; em paralelo, `Documentação dos Requisitos e Mockups (Time)`, `Definição Arquitetura ou revisão (AGES III)` e `EAP / Cronograma / Plano de Comunicação / U.S. (AGES IV)`; depois, `Apresentação para stakeholders`. Também registra `Estudos das tecnologias utilizadas nos projetos (linguagens e metodologias TDD, BDD, Code review, pair programming, etc..)`. O BPMN atual representa os três trabalhos intermediários em paralelo.
+3. **Etapa 3: Sprints iniciais e Revisão intermediária.** O material agrupa `Sprints 1 e 2`, mostra o marco `Após a sprint 1` e depois agrupa `Sprints 3 e 4`. Cada `Sprint Duas Semanas` contém `Planning`; `Aula Meeting` e `Desenvolvimento Documentação` em paralelo; `Entrega para os Stakeholders`; `Retrospectiva`; e `Entrega do relatório da Sprint`. Após a Sprint 1 também aparecem `Entrega Relatório de Andamento` e `ONE on ONE (com os alunos)`. No BPMN atual, o ONE on ONE está na lane `Professor Orientador`; as anotações do grupo especificam que ocorre individualmente com cada aluno.
+4. **Etapa 4: Encerramento.** Na `Semana Final`, o material registra `Retrospectiva geral da AGES + Confraternização`, `Entrega Relatório Final`, `Apresentação dos projetos da AGES (estudantes + stakeholders + professores)` e `ONE on ONE (com os alunos)`. O material e o BPMN atual posicionam `Apresentação das BANCAS` após os Sprints 3 e 4 e antes da Semana Final. **Correção informada pelo grupo:** na prática, as bancas de AGES IV acontecem depois das atividades da Semana Final; essa diferença deve ficar identificada até que a representação *as is* seja atualizada.
 
 ### Requisitos não funcionais no Pré-AGES
 
-- Durante a **Etapa 1: Semestre que antecede a execução do projeto na AGES**, a Coordenação deve elicitar e validar com os Stakeholders os requisitos não funcionais relevantes ao projeto, aproveitando as `Reuniões mensais com os Stakeholders` e a `Validação dos Requisitos` do processo atual.
-- Registrar esses requisitos com critérios verificáveis e exemplos de aceitação, conforme o contexto do projeto: por exemplo, segurança e privacidade, desempenho, disponibilidade, usabilidade, acessibilidade, manutenibilidade ou restrições de plataforma. A lista deve ser acordada com os Stakeholders, não presumida como igual para todos os projetos.
-- Esses acordos devem integrar os requisitos e o Termo de Abertura antes do início do trabalho da equipe AGES. Na etapa seguinte, servem de entrada para arquitetura e planejamento da PoC; na validação, ajudam a definir o que precisa ser demonstrado ou medido, mesmo quando o protótipo usa dados mockados ou não possui backend.
+- Durante a Etapa 1, Coordenação e Stakeholders devem elicitar, esclarecer e validar os requisitos não funcionais relevantes ao projeto, aproveitando as `Reuniões mensais com os Stakeholders` e a `Validação dos Requisitos` do processo atual.
+- Registrar critérios verificáveis e exemplos de aceitação conforme o contexto: por exemplo, segurança e privacidade, desempenho, disponibilidade, usabilidade, acessibilidade, manutenibilidade e restrições de plataforma. Os critérios são acordados com Stakeholders, não presumidos iguais em todos os projetos.
+- Esses acordos entram nos requisitos e no Termo de Abertura antes do início do trabalho da equipe. Depois orientam arquitetura, configuração das ferramentas e agente de IA, planejamento da PoC e sua validação, mesmo quando o protótipo usa dados mockados ou não tem backend.
 
-- **Descoberta antes da entrada da equipe:** adaptar a referência ao “modelo Gartner” trazida pelo grupo, usando o Double Diamond na relação entre Coordenação e Stakeholders. A Coordenação conduz Descobrir/Definir, valida requisitos funcionais e não funcionais e esclarece critérios de qualidade, segurança, desempenho e demais restrições. A equipe discente AGES I–IV concentra sua atuação no segundo diamante — Desenvolver/Entregar soluções — depois desse alinhamento inicial.
-- **Sprint 0 como Inception + Spike/PoC:** incorporar práticas de Lean Inception para alinhar problema, usuários, solução e MVP, e então investigar o core por meio de um protótipo funcional. A equipe pode construir uma PoC sem backend ou usando dados mockados, para representar os fluxos principais e permitir que Stakeholders/usuários experimentem a solução e deem feedback específico. Lean Startup pode complementar a validação de hipóteses; a combinação de práticas ainda será decidida pelo grupo.
-- **Trabalho da Sprint 0:** AGES IV coordena o fluxo de construção do protótipo; AGES III prepara o design system (incluindo variables e styles com base na identidade visual) e o ambiente/agente de IA; AGES I e II usam IA como apoio para construir os protótipos de alta fidelidade dos fluxos trabalhados pelas squads. O protótipo pode incluir interação e dados simulados, sem exigir implementação do backend.
-- **Revisão técnica e gerencial:** cada task passa por code review do AGES III e aprovação do AGES III e do AGES IV antes de ser considerada concluída. Se houver ajustes, retorna para execução e nova revisão. Nas sprints seguintes, o mesmo ponto de controle deve fazer parte do fluxo de desenvolvimento.
-- **Validação com usuários ao final da Sprint 0:** observar usuários representativos usando o protótipo e registrar dúvidas, dificuldades e feedback. Observação e uso são uma técnica candidata; a técnica de UX, os participantes, os critérios de sucesso e a decisão de seguir/iterar ainda precisam ser combinados com Stakeholders.
-- **Ciclo de feedback:** se a PoC não validar o core ou revelar problemas relevantes, atualizar o protótipo/backlog e repetir a validação; se atingir os critérios acordados, seguir para as sprints regulares. O feedback de Stakeholders e usuários alimenta a priorização e o refinamento das histórias.
-- **Uso de IA:** explicitar no fluxo onde a IA apoia a produção do protótipo de alta fidelidade. A IA não substitui code review, validação humana, critérios não funcionais nem aprovação dos responsáveis.
+## O Fluxo AGES Proposto Abstrato
 
-### Pontos para decidir durante a revisão
+Este é o nível geral que deve expressar a melhoria de governança proposta. O diagrama não deve fixar que toda equipe use Sprint 0, Scrum, Design Sprint, a mesma cadência ou os mesmos artefatos. Deve explicitar que AGES IV configura e mantém o processo de trabalho para sua equipe dentro dos objetivos, restrições e responsabilidades combinados.
 
-- Quais práticas de Lean Inception serão usadas na Sprint 0 e se práticas de Lean Startup serão combinadas para testar hipóteses da PoC.
-- Qual técnica de validação de UX será aplicada, quem serão os usuários e quais critérios indicam que a PoC pode avançar.
-- Como os requisitos não funcionais serão registrados, priorizados e verificados nas tarefas e entregas.
-- Como serão definidos os limites de uso do agente de IA, os dados de entrada permitidos e a revisão dos artefatos gerados.
-- Se a aprovação de AGES III e AGES IV será exigida em toda task ou se haverá critérios por tipo/risco da task, conforme a proposta anotada pelo grupo.
+- **AGES IV — gestão e desenho do processo:** entende o contexto e os objetivos do projeto; define ou adapta metodologia, etapas, cerimônias, papéis, artefatos, cadência, critérios de priorização e mecanismos de acompanhamento. Comunica os acordos à equipe, conduz o fluxo gerencial e revê o processo com base nos resultados e feedbacks. AGES IV também especificam épicos e features/histórias, priorizam o trabalho e definem guardrails, processos e políticas de uso da IA.
+- **AGES III — liderança técnica e *Enabling Team*:** atua como Tech Lead das squads e viabiliza tecnicamente o modo de trabalho definido pela gestão. Em engenharia de plataforma, habilita recursos compartilhados de desenvolvimento e IA, apoia arquitetura, dependências e qualidade técnica e ajuda as squads a executar o processo sem assumir a responsabilidade gerencial de AGES IV.
+- **AGES I e II — desenvolvimento:** executam o trabalho técnico e usam as capacidades de IA/plataforma conforme as políticas acordadas. Na proposta do grupo, o trabalho assistido por IA é feito em pares, com revisão crítica e compartilhamento de conhecimento.
+- **Autonomia com prestação de contas:** o processo geral deve permitir escolhas adequadas ao contexto, mas AGES IV explicita as razões, acordos e resultados da metodologia adotada. A banca avalia a definição e a condução do processo da equipe, não a obediência a uma única receita predefinida.
+
+O primeiro desenho deste ciclo está em `O_Fluxo_AGES_Proposto_Abstrato.bpmn`: AGES IV recebe objetivos e restrições → define/ajusta o processo da equipe com apoio técnico de AGES III → equipe executa o trabalho conforme os acordos → equipe demonstra resultados e coleta feedback → AGES IV e equipe avaliam resultados e ajustam o processo. O BPMN permanece abstrato; detalhes de atividades, gateways e artefatos podem ser refinados após a revisão destas notas.
+
+## Instância sugerida para o Resultado 1
+
+Esta seção descreve a configuração concreta que o grupo propõe para ilustrar o processo geral. O BPMN `O_Fluxo_AGES_Proposto_Sugerido.bpmn` representa este fluxo, não o processo abstrato de autonomia do AGES IV.
+
+### Referências de desenho
+
+- Adaptar a referência ao “modelo Gartner” trazida pelo grupo: o Double Diamond de Descobrir/Definir fica concentrado na relação Coordenação–Stakeholders; a equipe AGES I–IV trabalha no segundo diamante, Desenvolver/Entregar, depois do alinhamento inicial.
+- Tratar Inception como alinhamento estruturado sobre problema, usuários, proposta de solução e MVP, e não como simples warm-up. A Lean Inception é descrita por seu autor como workshop colaborativo de alinhamento e definição do MVP; práticas podem ser selecionadas/adaptadas à Sprint 0 ([referência](https://caroli.org/lean-inception-3/)).
+- A Sprint 0 junta Inception e Spike/PoC: a equipe constrói uma experiência funcional do fluxo core, que pode não ter backend ou usar dados mockados, para obter aprendizado e feedback antes das sprints regulares.
+
+### Ordem dos encontros e atividades da Sprint 0
+
+- **Ordem atual anotada pelo grupo:** apresentação da AGES → apresentação do projeto/equipe → reunião de elicitação com Stakeholders.
+- **Ordem sugerida:** apresentação da AGES → elicitação com Stakeholders → apresentação do projeto/equipe. A mudança antecipa a escuta do cliente.
+- **Elicitação colaborativa:** todos os níveis AGES e Stakeholders participam do levantamento de requisitos, com dinâmica de brainstorming.
+- **User Story Mapping em dois momentos:** primeiro, brainstorming e construção do mapa com cliente/Stakeholders; depois, a equipe se reúne sem o cliente para consolidar e analisar o mapa, priorizar histórias e definir o MVP como um fluxo core ponta a ponta, transversal aos componentes da aplicação. Retomar decisões importantes com Stakeholders para confirmar o entendimento.
+- **Formação de squads:** após o trabalho coletivo, dividir a equipe em squads com níveis AGES mistos. Os níveis são “tribos” de conhecimento; as squads desenvolvem uma PoC cada. Cada AGES IV lidera uma squad; um deles também assume coordenação transversal e rotaciona entre squads.
+- **Wireframing e wireflowing:** cada squad cria wireframes dos fluxos core e representa ligações e transições entre telas.
+- **Preparação do ambiente de prototipação:** AGES IV define a direção visual e coordena a construção da PoC; AGES III prepara design system, variables, styles, componentes e Figma com base na identidade visual, além de configurar tecnicamente o agente de IA conforme os guardrails definidos pela gestão.
+- **Uma PoC por squad:** cada squad transforma o fluxo core em protótipo funcional e experimentável. AGES I e II usam IA na ideação, prototipação e desenvolvimento. O backend é opcional; dados podem ser mockados. O objetivo é testar o conceito e revelar riscos, não concluir o produto.
+- **Pair programming e pareamento entre níveis:** todo trabalho assistido por IA é feito em pares. Formar e rotacionar pares com níveis complementares conforme a task e o conhecimento a disseminar; exemplos: AGES IV–AGES I, AGES II–AGES III, AGES III–AGES I e AGES IV–AGES II. Alternar driver/navigator e explicitar o raciocínio para promover revisão crítica, aprendizagem e disseminação de conhecimento.
+- **WIP 0,5:** cada task apoiada por IA é uma unidade de trabalho compartilhada por um par; a diretriz considera 0,5 unidade de WIP por integrante e uma task ativa por dupla.
+- **Governança e plataforma de IA:** AGES IV define guardrails, processos e políticas; AGES III atua como *Enabling Team* de engenharia de plataforma e viabiliza tecnicamente as diretrizes, incluindo ambiente, agente e recursos de desenvolvimento. Pair programming não substitui code review e aprovação de AGES III/IV previstos para as tasks.
+- **Demos:** cada squad apresenta sua PoC, seguida de critique estruturada, tratamento das divergências e alinhamento com Stakeholders sobre a direção escolhida.
+- **Validação com usuários:** ao final da Sprint 0, observar usuários representativos usando as PoCs, registrar evidências e feedback e decidir se o MVP/core avança ou retorna para ajuste.
+
+### Método de critique e alinhamento com Stakeholders
+
+- Conduzir uma sessão de *design critique* facilitada pelo AGES IV coordenador transversal. A dinâmica **I Like, I Wish, What If** (o que funciona, o que poderia melhorar, que possibilidades explorar) é um formato possível, com comentários dirigidos ao artefato e não às pessoas. A Stanford d.school oferece orientação para estruturar feedback construtivo ([guia de feedback](https://dschool.stanford.edu/tools/how-to-give-feedback); [I Like, I Wish, What If](https://dschool.sfo3.digitaloceanspaces.com/documents/dschool_bootleg_deck_2018_final_sm2-6.pdf)).
+- Agrupar comentários, relacioná-los aos objetivos do MVP e requisitos acordados, e explicitar divergências de valor, uso e viabilidade técnica. AGES III esclarece implicações técnicas; AGES IV facilita; Stakeholders decidem prioridades do produto. Votação pode indicar preferências, mas não substitui a decisão do cliente.
+- Fechar com direção acordada, justificativa, responsável pela decisão, itens a validar e dissensos ainda abertos. Consenso significa entendimento compartilhado da decisão, não esconder divergências nem exigir que todos tenham a mesma preferência. Uma prática de *design studio* recomenda registrar áreas de acordo e desacordo ao trabalhar com Stakeholders ([guia do Digital.gov](https://digital.gov/guides/research-collaboration/aligning/engagement)).
+
+### Sprints regulares após a Sprint 0
+
+- Como instância sugerida, manter sprints de duas semanas. AGES IV gerencia épicos/features e prioridades; AGES III, junto com a squad, auxilia na decomposição das USs em tasks e orienta arquitetura e dependências; AGES I/II executam tasks em pares.
+- Todos os níveis participam do planning, da especificação e da priorização. AGES IV é responsável pelos épicos e features/histórias (cada épico pode conter uma ou mais USs); AGES III atua como Tech Lead, conduz a decomposição técnica com a squad e orienta AGES I/II na execução das tasks. A equipe demonstra entregas para Stakeholders e grupos envolvidos.
+- **Blocos curtos internos (“mini-sprints”):** na planning, AGES IV, AGES III e equipe combinam colaborativamente a duração, o objetivo/entregável e o momento de revisão de cada bloco. Ao final, demonstrar ou revisar o incremento, colher feedback e decidir se ajusta a solução ou inicia outro bloco prioritário dentro do tempo restante da mesma sprint. A intenção é acelerar feedback e permitir mudanças em tempo de sprint, sem esperar o ciclo seguinte. Os blocos são timeboxes internos, não uma metodologia obrigatória para todas as equipes.
+- Cada task passa por code review de AGES III e aprovação de AGES III/IV, conforme a proposta atual. Se houver ajuste, retorna à execução e revisão. A IA não substitui revisão humana, validação, critérios não funcionais ou aprovação.
+- Cada sprint gera seu relatório. O fluxo também preserva a revisão intermediária e os ONE on ONE individuais com professor/alunos após a Sprint 1 e na semana final, além das demonstrações e entregas aos Stakeholders. Conversas 1:1 com AGES IV podem ocorrer ao longo do projeto.
+- O feedback de Stakeholders e usuários orienta a priorização/refinamento do backlog. Na instância sugerida, a apresentação das BANCAS de AGES IV fica após as atividades da Semana Final, conforme esclarecimento do grupo.
+
+### Fundamentação anotada para pair programming
+
+- PLONKA, Laura; SHARP, Helen; VAN DER LINDEN, Janet; DITTRICH, Yvonne. “Knowledge transfer in pair programming: an in-depth analysis.” *International Journal of Human-Computer Studies*, v. 73, p. 66–78, 2015. [DOI: 10.1016/j.ijhcs.2014.09.001](https://doi.org/10.1016/j.ijhcs.2014.09.001).
+- ZIERIS, Franz; PRECHELT, Lutz. “Observations on knowledge transfer of professional software developers during pair programming.” In: *Proceedings of the 38th International Conference on Software Engineering Companion*, 2016, p. 242–250. [DOI: 10.1145/2889160.2889249](https://doi.org/10.1145/2889160.2889249).
+- LUI, Kim Man; CHAN, Keith C. C. “Pair programming productivity: novice–novice vs. expert–expert.” *International Journal of Human-Computer Studies*, v. 64, n. 9, p. 915–925, 2006. [DOI: 10.1016/j.ijhcs.2006.04.010](https://doi.org/10.1016/j.ijhcs.2006.04.010).
+- Os estudos embasam a hipótese de usar pareamento para transferência de conhecimento e revisão crítica, mas não garantem que uma combinação específica de níveis seja sempre mais produtiva. A prática proposta deve ser avaliada pela aprendizagem, qualidade e fluxo observados na AGES.
+
+## Resultado 2: especificação de uma atividade
+
+O Resultado 2 detalha uma atividade de uma etapa do processo. A especificação apresenta:
+
+- propósito da atividade;
+- papéis envolvidos e suas responsabilidades;
+- propósito de cada artefato usado ou produzido;
+- estrutura e conteúdo de cada artefato.
+
+Uma atividade de Inception/PoC da Sprint 0 é coerente com a instância sugerida, por reunir Stakeholders, squads, uso de IA, pareamento e validação. A atividade detalhada mantém alinhamento com a abstração do processo geral e com a instância apresentada no Resultado 1.
+
+## Parâmetros e acordos registrados na instância sugerida
+
+- Lean Inception organiza o alinhamento do MVP; práticas de Lean Startup podem apoiar a formulação e validação de hipóteses da PoC.
+- Coordenação e Stakeholders acordam requisitos não funcionais e critérios observáveis antes da entrada da equipe. A equipe usa esses critérios na arquitetura, nas tasks e na validação do protótipo.
+- AGES IV estabelece guardrails, políticas e processos de uso da IA. AGES III os implementa e viabiliza tecnicamente por meio da plataforma, do ambiente e do agente disponíveis às squads.
+- O pareamento é a unidade de execução para tarefas apoiadas por IA; a proposta representa WIP 0,5 por integrante e uma task compartilhada pelo par. Os pares são rotacionados para distribuir conhecimento entre níveis.
+- A duração, o entregável e a revisão de cada bloco curto são acordados colaborativamente na planning de cada sprint, considerando o tempo restante e os ciclos de feedback previstos.
+- A validação da PoC usa observação de usuários e feedback de Stakeholders; os critérios de avanço e os registros das decisões fazem parte dos acordos de trabalho da equipe.
+- AGES IV registra o processo configurado para sua equipe, seus acordos e os resultados observados, oferecendo base para a reflexão e avaliação na banca.

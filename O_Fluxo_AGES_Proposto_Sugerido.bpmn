@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Proposto" name="O Fluxo AGES Proposto" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Proposto" name="O Fluxo AGES Proposto Sugerido" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-sugerido">
   <bpmn:documentation>Rascunho de alto nível para o Resultado 1 do TF de Melhoria de Processos. Baseado no processo atual anexado e nas propostas registradas no README. O modelo de trabalho com Double Diamond é uma adaptação proposta pelo grupo: Coordenação e Stakeholders conduzem descoberta/definição; a equipe AGES I–IV atua no desenvolvimento/entrega. Sprint 0 é representada como Spike/PoC iterativa, com apoio de IA, revisão humana e validação com usuários. Detalhes ainda sujeitos a revisão.</bpmn:documentation>
   <bpmn:collaboration id="Collaboration_Proposto">
-    <bpmn:participant id="Participant_Proposto" name="O FLUXO AGES PROPOSTO" processRef="Process_Proposto" />
+    <bpmn:participant id="Participant_Proposto" name="O FLUXO AGES PROPOSTO SUGERIDO" processRef="Process_Proposto" />
     <bpmn:participant id="Participant_Stakeholders" name="Stakeholders" />
     <bpmn:participant id="Participant_Usuarios" name="Usuários" />
     <bpmn:messageFlow id="MF_Ideia" name="Ideia" sourceRef="Participant_Stakeholders" targetRef="A_Ideia" />
@@ -19,7 +19,7 @@
     <bpmn:textAnnotation id="Note_Etapa4"><bpmn:text>Etapa 4: Encerramento</bpmn:text></bpmn:textAnnotation>
   </bpmn:collaboration>
   <bpmn:message id="Message_Ideia" name="Apresentação da Ideia pelos stakeholder" />
-  <bpmn:process id="Process_Proposto" name="O Fluxo AGES Proposto" isExecutable="false">
+  <bpmn:process id="Process_Proposto" name="O Fluxo AGES Proposto Sugerido" isExecutable="false">
     <bpmn:laneSet id="LaneSet_Proposto">
       <bpmn:lane id="Lane_Coordenacao" name="Coordenação"><bpmn:flowNodeRef>Start</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Ideia</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ValidarIdeia</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Semestre</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ReqStakeholders</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ValidarReq</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Termo</bpmn:flowNodeRef><bpmn:flowNodeRef>G_Aprovado</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Intro</bpmn:flowNodeRef><bpmn:flowNodeRef>A_EntregaSprint</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Andamento</bpmn:flowNodeRef><bpmn:flowNodeRef>A_Bancas</bpmn:flowNodeRef><bpmn:flowNodeRef>A_RetroGeral</bpmn:flowNodeRef><bpmn:flowNodeRef>A_RelatorioFinal</bpmn:flowNodeRef><bpmn:flowNodeRef>A_ApresentacaoFinal</bpmn:flowNodeRef><bpmn:flowNodeRef>End</bpmn:flowNodeRef></bpmn:lane>
       <bpmn:lane id="Lane_Professor" name="Professor Orientador"><bpmn:flowNodeRef>A_OneOnOne</bpmn:flowNodeRef></bpmn:lane>
@@ -36,20 +36,22 @@
     <bpmn:task id="A_Termo" name="Elaboração do Termo de Abertura de Projetos" />
     <bpmn:exclusiveGateway id="G_Aprovado" name="Projeto aprovado e pronto para execução?" />
     <bpmn:task id="A_Intro" name="Apresentação Inicial AGES e do Fluxo AGES." />
-    <bpmn:task id="A_MapearCore" name="Mapear o core do produto e definir o MVP com participação da equipe AGES I–IV" />
-    <bpmn:task id="A_EpicosUS" name="AGES IV especificam épicos e User Stories" />
+    <bpmn:task id="A_MapearCore" name="User Story Mapping: brainstorming de requisitos e jornada com Stakeholders; equipe consolida, analisa e prioriza o MVP e o fluxo core ponta a ponta" />
+    <bpmn:task id="A_EpicosUS" name="AGES IV especificam épicos/USs e formam squads de níveis mistos; cada IV lidera uma squad e um deles coordena transversalmente em rotação" />
     <bpmn:task id="A_DecomporTasks" name="AGES III, I e II decompõem User Stories em tasks e verificam arquitetura/dependências" />
-    <bpmn:task id="A_CoordPoC" name="AGES IV coordenam a Spike/PoC e o trabalho das squads" />
+    <bpmn:task id="A_CoordPoC" name="AGES IV lideram squads, coordenam transversalmente a Spike/PoC em rotação e definem guardrails/processos/políticas de IA" />
     <bpmn:task id="A_DesignSystem" name="Preparar design system: variables, styles e componentes com base na identidade visual" />
-    <bpmn:task id="A_ConfigIA" name="Configurar ambiente e agente de IA para apoiar a construção do protótipo" />
-    <bpmn:task id="A_PrototipoIA" name="Construir protótipo funcional de alta fidelidade com apoio de IA (fluxos core; backend ausente ou dados mockados)" />
+    <bpmn:task id="A_ConfigIA" name="AGES III como Enabling Team de engenharia de plataforma: viabilizar políticas de IA e configurar ambiente/agente para as squads" />
+    <bpmn:task id="A_PrototipoIA" name="Wireframing/wireflowing e construção, em pares inter-níveis com IA, de uma PoC por squad (fluxo core; backend opcional/dados mockados; WIP 0,5)" />
     <bpmn:task id="A_ReviewAprovar" name="Code review AGES III e aprovação de AGES III e AGES IV para cada task; reprovação retorna para correção" />
-    <bpmn:task id="A_DemoPoC" name="Demonstração da PoC aos Stakeholders e coleta de feedback" />
+    <bpmn:task id="A_DemoPoC" name="Demo de cada PoC; design critique estruturada, tratar divergências e alinhar com Stakeholders a direção/decisão" />
     <bpmn:task id="A_ValidarUsuarios" name="Validar com usuários: observar o uso do protótipo e registrar feedback (técnica a definir)" />
     <bpmn:exclusiveGateway id="G_PoCValidada" name="Core/PoC atende aos critérios acordados?" />
     <bpmn:task id="A_AjustarPoC" name="Ajustar protótipo, tasks e histórias com base nos achados" />
     <bpmn:task id="A_Planning" name="Planning colaborativa: priorizar histórias e selecionar tasks" />
-    <bpmn:callActivity id="A_Sprints" name="Sprints regulares (ciclo de duas semanas)" calledElement="Process_Sprint_Proposto" />
+    <bpmn:callActivity id="A_Sprints" name="Sprints regulares de duas semanas, com blocos curtos e feedback durante a sprint" calledElement="Process_Sprint_Proposto" />
+    <bpmn:textAnnotation id="Note_MiniSprints"><bpmn:text>Na planning, acordar colaborativamente duração, objetivo e entregável de cada bloco curto. Ao fim do bloco, revisar/demonstrar o incremento, colher feedback e decidir: ajustar ou iniciar outro bloco ainda no tempo restante da sprint.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:association id="Assoc_MiniSprints" sourceRef="A_Sprints" targetRef="Note_MiniSprints" associationDirection="None" />
     <bpmn:task id="A_EntregaSprint" name="Entrega para os Stakeholders" />
     <bpmn:task id="A_RetroSprint" name="Retrospectiva" />
     <bpmn:task id="A_Andamento" name="Entrega Relatório de Andamento" />
@@ -95,8 +97,10 @@
   </bpmn:process>
   <bpmn:process id="Process_Sprint_Proposto" name="Sprint regular de duas semanas" isExecutable="false">
     <bpmn:startEvent id="Sprint_Start" name="Início" />
-    <bpmn:task id="Sprint_Planning" name="Planning colaborativa" />
-    <bpmn:task id="Sprint_Work" name="Desenvolvimento e documentação (tasks com IA quando aplicável; code review e aprovação AGES III/IV)" />
+    <bpmn:task id="Sprint_Planning" name="Planning colaborativa: acordar duração, objetivo e entregável dos blocos curtos" />
+    <bpmn:task id="Sprint_Work" name="Executar bloco curto de desenvolvimento e documentação (tasks com IA quando aplicável; code review e aprovação AGES III/IV)" />
+    <bpmn:task id="Sprint_BlockFeedback" name="Revisar/demonstrar incremento e colher feedback ao fim do bloco" />
+    <bpmn:exclusiveGateway id="Sprint_Continue" name="Há outro bloco ou ajuste prioritário no tempo restante da sprint?" />
     <bpmn:task id="Sprint_Meeting" name="Aula Meeting" />
     <bpmn:parallelGateway id="Sprint_Split" />
     <bpmn:parallelGateway id="Sprint_Join" />
@@ -108,14 +112,17 @@
     <bpmn:sequenceFlow id="SF2" sourceRef="Sprint_Planning" targetRef="Sprint_Split" />
     <bpmn:sequenceFlow id="SF3" sourceRef="Sprint_Split" targetRef="Sprint_Work" />
     <bpmn:sequenceFlow id="SF4" sourceRef="Sprint_Split" targetRef="Sprint_Meeting" />
-    <bpmn:sequenceFlow id="SF5" sourceRef="Sprint_Work" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="SF5" sourceRef="Sprint_Work" targetRef="Sprint_BlockFeedback" />
     <bpmn:sequenceFlow id="SF6" sourceRef="Sprint_Meeting" targetRef="Sprint_Join" />
-    <bpmn:sequenceFlow id="SF7" sourceRef="Sprint_Join" targetRef="Sprint_Delivery" />
-    <bpmn:sequenceFlow id="SF8" sourceRef="Sprint_Delivery" targetRef="Sprint_Retro" />
-    <bpmn:sequenceFlow id="SF9" sourceRef="Sprint_Retro" targetRef="Sprint_Report" />
-    <bpmn:sequenceFlow id="SF10" sourceRef="Sprint_Report" targetRef="Sprint_End" />
+    <bpmn:sequenceFlow id="SF7" sourceRef="Sprint_BlockFeedback" targetRef="Sprint_Continue" />
+    <bpmn:sequenceFlow id="SF8" name="Sim: próximo bloco/ajuste" sourceRef="Sprint_Continue" targetRef="Sprint_Work" />
+    <bpmn:sequenceFlow id="SF9" name="Não: blocos concluídos" sourceRef="Sprint_Continue" targetRef="Sprint_Join" />
+    <bpmn:sequenceFlow id="SF10" sourceRef="Sprint_Join" targetRef="Sprint_Delivery" />
+    <bpmn:sequenceFlow id="SF11" sourceRef="Sprint_Delivery" targetRef="Sprint_Retro" />
+    <bpmn:sequenceFlow id="SF12" sourceRef="Sprint_Retro" targetRef="Sprint_Report" />
+    <bpmn:sequenceFlow id="SF13" sourceRef="Sprint_Report" targetRef="Sprint_End" />
   </bpmn:process>
-  <bpmndi:BPMNDiagram id="Diagram_Proposto" name="O Fluxo AGES Proposto">
+  <bpmndi:BPMNDiagram id="Diagram_Proposto" name="O Fluxo AGES Proposto Sugerido">
     <bpmndi:BPMNPlane id="Plane_Proposto" bpmnElement="Collaboration_Proposto">
       <bpmndi:BPMNShape id="DI_Pool" bpmnElement="Participant_Proposto" isHorizontal="true" isExpanded="true"><dc:Bounds x="100" y="100" width="6100" height="960" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_LaneCoord" bpmnElement="Lane_Coordenacao" isHorizontal="true"><dc:Bounds x="130" y="100" width="6070" height="230" /></bpmndi:BPMNShape>
@@ -148,6 +155,8 @@
 <bpmndi:BPMNShape id="DI_A_AjustarPoC" bpmnElement="A_AjustarPoC"><dc:Bounds x="3875" y="849" width="195" height="72" /></bpmndi:BPMNShape>
 <bpmndi:BPMNShape id="DI_A_Planning" bpmnElement="A_Planning"><dc:Bounds x="4060" y="499" width="200" height="72" /></bpmndi:BPMNShape>
 <bpmndi:BPMNShape id="DI_A_Sprints" bpmnElement="A_Sprints"><dc:Bounds x="4245" y="849" width="230" height="72" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_MiniSprints" bpmnElement="Note_MiniSprints"><dc:Bounds x="4500" y="835" width="1600" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_Assoc_MiniSprints" bpmnElement="Assoc_MiniSprints"><di:waypoint x="4475" y="885" /><di:waypoint x="4500" y="895" /></bpmndi:BPMNEdge>
 <bpmndi:BPMNShape id="DI_A_EntregaSprint" bpmnElement="A_EntregaSprint"><dc:Bounds x="4430" y="169" width="180" height="72" /></bpmndi:BPMNShape>
 <bpmndi:BPMNShape id="DI_A_RetroSprint" bpmnElement="A_RetroSprint"><dc:Bounds x="4615" y="499" width="165" height="72" /></bpmndi:BPMNShape>
 <bpmndi:BPMNShape id="DI_A_Andamento" bpmnElement="A_Andamento"><dc:Bounds x="4800" y="169" width="185" height="72" /></bpmndi:BPMNShape>

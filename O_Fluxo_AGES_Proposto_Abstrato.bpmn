@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Abstrato" name="O Fluxo AGES Proposto Abstrato" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-abstrato">
+  <bpmn:documentation>Processo geral abstrato proposto para a equipe AGES. O diagrama não impõe metodologia, Sprint 0, cerimônias ou cadência específicas. AGES IV define e adapta o processo próprio da equipe; AGES III oferece liderança técnica e habilitação como Enabling Team; a equipe executa conforme os acordos. O processo escolhido e seus resultados são avaliáveis na banca. Este BPMN é distinto da instância concreta descrita em O_Fluxo_AGES_Proposto_Sugerido.bpmn.</bpmn:documentation>
+  <bpmn:collaboration id="Collaboration_AGES_Abstrato">
+    <bpmn:participant id="Participant_Processo" name="O FLUXO AGES PROPOSTO ABSTRATO" processRef="Processo_Abstrato" />
+    <bpmn:participant id="Participant_Stakeholders" name="Coordenação / Stakeholders" />
+    <bpmn:messageFlow id="MF_Contexto" name="Objetivos, contexto e restrições" sourceRef="Participant_Stakeholders" targetRef="A_Contexto" />
+    <bpmn:messageFlow id="MF_Feedback" name="Feedback sobre resultados e adequação do processo" sourceRef="A_Avaliar" targetRef="Participant_Stakeholders" />
+  </bpmn:collaboration>
+  <bpmn:process id="Processo_Abstrato" name="O Fluxo AGES Proposto Abstrato" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Abstrato">
+      <bpmn:lane id="Lane_AGESIV" name="AGES IV — Gestão e definição do processo">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Contexto</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_DefinirMetodo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_DefinirPoliticasIA</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_ClarezaViabilidade</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Comunicar</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Avaliar</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Ajustar</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_AjustarProcesso</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Concluido</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_AGESIII" name="AGES III — Tech Lead / Enabling Team">
+        <bpmn:flowNodeRef>A_AnalisarTecnico</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_HabilitarTecnico</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Equipe" name="Equipe AGES I–IV">
+        <bpmn:flowNodeRef>A_Executar</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Projeto/equipe designados" />
+    <bpmn:task id="A_Contexto" name="Alinhar objetivos, contexto, restrições e critérios do projeto com Coordenação/Stakeholders" />
+    <bpmn:task id="A_AnalisarTecnico" name="Analisar necessidades técnicas, arquitetura e capacidades de plataforma; aconselhar AGES IV" />
+    <bpmn:task id="A_DefinirMetodo" name="Definir/adaptar metodologia, etapas, papéis, cerimônias, artefatos, cadência e acordos da equipe" />
+    <bpmn:task id="A_DefinirPoliticasIA" name="Definir guardrails, processos e políticas de uso da IA" />
+    <bpmn:exclusiveGateway id="G_ClarezaViabilidade" name="Processo claro e tecnicamente viável?" />
+    <bpmn:task id="A_HabilitarTecnico" name="AGES III viabiliza tecnicamente o processo acordado e habilita recursos de plataforma/IA necessários" />
+    <bpmn:task id="A_Comunicar" name="Comunicar acordos de trabalho à equipe; explicitar processo escolhido e critérios de acompanhamento" />
+    <bpmn:task id="A_Executar" name="Executar o trabalho segundo o processo e os acordos definidos para esta equipe" />
+    <bpmn:task id="A_Avaliar" name="Revisar entregas, feedback, métricas e adequação do processo com a equipe e Stakeholders" />
+    <bpmn:exclusiveGateway id="G_Ajustar" name="O processo precisa ser ajustado?" />
+    <bpmn:task id="A_AjustarProcesso" name="AGES IV revisa e adapta o processo com apoio técnico de AGES III e participação da equipe" />
+    <bpmn:exclusiveGateway id="G_Concluido" name="Projeto concluído?" />
+    <bpmn:endEvent id="End" name="Processo encerrado" />
+    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Contexto" />
+    <bpmn:sequenceFlow id="F02" sourceRef="A_Contexto" targetRef="A_AnalisarTecnico" />
+    <bpmn:sequenceFlow id="F03" sourceRef="A_AnalisarTecnico" targetRef="A_DefinirMetodo" />
+    <bpmn:sequenceFlow id="F04" sourceRef="A_DefinirMetodo" targetRef="A_DefinirPoliticasIA" />
+    <bpmn:sequenceFlow id="F05" sourceRef="A_DefinirPoliticasIA" targetRef="G_ClarezaViabilidade" />
+    <bpmn:sequenceFlow id="F06" name="Não" sourceRef="G_ClarezaViabilidade" targetRef="A_DefinirMetodo" />
+    <bpmn:sequenceFlow id="F07" name="Sim" sourceRef="G_ClarezaViabilidade" targetRef="A_HabilitarTecnico" />
+    <bpmn:sequenceFlow id="F08" sourceRef="A_HabilitarTecnico" targetRef="A_Comunicar" />
+    <bpmn:sequenceFlow id="F09" sourceRef="A_Comunicar" targetRef="A_Executar" />
+    <bpmn:sequenceFlow id="F10" sourceRef="A_Executar" targetRef="A_Avaliar" />
+    <bpmn:sequenceFlow id="F11" sourceRef="A_Avaliar" targetRef="G_Ajustar" />
+    <bpmn:sequenceFlow id="F12" name="Sim" sourceRef="G_Ajustar" targetRef="A_AjustarProcesso" />
+    <bpmn:sequenceFlow id="F13" sourceRef="A_AjustarProcesso" targetRef="A_DefinirMetodo" />
+    <bpmn:sequenceFlow id="F14" name="Não" sourceRef="G_Ajustar" targetRef="G_Concluido" />
+    <bpmn:sequenceFlow id="F15" name="Não" sourceRef="G_Concluido" targetRef="A_Executar" />
+    <bpmn:sequenceFlow id="F16" name="Sim" sourceRef="G_Concluido" targetRef="End" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_AGES_Abstrato" name="O Fluxo AGES Proposto Abstrato">
+    <bpmndi:BPMNPlane id="Plane_AGES_Abstrato" bpmnElement="Collaboration_AGES_Abstrato">
+      <bpmndi:BPMNShape id="DI_Participant_Processo" bpmnElement="Participant_Processo" isHorizontal="true" isExpanded="true"><dc:Bounds x="100" y="100" width="3650" height="570" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESIV" bpmnElement="Lane_AGESIV" isHorizontal="true"><dc:Bounds x="130" y="100" width="3620" height="190" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESIII" bpmnElement="Lane_AGESIII" isHorizontal="true"><dc:Bounds x="130" y="290" width="3620" height="170" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_Equipe" bpmnElement="Lane_Equipe" isHorizontal="true"><dc:Bounds x="130" y="460" width="3620" height="210" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Participant_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false"><dc:Bounds x="100" y="720" width="3650" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Start" bpmnElement="Start"><dc:Bounds x="175" y="177" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Contexto" bpmnElement="A_Contexto"><dc:Bounds x="260" y="155" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_AnalisarTecnico" bpmnElement="A_AnalisarTecnico"><dc:Bounds x="540" y="335" width="250" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirMetodo" bpmnElement="A_DefinirMetodo"><dc:Bounds x="830" y="155" width="250" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirPoliticasIA" bpmnElement="A_DefinirPoliticasIA"><dc:Bounds x="1120" y="155" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_ClarezaViabilidade" bpmnElement="G_ClarezaViabilidade"><dc:Bounds x="1410" y="168" width="54" height="54" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_HabilitarTecnico" bpmnElement="A_HabilitarTecnico"><dc:Bounds x="1510" y="335" width="270" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Comunicar" bpmnElement="A_Comunicar"><dc:Bounds x="1820" y="155" width="260" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Executar" bpmnElement="A_Executar"><dc:Bounds x="2120" y="525" width="240" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Avaliar" bpmnElement="A_Avaliar"><dc:Bounds x="2400" y="155" width="260" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_Ajustar" bpmnElement="G_Ajustar"><dc:Bounds x="2700" y="168" width="54" height="54" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_AjustarProcesso" bpmnElement="A_AjustarProcesso"><dc:Bounds x="2800" y="155" width="250" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_Concluido" bpmnElement="G_Concluido"><dc:Bounds x="3100" y="168" width="54" height="54" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_End" bpmnElement="End"><dc:Bounds x="3280" y="177" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_F01" bpmnElement="F01"><di:waypoint x="211" y="195"/><di:waypoint x="260" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F02" bpmnElement="F02"><di:waypoint x="500" y="195"/><di:waypoint x="540" y="375"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F03" bpmnElement="F03"><di:waypoint x="790" y="375"/><di:waypoint x="830" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F04" bpmnElement="F04"><di:waypoint x="1080" y="195"/><di:waypoint x="1120" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F05" bpmnElement="F05"><di:waypoint x="1360" y="195"/><di:waypoint x="1410" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F06" bpmnElement="F06"><di:waypoint x="1437" y="168"/><di:waypoint x="1437" y="125"/><di:waypoint x="955" y="125"/><di:waypoint x="955" y="155"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F07" bpmnElement="F07"><di:waypoint x="1464" y="195"/><di:waypoint x="1510" y="375"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F08" bpmnElement="F08"><di:waypoint x="1780" y="375"/><di:waypoint x="1820" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F09" bpmnElement="F09"><di:waypoint x="2080" y="195"/><di:waypoint x="2120" y="565"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F10" bpmnElement="F10"><di:waypoint x="2360" y="565"/><di:waypoint x="2400" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F11" bpmnElement="F11"><di:waypoint x="2660" y="195"/><di:waypoint x="2700" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F12" bpmnElement="F12"><di:waypoint x="2754" y="195"/><di:waypoint x="2800" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F13" bpmnElement="F13"><di:waypoint x="2925" y="155"/><di:waypoint x="2925" y="120"/><di:waypoint x="955" y="120"/><di:waypoint x="955" y="155"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F14" bpmnElement="F14"><di:waypoint x="2754" y="195"/><di:waypoint x="3100" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F15" bpmnElement="F15"><di:waypoint x="3127" y="222"/><di:waypoint x="3127" y="640"/><di:waypoint x="2240" y="640"/><di:waypoint x="2240" y="605"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F16" bpmnElement="F16"><di:waypoint x="3154" y="195"/><di:waypoint x="3280" y="195"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Contexto" bpmnElement="MF_Contexto"><di:waypoint x="120" y="765"/><di:waypoint x="380" y="235"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Feedback" bpmnElement="MF_Feedback"><di:waypoint x="2530" y="155"/><di:waypoint x="120" y="765"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

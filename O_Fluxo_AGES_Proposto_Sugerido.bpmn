@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/BPMN/20100524/DI" id="Definitions_AGES_Proposto" name="O Fluxo AGES Proposto Sugerido" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-sugerido" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.33.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Proposto" name="O Fluxo AGES Proposto Sugerido" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-sugerido" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.33.1">
   <bpmn:documentation>Rascunho de alto nível para o Resultado 1 do TF de Melhoria de Processos. O Double Diamond é uma adaptação proposta pelo grupo: Coordenação e Stakeholders conduzem descoberta e definição, enquanto a equipe AGES atua no desenvolvimento e na entrega. A Sprint 0 inclui a construção iterativa de PoCs, com apoio de IA, revisão humana e validação com usuários.</bpmn:documentation>
   <bpmn:collaboration id="Collaboration_Proposto">
-    <bpmn:participant id="Participant_Proposto" name="O FLUXO AGES PROPOSTO SUGERIDO" processRef="Process_Proposto" />
-    <bpmn:participant id="Participant_Stakeholders" name="Stakeholders" />
-    <bpmn:participant id="Participant_Usuarios" name="Usuários" />
-    <bpmn:messageFlow id="MF_Ideia" name="Ideia" sourceRef="Participant_Stakeholders" targetRef="A_Ideia" />
-    <bpmn:messageFlow id="MF_Requisitos" name="Requisitos para validação" sourceRef="A_ReqStakeholders" targetRef="Participant_Stakeholders" />
-    <bpmn:messageFlow id="MF_PoC" name="Demonstração da PoC" sourceRef="A_DemoPoC" targetRef="Participant_Stakeholders" />
-    <bpmn:messageFlow id="MF_Usuario" name="Feedback dos usuários" sourceRef="Participant_Usuarios" targetRef="A_ValidarUsuarios" />
-    <bpmn:messageFlow id="MF_Entrega" name="Incremento para Stakeholders" sourceRef="A_EntregaSprint" targetRef="Participant_Stakeholders" />
+    <bpmn:participant id="Participant_Proposto" name="O FLUXO AGES PROPOSTO SUGERIDO" processRef="Process_Proposto"/>
+    <bpmn:participant id="Participant_Stakeholders" name="Stakeholders"/>
+    <bpmn:participant id="Participant_Usuarios" name="Usuários"/>
+    <bpmn:messageFlow id="MF_Ideia" name="Ideia" sourceRef="Participant_Stakeholders" targetRef="A_Ideia"/>
+    <bpmn:messageFlow id="MF_Requisitos" name="Requisitos para validação" sourceRef="A_ReqStakeholders" targetRef="Participant_Stakeholders"/>
+    <bpmn:messageFlow id="MF_PoC" name="Demonstração da PoC" sourceRef="A_DemoPoC" targetRef="Participant_Stakeholders"/>
+    <bpmn:messageFlow id="MF_Usuario" name="Feedback dos usuários" sourceRef="Participant_Usuarios" targetRef="A_ValidarUsuarios"/>
+    <bpmn:messageFlow id="MF_Entrega" name="Incremento para Stakeholders" sourceRef="A_EntregaSprint" targetRef="Participant_Stakeholders"/>
     <bpmn:textAnnotation id="Note_Etapa1">
       <bpmn:text>Etapa 1: Semestre que antecede a execução do projeto na AGES</bpmn:text>
     </bpmn:textAnnotation>
@@ -34,10 +34,10 @@
     <bpmn:textAnnotation id="Note_MiniSprints">
       <bpmn:text>Na planning, acordar colaborativamente duração, objetivo e entregável de cada bloco curto. Ao fim do bloco, revisar/demonstrar o incremento, colher feedback e decidir: ajustar ou iniciar outro bloco ainda no tempo restante da sprint.</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Assoc_MiniSprints" associationDirection="None" sourceRef="A_Sprints" targetRef="Note_MiniSprints" />
-    <bpmn:messageFlow id="MF_NPS" name="Formulário NPS" sourceRef="A_EnviarNPS" targetRef="Participant_Stakeholders" />
+    <bpmn:association id="Assoc_MiniSprints" associationDirection="None" sourceRef="A_Sprints" targetRef="Note_MiniSprints"/>
+    <bpmn:messageFlow id="MF_NPS" name="Formulário NPS" sourceRef="A_EnviarNPS" targetRef="Participant_Stakeholders"/>
   </bpmn:collaboration>
-  <bpmn:message id="Message_Ideia" name="Apresentação da Ideia pelos stakeholder" />
+  <bpmn:message id="Message_Ideia" name="Apresentação da Ideia pelos stakeholder"/>
   <bpmn:process id="Process_Proposto" name="O Fluxo AGES Proposto Sugerido" isExecutable="false">
     <bpmn:laneSet id="LaneSet_Proposto">
       <bpmn:lane id="Lane_AGESI_II" name="Equipe AGES">
@@ -94,846 +94,911 @@
         <bpmn:flowNodeRef>A_EnviarNPS</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start" name="Início" />
-    <bpmn:receiveTask id="A_Ideia" name="Apresentação da Ideia pelos stakeholder" messageRef="Message_Ideia" />
-    <bpmn:task id="A_Semestre" name="Definir semestre de execução" />
-    <bpmn:task id="A_ReqStakeholders" name="Elicitar requisitos com Stakeholders" />
-    <bpmn:task id="A_ValidarReq" name="Validar requisitos" />
-    <bpmn:task id="A_Termo" name="Elaborar termo de abertura" />
-    <bpmn:exclusiveGateway id="G_Aprovado" name="Projeto aprovado e pronto para execução?" />
-    <bpmn:task id="A_Intro" name="Apresentar AGES e fluxo" />
-    <bpmn:callActivity id="A_Sprints" name="Executar sprints regulares" calledElement="Process_Sprint_Proposto" />
-    <bpmn:task id="A_EntregaSprint" name="Sprint Review" />
-    <bpmn:task id="A_RetroSprint" name="Retrospectiva da sprint" />
-    <bpmn:task id="A_Andamento" name="Entregar relatório de andamento" />
-    <bpmn:task id="A_OneOnOne" name="ONE on ONE" />
-    <bpmn:task id="A_Bancas" name="Apresentar bancas" />
-    <bpmn:task id="A_RetroGeral" name="Retrospectiva geral e confraternização" />
-    <bpmn:task id="A_RelatorioFinal" name="Entregar relatório final" />
-    <bpmn:task id="A_ApresentacaoFinal" name="Apresentar projetos AGES" />
-    <bpmn:endEvent id="End" name="Fim" />
-    <bpmn:task id="A_ValidarIdeia" name="Validar ideia" />
-    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Ideia" />
-    <bpmn:sequenceFlow id="F02" sourceRef="A_Ideia" targetRef="A_ValidarIdeia" />
-    <bpmn:sequenceFlow id="F03" sourceRef="A_ValidarIdeia" targetRef="A_Semestre" />
-    <bpmn:sequenceFlow id="F04" sourceRef="A_Semestre" targetRef="A_ReqStakeholders" />
-    <bpmn:sequenceFlow id="F09" name="Revisar requisitos" sourceRef="G_Aprovado" targetRef="A_ReqStakeholders" />
-    <bpmn:sequenceFlow id="F05" sourceRef="A_ReqStakeholders" targetRef="A_ValidarReq" />
-    <bpmn:sequenceFlow id="F06" sourceRef="A_ValidarReq" targetRef="A_Termo" />
-    <bpmn:sequenceFlow id="F07" sourceRef="A_Termo" targetRef="G_Aprovado" />
-    <bpmn:sequenceFlow id="F08" name="Sim" sourceRef="G_Aprovado" targetRef="A_Intro" />
-    <bpmn:sequenceFlow id="F25" sourceRef="A_Sprints" targetRef="A_EntregaSprint" />
-    <bpmn:sequenceFlow id="F30" sourceRef="A_Bancas" targetRef="A_RetroGeral" />
-    <bpmn:sequenceFlow id="F31" sourceRef="A_RetroGeral" targetRef="A_RelatorioFinal" />
-    <bpmn:sequenceFlow id="F32" sourceRef="A_RelatorioFinal" targetRef="A_ApresentacaoFinal" />
-    <bpmn:sequenceFlow id="F33" sourceRef="A_ApresentacaoFinal" targetRef="End" />
-    <bpmn:task id="A_MapearJornada" name="Mapear jornada com Stakeholders" />
-    <bpmn:task id="A_DefinirMVP" name="Priorizar histórias e definir MVP" />
-    <bpmn:task id="A_DefinirEpicos" name="Especificar épicos" />
-    <bpmn:task id="A_DefinirHistorias" name="Especificar histórias" />
-    <bpmn:task id="A_FormarSquads" name="Formar squads" />
-    <bpmn:task id="A_DecomporTasks" name="Decompor histórias em tasks" />
-    <bpmn:task id="A_DefinirGuardrails" name="Definir guardrails de IA" />
-    <bpmn:task id="A_CoordPoC" name="Coordenar PoC transversalmente" />
-    <bpmn:task id="A_DesignSystem" name="Preparar design system" />
-    <bpmn:task id="A_ConfigIA" name="Configurar agente de IA" />
-    <bpmn:task id="A_Wireframes" name="Criar wireframes" />
-    <bpmn:task id="A_Wireflows" name="Desenhar wireflows" />
-    <bpmn:task id="A_ConstruirPoC" name="Construir PoC em pares" />
-    <bpmn:task id="A_DemoPoC" name="Demonstrar PoCs" />
-    <bpmn:task id="A_ValidarUsuarios" name="Validar PoC com usuários" />
-    <bpmn:exclusiveGateway id="G_PoCValidada" name="PoC atende aos critérios?" />
-    <bpmn:task id="A_AjustarPoC" name="Ajustar PoC e backlog" />
-    <bpmn:task id="A_Planning" name="Definir Sprint Goal e backlog" />
-    <bpmn:sequenceFlow id="F10" sourceRef="A_Intro" targetRef="A_MapearJornada" />
-    <bpmn:sequenceFlow id="F11" sourceRef="A_MapearJornada" targetRef="A_DefinirMVP" />
-    <bpmn:sequenceFlow id="F12" sourceRef="A_DefinirMVP" targetRef="A_DefinirEpicos" />
-    <bpmn:sequenceFlow id="F13" sourceRef="A_DefinirEpicos" targetRef="A_DefinirHistorias" />
-    <bpmn:sequenceFlow id="F14" sourceRef="A_DefinirHistorias" targetRef="A_FormarSquads" />
-    <bpmn:sequenceFlow id="F15" sourceRef="A_FormarSquads" targetRef="A_GerirSquads" />
-    <bpmn:sequenceFlow id="F16" sourceRef="A_DecomporTasks" targetRef="A_DefinirGuardrails" />
-    <bpmn:sequenceFlow id="F17" sourceRef="A_DefinirGuardrails" targetRef="A_CoordPoC" />
-    <bpmn:sequenceFlow id="F18" sourceRef="A_CoordPoC" targetRef="A_DesignSystem" />
-    <bpmn:sequenceFlow id="F19" sourceRef="A_DesignSystem" targetRef="A_ConfigIA" />
-    <bpmn:sequenceFlow id="F20" sourceRef="A_ConfigIA" targetRef="A_Wireframes" />
-    <bpmn:sequenceFlow id="F21" sourceRef="A_Wireframes" targetRef="A_Wireflows" />
-    <bpmn:sequenceFlow id="F22" sourceRef="A_Wireflows" targetRef="A_ConstruirPoC" />
-    <bpmn:sequenceFlow id="F34" sourceRef="A_DemoPoC" targetRef="A_ValidarUsuarios" />
-    <bpmn:sequenceFlow id="F35" sourceRef="A_ValidarUsuarios" targetRef="G_PoCValidada" />
-    <bpmn:sequenceFlow id="F36" sourceRef="G_PoCValidada" targetRef="A_AjustarPoC" name="Não" />
-    <bpmn:sequenceFlow id="F37" sourceRef="A_AjustarPoC" targetRef="A_ConstruirPoC" />
-    <bpmn:sequenceFlow id="F38" sourceRef="G_PoCValidada" targetRef="A_Planning" name="Sim" />
-    <bpmn:sequenceFlow id="F39" sourceRef="A_Planning" targetRef="A_Sprints" />
-    <bpmn:dataObject id="DO_StoryMap" name="User Story Map" />
-    <bpmn:dataObjectReference id="DOR_StoryMap" name="User Story Map" dataObjectRef="DO_StoryMap" />
-    <bpmn:association id="Assoc_StoryMap" sourceRef="A_MapearJornada" targetRef="DOR_StoryMap" associationDirection="One" />
-    <bpmn:dataObject id="DO_MVP" name="MVP" />
-    <bpmn:dataObjectReference id="DOR_MVP" name="MVP" dataObjectRef="DO_MVP" />
-    <bpmn:association id="Assoc_MVP" sourceRef="A_DefinirMVP" targetRef="DOR_MVP" associationDirection="One" />
-    <bpmn:dataObject id="DO_Epicos" name="Épicos" />
-    <bpmn:dataObjectReference id="DOR_Epicos" name="Épicos" dataObjectRef="DO_Epicos" />
-    <bpmn:association id="Assoc_Epicos" sourceRef="A_DefinirEpicos" targetRef="DOR_Epicos" associationDirection="One" />
-    <bpmn:dataObject id="DO_Historias" name="Histórias" />
-    <bpmn:dataObjectReference id="DOR_Historias" name="Histórias" dataObjectRef="DO_Historias" />
-    <bpmn:association id="Assoc_Historias" sourceRef="A_DefinirHistorias" targetRef="DOR_Historias" associationDirection="One" />
-    <bpmn:dataObject id="DO_Squads" name="Squads" />
-    <bpmn:dataObjectReference id="DOR_Squads" name="Squads" dataObjectRef="DO_Squads" />
-    <bpmn:association id="Assoc_Squads" sourceRef="A_FormarSquads" targetRef="DOR_Squads" associationDirection="One" />
-    <bpmn:dataObject id="DO_TaskBacklog" name="Backlog de tasks" />
-    <bpmn:dataObjectReference id="DOR_TaskBacklog" name="Backlog de tasks" dataObjectRef="DO_TaskBacklog" />
-    <bpmn:association id="Assoc_TaskBacklog" sourceRef="A_DecomporTasks" targetRef="DOR_TaskBacklog" associationDirection="One" />
-    <bpmn:dataObject id="DO_Guardrails" name="Guardrails IA" />
-    <bpmn:dataObjectReference id="DOR_Guardrails" name="Guardrails IA" dataObjectRef="DO_Guardrails" />
-    <bpmn:association id="Assoc_Guardrails" sourceRef="A_DefinirGuardrails" targetRef="DOR_Guardrails" associationDirection="One" />
-    <bpmn:dataObject id="DO_AgendaPoC" name="Plano da PoC" />
-    <bpmn:dataObjectReference id="DOR_AgendaPoC" name="Plano da PoC" dataObjectRef="DO_AgendaPoC" />
-    <bpmn:association id="Assoc_AgendaPoC" sourceRef="A_CoordPoC" targetRef="DOR_AgendaPoC" associationDirection="One" />
-    <bpmn:dataObject id="DO_DesignSystem" name="Design system" />
-    <bpmn:dataObjectReference id="DOR_DesignSystem" name="Design system" dataObjectRef="DO_DesignSystem" />
-    <bpmn:association id="Assoc_DesignSystem" sourceRef="A_DesignSystem" targetRef="DOR_DesignSystem" associationDirection="One" />
-    <bpmn:dataObject id="DO_AgenteIA" name="Agente configurado" />
-    <bpmn:dataObjectReference id="DOR_AgenteIA" name="Agente configurado" dataObjectRef="DO_AgenteIA" />
-    <bpmn:association id="Assoc_AgenteIA" sourceRef="A_ConfigIA" targetRef="DOR_AgenteIA" associationDirection="One" />
-    <bpmn:dataObject id="DO_Wireframes" name="Wireframes" />
-    <bpmn:dataObjectReference id="DOR_Wireframes" name="Wireframes" dataObjectRef="DO_Wireframes" />
-    <bpmn:association id="Assoc_Wireframes" sourceRef="A_Wireframes" targetRef="DOR_Wireframes" associationDirection="One" />
-    <bpmn:dataObject id="DO_Wireflows" name="Wireflows" />
-    <bpmn:dataObjectReference id="DOR_Wireflows" name="Wireflows" dataObjectRef="DO_Wireflows" />
-    <bpmn:association id="Assoc_Wireflows" sourceRef="A_Wireflows" targetRef="DOR_Wireflows" associationDirection="One" />
-    <bpmn:dataObject id="DO_PoC" name="PoC" />
-    <bpmn:dataObjectReference id="DOR_PoC" name="PoC" dataObjectRef="DO_PoC" />
-    <bpmn:association id="Assoc_PoC" sourceRef="A_ConstruirPoC" targetRef="DOR_PoC" associationDirection="One" />
-    <bpmn:dataObject id="DO_ReviewTasks" name="Tasks aprovadas" />
-    <bpmn:dataObjectReference id="DOR_ReviewTasks" name="Tasks aprovadas" dataObjectRef="DO_ReviewTasks" />
-    <bpmn:association id="Assoc_ReviewTasks" sourceRef="A_AprovarTaskIV" targetRef="DOR_ReviewTasks" associationDirection="One" />
-    <bpmn:dataObject id="DO_Critique" name="Registro da critique" />
-    <bpmn:dataObjectReference id="DOR_Critique" name="Registro da critique" dataObjectRef="DO_Critique" />
-    <bpmn:association id="Assoc_Critique" sourceRef="A_DemoPoC" targetRef="DOR_Critique" associationDirection="One" />
-    <bpmn:dataObject id="DO_Validacao" name="Achados de usuários" />
-    <bpmn:dataObjectReference id="DOR_Validacao" name="Achados de usuários" dataObjectRef="DO_Validacao" />
-    <bpmn:association id="Assoc_Validacao" sourceRef="A_ValidarUsuarios" targetRef="DOR_Validacao" associationDirection="One" />
-    <bpmn:dataObject id="DO_SprintBacklog" name="Sprint Goal e backlog" />
-    <bpmn:dataObjectReference id="DOR_SprintBacklog" name="Sprint Goal e backlog" dataObjectRef="DO_SprintBacklog" />
-    <bpmn:association id="Assoc_SprintBacklog" sourceRef="A_Planning" targetRef="DOR_SprintBacklog" associationDirection="One" />
-    <bpmn:task id="A_CodeReview" name="Revisar código" />
-    <bpmn:task id="A_AprovarTaskIII" name="Aprovar task tecnicamente" />
-    <bpmn:task id="A_AprovarTaskIV" name="Aprovar task" />
-    <bpmn:sequenceFlow id="F23" sourceRef="A_ConstruirPoC" targetRef="A_CodeReview" />
-    <bpmn:sequenceFlow id="F24" sourceRef="A_CodeReview" targetRef="A_AprovarTaskIII" />
-    <bpmn:sequenceFlow id="F40" sourceRef="A_AprovarTaskIII" targetRef="A_AprovarTaskIV" />
-    <bpmn:sequenceFlow id="F41" sourceRef="A_AprovarTaskIV" targetRef="A_DemoPoC" />
-    <bpmn:task id="A_EnviarNPS" name="Enviar formulário NPS" />
-    <bpmn:sequenceFlow id="F26" sourceRef="A_EntregaSprint" targetRef="A_EnviarNPS" />
-    <bpmn:sequenceFlow id="F27" sourceRef="A_EnviarNPS" targetRef="A_RetroSprint" />
-    <bpmn:dataObject id="DO_NPS" name="Respostas NPS" />
-    <bpmn:dataObjectReference id="DOR_NPS" name="Respostas NPS" dataObjectRef="DO_NPS" />
-    <bpmn:association id="Assoc_NPS" sourceRef="A_EnviarNPS" targetRef="DOR_NPS" associationDirection="One" />
-    <bpmn:dataObject id="DO_Req" name="Requisitos" />
-    <bpmn:dataObjectReference id="DOR_Req" name="Requisitos" dataObjectRef="DO_Req" />
-    <bpmn:association id="Assoc_Req" sourceRef="A_ReqStakeholders" targetRef="DOR_Req" associationDirection="One" />
-    <bpmn:dataObject id="DO_Charter" name="Termo de abertura" />
-    <bpmn:dataObjectReference id="DOR_Charter" name="Termo de abertura" dataObjectRef="DO_Charter" />
-    <bpmn:association id="Assoc_Charter" sourceRef="A_Termo" targetRef="DOR_Charter" associationDirection="One" />
+    <bpmn:startEvent id="Start" name="Início"/>
+    <bpmn:receiveTask id="A_Ideia" name="Apresentação da Ideia pelos stakeholder" messageRef="Message_Ideia"/>
+    <bpmn:task id="A_Semestre" name="Definir semestre de execução"/>
+    <bpmn:task id="A_ReqStakeholders" name="Elicitar requisitos com Stakeholders"/>
+    <bpmn:task id="A_ValidarReq" name="Validar requisitos"/>
+    <bpmn:task id="A_Termo" name="Elaborar termo de abertura"/>
+    <bpmn:exclusiveGateway id="G_Aprovado" name="Projeto aprovado e pronto para execução?"/>
+    <bpmn:task id="A_Intro" name="Apresentar AGES e fluxo"/>
+    <bpmn:callActivity id="A_Sprints" name="Executar sprints regulares" calledElement="Process_Sprint_Proposto"/>
+    <bpmn:task id="A_EntregaSprint" name="Sprint Review"/>
+    <bpmn:task id="A_RetroSprint" name="Retrospectiva da sprint"/>
+    <bpmn:task id="A_Andamento" name="Entregar relatório de andamento"/>
+    <bpmn:task id="A_OneOnOne" name="ONE on ONE"/>
+    <bpmn:task id="A_Bancas" name="Apresentar bancas"/>
+    <bpmn:task id="A_RetroGeral" name="Retrospectiva geral e confraternização"/>
+    <bpmn:task id="A_RelatorioFinal" name="Entregar relatório final"/>
+    <bpmn:task id="A_ApresentacaoFinal" name="Apresentar projetos AGES"/>
+    <bpmn:endEvent id="End" name="Fim"/>
+    <bpmn:task id="A_ValidarIdeia" name="Validar ideia"/>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Ideia"/>
+    <bpmn:sequenceFlow id="F02" sourceRef="A_Ideia" targetRef="A_ValidarIdeia"/>
+    <bpmn:sequenceFlow id="F03" sourceRef="A_ValidarIdeia" targetRef="A_Semestre"/>
+    <bpmn:sequenceFlow id="F04" sourceRef="A_Semestre" targetRef="A_ReqStakeholders"/>
+    <bpmn:sequenceFlow id="F09" name="Revisar requisitos" sourceRef="G_Aprovado" targetRef="A_ReqStakeholders"/>
+    <bpmn:sequenceFlow id="F05" sourceRef="A_ReqStakeholders" targetRef="A_ValidarReq"/>
+    <bpmn:sequenceFlow id="F06" sourceRef="A_ValidarReq" targetRef="A_Termo"/>
+    <bpmn:sequenceFlow id="F07" sourceRef="A_Termo" targetRef="G_Aprovado"/>
+    <bpmn:sequenceFlow id="F08" name="Sim" sourceRef="G_Aprovado" targetRef="A_Intro"/>
+    <bpmn:sequenceFlow id="F25" sourceRef="A_Sprints" targetRef="A_EntregaSprint"/>
+    <bpmn:sequenceFlow id="F30" sourceRef="A_Bancas" targetRef="A_RetroGeral"/>
+    <bpmn:sequenceFlow id="F31" sourceRef="A_RetroGeral" targetRef="A_RelatorioFinal"/>
+    <bpmn:sequenceFlow id="F32" sourceRef="A_RelatorioFinal" targetRef="A_ApresentacaoFinal"/>
+    <bpmn:sequenceFlow id="F33" sourceRef="A_ApresentacaoFinal" targetRef="End"/>
+    <bpmn:task id="A_MapearJornada" name="Mapear jornada com Stakeholders"/>
+    <bpmn:task id="A_DefinirMVP" name="Priorizar histórias e definir MVP"/>
+    <bpmn:task id="A_DefinirEpicos" name="Especificar épicos"/>
+    <bpmn:task id="A_DefinirHistorias" name="Especificar histórias"/>
+    <bpmn:task id="A_FormarSquads" name="Formar squads"/>
+    <bpmn:task id="A_DecomporTasks" name="Decompor histórias em tasks"/>
+    <bpmn:task id="A_DefinirGuardrails" name="Definir guardrails de IA"/>
+    <bpmn:task id="A_CoordPoC" name="Coordenar PoC transversalmente"/>
+    <bpmn:task id="A_DesignSystem" name="Preparar design system"/>
+    <bpmn:task id="A_ConfigIA" name="Configurar agente de IA"/>
+    <bpmn:task id="A_Wireframes" name="Criar wireframes"/>
+    <bpmn:task id="A_Wireflows" name="Desenhar wireflows"/>
+    <bpmn:task id="A_ConstruirPoC" name="Construir PoC em pares"/>
+    <bpmn:task id="A_DemoPoC" name="Demonstrar PoCs"/>
+    <bpmn:task id="A_ValidarUsuarios" name="Validar PoC com usuários"/>
+    <bpmn:exclusiveGateway id="G_PoCValidada" name="PoC atende aos critérios?"/>
+    <bpmn:task id="A_AjustarPoC" name="Ajustar PoC e backlog"/>
+    <bpmn:task id="A_Planning" name="Definir Sprint Goal e backlog"/>
+    <bpmn:sequenceFlow id="F10" sourceRef="A_Intro" targetRef="A_MapearJornada"/>
+    <bpmn:sequenceFlow id="F11" sourceRef="A_MapearJornada" targetRef="A_DefinirMVP"/>
+    <bpmn:sequenceFlow id="F12" sourceRef="A_DefinirMVP" targetRef="A_DefinirEpicos"/>
+    <bpmn:sequenceFlow id="F13" sourceRef="A_DefinirEpicos" targetRef="A_DefinirHistorias"/>
+    <bpmn:sequenceFlow id="F14" sourceRef="A_DefinirHistorias" targetRef="A_FormarSquads"/>
+    <bpmn:sequenceFlow id="F15" sourceRef="A_FormarSquads" targetRef="A_GerirSquads"/>
+    <bpmn:sequenceFlow id="F16" sourceRef="A_DecomporTasks" targetRef="A_DefinirGuardrails"/>
+    <bpmn:sequenceFlow id="F17" sourceRef="A_DefinirGuardrails" targetRef="A_CoordPoC"/>
+    <bpmn:sequenceFlow id="F18" sourceRef="A_CoordPoC" targetRef="A_DesignSystem"/>
+    <bpmn:sequenceFlow id="F19" sourceRef="A_DesignSystem" targetRef="A_ConfigIA"/>
+    <bpmn:sequenceFlow id="F20" sourceRef="A_ConfigIA" targetRef="A_Wireframes"/>
+    <bpmn:sequenceFlow id="F21" sourceRef="A_Wireframes" targetRef="A_Wireflows"/>
+    <bpmn:sequenceFlow id="F22" sourceRef="A_Wireflows" targetRef="A_ConstruirPoC"/>
+    <bpmn:sequenceFlow id="F34" sourceRef="A_DemoPoC" targetRef="A_ValidarUsuarios"/>
+    <bpmn:sequenceFlow id="F35" sourceRef="A_ValidarUsuarios" targetRef="G_PoCValidada"/>
+    <bpmn:sequenceFlow id="F36" sourceRef="G_PoCValidada" targetRef="A_AjustarPoC" name="Não"/>
+    <bpmn:sequenceFlow id="F37" sourceRef="A_AjustarPoC" targetRef="A_ConstruirPoC"/>
+    <bpmn:sequenceFlow id="F38" sourceRef="G_PoCValidada" targetRef="A_Planning" name="Sim"/>
+    <bpmn:sequenceFlow id="F39" sourceRef="A_Planning" targetRef="A_Sprints"/>
+    <bpmn:dataObject id="DO_StoryMap" name="User Story Map"/>
+    <bpmn:dataObjectReference id="DOR_StoryMap" name="User Story Map" dataObjectRef="DO_StoryMap"/>
+    <bpmn:association id="Assoc_StoryMap" sourceRef="A_MapearJornada" targetRef="DOR_StoryMap" associationDirection="One"/>
+    <bpmn:dataObject id="DO_MVP" name="MVP"/>
+    <bpmn:dataObjectReference id="DOR_MVP" name="MVP" dataObjectRef="DO_MVP"/>
+    <bpmn:association id="Assoc_MVP" sourceRef="A_DefinirMVP" targetRef="DOR_MVP" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Epicos" name="Épicos"/>
+    <bpmn:dataObjectReference id="DOR_Epicos" name="Épicos" dataObjectRef="DO_Epicos"/>
+    <bpmn:association id="Assoc_Epicos" sourceRef="A_DefinirEpicos" targetRef="DOR_Epicos" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Historias" name="Histórias"/>
+    <bpmn:dataObjectReference id="DOR_Historias" name="Histórias" dataObjectRef="DO_Historias"/>
+    <bpmn:association id="Assoc_Historias" sourceRef="A_DefinirHistorias" targetRef="DOR_Historias" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Squads" name="Squads"/>
+    <bpmn:dataObjectReference id="DOR_Squads" name="Squads" dataObjectRef="DO_Squads"/>
+    <bpmn:association id="Assoc_Squads" sourceRef="A_FormarSquads" targetRef="DOR_Squads" associationDirection="One"/>
+    <bpmn:dataObject id="DO_TaskBacklog" name="Backlog de tasks"/>
+    <bpmn:dataObjectReference id="DOR_TaskBacklog" name="Backlog de tasks" dataObjectRef="DO_TaskBacklog"/>
+    <bpmn:association id="Assoc_TaskBacklog" sourceRef="A_DecomporTasks" targetRef="DOR_TaskBacklog" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Guardrails" name="Guardrails IA"/>
+    <bpmn:dataObjectReference id="DOR_Guardrails" name="Guardrails IA" dataObjectRef="DO_Guardrails"/>
+    <bpmn:association id="Assoc_Guardrails" sourceRef="A_DefinirGuardrails" targetRef="DOR_Guardrails" associationDirection="One"/>
+    <bpmn:dataObject id="DO_AgendaPoC" name="Plano da PoC"/>
+    <bpmn:dataObjectReference id="DOR_AgendaPoC" name="Plano da PoC" dataObjectRef="DO_AgendaPoC"/>
+    <bpmn:association id="Assoc_AgendaPoC" sourceRef="A_CoordPoC" targetRef="DOR_AgendaPoC" associationDirection="One"/>
+    <bpmn:dataObject id="DO_DesignSystem" name="Design system"/>
+    <bpmn:dataObjectReference id="DOR_DesignSystem" name="Design system" dataObjectRef="DO_DesignSystem"/>
+    <bpmn:association id="Assoc_DesignSystem" sourceRef="A_DesignSystem" targetRef="DOR_DesignSystem" associationDirection="One"/>
+    <bpmn:dataObject id="DO_AgenteIA" name="Agente configurado"/>
+    <bpmn:dataObjectReference id="DOR_AgenteIA" name="Agente configurado" dataObjectRef="DO_AgenteIA"/>
+    <bpmn:association id="Assoc_AgenteIA" sourceRef="A_ConfigIA" targetRef="DOR_AgenteIA" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Wireframes" name="Wireframes"/>
+    <bpmn:dataObjectReference id="DOR_Wireframes" name="Wireframes" dataObjectRef="DO_Wireframes"/>
+    <bpmn:association id="Assoc_Wireframes" sourceRef="A_Wireframes" targetRef="DOR_Wireframes" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Wireflows" name="Wireflows"/>
+    <bpmn:dataObjectReference id="DOR_Wireflows" name="Wireflows" dataObjectRef="DO_Wireflows"/>
+    <bpmn:association id="Assoc_Wireflows" sourceRef="A_Wireflows" targetRef="DOR_Wireflows" associationDirection="One"/>
+    <bpmn:dataObject id="DO_PoC" name="PoC"/>
+    <bpmn:dataObjectReference id="DOR_PoC" name="PoC" dataObjectRef="DO_PoC"/>
+    <bpmn:association id="Assoc_PoC" sourceRef="A_ConstruirPoC" targetRef="DOR_PoC" associationDirection="One"/>
+    <bpmn:dataObject id="DO_ReviewTasks" name="Tasks aprovadas"/>
+    <bpmn:dataObjectReference id="DOR_ReviewTasks" name="Tasks aprovadas" dataObjectRef="DO_ReviewTasks"/>
+    <bpmn:association id="Assoc_ReviewTasks" sourceRef="A_AprovarTaskIV" targetRef="DOR_ReviewTasks" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Critique" name="Registro da critique"/>
+    <bpmn:dataObjectReference id="DOR_Critique" name="Registro da critique" dataObjectRef="DO_Critique"/>
+    <bpmn:association id="Assoc_Critique" sourceRef="A_DemoPoC" targetRef="DOR_Critique" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Validacao" name="Achados de usuários"/>
+    <bpmn:dataObjectReference id="DOR_Validacao" name="Achados de usuários" dataObjectRef="DO_Validacao"/>
+    <bpmn:association id="Assoc_Validacao" sourceRef="A_ValidarUsuarios" targetRef="DOR_Validacao" associationDirection="One"/>
+    <bpmn:dataObject id="DO_SprintBacklog" name="Sprint Goal e backlog"/>
+    <bpmn:dataObjectReference id="DOR_SprintBacklog" name="Sprint Goal e backlog" dataObjectRef="DO_SprintBacklog"/>
+    <bpmn:association id="Assoc_SprintBacklog" sourceRef="A_Planning" targetRef="DOR_SprintBacklog" associationDirection="One"/>
+    <bpmn:task id="A_CodeReview" name="Revisar código"/>
+    <bpmn:task id="A_AprovarTaskIII" name="Aprovar task tecnicamente"/>
+    <bpmn:task id="A_AprovarTaskIV" name="Aprovar task"/>
+    <bpmn:sequenceFlow id="F23" sourceRef="A_ConstruirPoC" targetRef="A_CodeReview"/>
+    <bpmn:sequenceFlow id="F24" sourceRef="A_CodeReview" targetRef="A_AprovarTaskIII"/>
+    <bpmn:sequenceFlow id="F40" sourceRef="A_AprovarTaskIII" targetRef="A_AprovarTaskIV"/>
+    <bpmn:sequenceFlow id="F41" sourceRef="A_AprovarTaskIV" targetRef="A_DemoPoC"/>
+    <bpmn:task id="A_EnviarNPS" name="Enviar formulário NPS"/>
+    <bpmn:sequenceFlow id="F26" sourceRef="A_EntregaSprint" targetRef="A_EnviarNPS"/>
+    <bpmn:sequenceFlow id="F27" sourceRef="A_EnviarNPS" targetRef="A_RetroSprint"/>
+    <bpmn:dataObject id="DO_NPS" name="Respostas NPS"/>
+    <bpmn:dataObjectReference id="DOR_NPS" name="Respostas NPS" dataObjectRef="DO_NPS"/>
+    <bpmn:association id="Assoc_NPS" sourceRef="A_EnviarNPS" targetRef="DOR_NPS" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Req" name="Requisitos"/>
+    <bpmn:dataObjectReference id="DOR_Req" name="Requisitos" dataObjectRef="DO_Req"/>
+    <bpmn:association id="Assoc_Req" sourceRef="A_ReqStakeholders" targetRef="DOR_Req" associationDirection="One"/>
+    <bpmn:dataObject id="DO_Charter" name="Termo de abertura"/>
+    <bpmn:dataObjectReference id="DOR_Charter" name="Termo de abertura" dataObjectRef="DO_Charter"/>
+    <bpmn:association id="Assoc_Charter" sourceRef="A_Termo" targetRef="DOR_Charter" associationDirection="One"/>
     <bpmn:textAnnotation id="Note_Pairing">
       <bpmn:text>AGES I e II desenvolvem em pares inter-níveis, com apoio técnico de AGES III e IA conforme guardrails de AGES IV. WIP 0,5 por integrante.</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Assoc_Pairing" sourceRef="A_ConstruirPoC" targetRef="Note_Pairing" associationDirection="None" />
-    <bpmn:exclusiveGateway id="G_SprintsConcluidas" name="Sprints concluídas?" />
-    <bpmn:sequenceFlow id="F28" sourceRef="A_RetroSprint" targetRef="G_SprintsConcluidas" />
-    <bpmn:sequenceFlow id="F42" name="Sim" sourceRef="G_SprintsConcluidas" targetRef="A_Andamento" />
-    <bpmn:sequenceFlow id="F43" name="Não" sourceRef="G_SprintsConcluidas" targetRef="A_Planning" />
-    <bpmn:sequenceFlow id="F29" sourceRef="A_Andamento" targetRef="A_OneOnOne" />
-    <bpmn:dataObject id="DO_Incremento" name="Incremento da sprint" />
-    <bpmn:dataObjectReference id="DOR_Incremento" name="Incremento da sprint" dataObjectRef="DO_Incremento" />
-    <bpmn:association id="Assoc_Incremento" sourceRef="A_EntregaSprint" targetRef="DOR_Incremento" associationDirection="One" />
-    <bpmn:dataObject id="DO_RetroActions" name="Ações da retrospectiva" />
-    <bpmn:dataObjectReference id="DOR_RetroActions" name="Ações da retrospectiva" dataObjectRef="DO_RetroActions" />
-    <bpmn:association id="Assoc_RetroActions" sourceRef="A_RetroSprint" targetRef="DOR_RetroActions" associationDirection="One" />
-    <bpmn:task id="A_GerirSquads" name="Gerenciar squads" />
-    <bpmn:dataObject id="DO_AcordosSquad" name="Acordos das squads" />
-    <bpmn:dataObjectReference id="DOR_AcordosSquad" name="Acordos das squads" dataObjectRef="DO_AcordosSquad" />
-    <bpmn:association id="Assoc_AcordosSquad" sourceRef="A_GerirSquads" targetRef="DOR_AcordosSquad" associationDirection="One" />
-    <bpmn:dataObject id="DO_BacklogAtualizado" name="Backlog atualizado" />
-    <bpmn:dataObjectReference id="DOR_BacklogAtualizado" name="Backlog atualizado" dataObjectRef="DO_BacklogAtualizado" />
-    <bpmn:association id="Assoc_BacklogAtualizado" sourceRef="A_AjustarPoC" targetRef="DOR_BacklogAtualizado" associationDirection="One" />
-    <bpmn:sequenceFlow id="F44" sourceRef="A_GerirSquads" targetRef="A_DecomporTasks" />
+    <bpmn:association id="Assoc_Pairing" sourceRef="A_ConstruirPoC" targetRef="Note_Pairing" associationDirection="None"/>
+    <bpmn:exclusiveGateway id="G_SprintsConcluidas" name="Sprints concluídas?"/>
+    <bpmn:sequenceFlow id="F28" sourceRef="A_RetroSprint" targetRef="G_SprintsConcluidas"/>
+    <bpmn:sequenceFlow id="F42" name="Sim" sourceRef="G_SprintsConcluidas" targetRef="A_Andamento"/>
+    <bpmn:sequenceFlow id="F43" name="Não" sourceRef="G_SprintsConcluidas" targetRef="A_Planning"/>
+    <bpmn:sequenceFlow id="F29" sourceRef="A_Andamento" targetRef="A_OneOnOne"/>
+    <bpmn:dataObject id="DO_Incremento" name="Incremento da sprint"/>
+    <bpmn:dataObjectReference id="DOR_Incremento" name="Incremento da sprint" dataObjectRef="DO_Incremento"/>
+    <bpmn:association id="Assoc_Incremento" sourceRef="A_EntregaSprint" targetRef="DOR_Incremento" associationDirection="One"/>
+    <bpmn:dataObject id="DO_RetroActions" name="Ações da retrospectiva"/>
+    <bpmn:dataObjectReference id="DOR_RetroActions" name="Ações da retrospectiva" dataObjectRef="DO_RetroActions"/>
+    <bpmn:association id="Assoc_RetroActions" sourceRef="A_RetroSprint" targetRef="DOR_RetroActions" associationDirection="One"/>
+    <bpmn:task id="A_GerirSquads" name="Gerenciar squads"/>
+    <bpmn:dataObject id="DO_AcordosSquad" name="Acordos das squads"/>
+    <bpmn:dataObjectReference id="DOR_AcordosSquad" name="Acordos das squads" dataObjectRef="DO_AcordosSquad"/>
+    <bpmn:association id="Assoc_AcordosSquad" sourceRef="A_GerirSquads" targetRef="DOR_AcordosSquad" associationDirection="One"/>
+    <bpmn:dataObject id="DO_BacklogAtualizado" name="Backlog atualizado"/>
+    <bpmn:dataObjectReference id="DOR_BacklogAtualizado" name="Backlog atualizado" dataObjectRef="DO_BacklogAtualizado"/>
+    <bpmn:association id="Assoc_BacklogAtualizado" sourceRef="A_AjustarPoC" targetRef="DOR_BacklogAtualizado" associationDirection="One"/>
+    <bpmn:sequenceFlow id="F44" sourceRef="A_GerirSquads" targetRef="A_DecomporTasks"/>
+    <bpmn:sequenceFlow id="F45" sourceRef="A_OneOnOne" targetRef="A_Bancas"/>
   </bpmn:process>
   <bpmn:process id="Process_Sprint_Proposto" name="Sprint regular de duas semanas" isExecutable="false">
-    <bpmn:startEvent id="Sprint_Start" name="Início" />
-    <bpmn:task id="Sprint_Planning" name="Planejar blocos curtos" />
-    <bpmn:task id="Sprint_Work" name="Executar tasks em pares" />
-    <bpmn:task id="Sprint_BlockFeedback" name="Revisar bloco e obter feedback" />
-    <bpmn:exclusiveGateway id="Sprint_Continue" name="Continuar ou ajustar no tempo restante?" />
-    <bpmn:task id="Sprint_Meeting" name="Aula Meeting" />
-    <bpmn:parallelGateway id="Sprint_Split" />
-    <bpmn:parallelGateway id="Sprint_Join" />
-    <bpmn:endEvent id="Sprint_End" name="Fim" />
-    <bpmn:sequenceFlow id="SF1" sourceRef="Sprint_Start" targetRef="Sprint_Planning" />
-    <bpmn:sequenceFlow id="SF2" sourceRef="Sprint_Planning" targetRef="Sprint_Split" />
-    <bpmn:sequenceFlow id="SF3" sourceRef="Sprint_Split" targetRef="Sprint_Work" />
-    <bpmn:sequenceFlow id="SF4" sourceRef="Sprint_Split" targetRef="Sprint_Meeting" />
-    <bpmn:sequenceFlow id="SF5" sourceRef="Sprint_Work" targetRef="Sprint_BlockFeedback" />
-    <bpmn:sequenceFlow id="SF6" sourceRef="Sprint_Meeting" targetRef="Sprint_Join" />
-    <bpmn:sequenceFlow id="SF7" sourceRef="Sprint_BlockFeedback" targetRef="Sprint_Continue" />
-    <bpmn:sequenceFlow id="SF8" name="Sim: próximo bloco/ajuste" sourceRef="Sprint_Continue" targetRef="Sprint_Work" />
-    <bpmn:sequenceFlow id="SF9" name="Não: blocos concluídos" sourceRef="Sprint_Continue" targetRef="Sprint_Join" />
-    <bpmn:sequenceFlow id="SF10" sourceRef="Sprint_Join" targetRef="Sprint_End" />
+    <bpmn:startEvent id="Sprint_Start" name="Início"/>
+    <bpmn:task id="Sprint_Planning" name="Planejar blocos curtos"/>
+    <bpmn:task id="Sprint_Work" name="Executar tasks em pares"/>
+    <bpmn:task id="Sprint_BlockFeedback" name="Revisar bloco e obter feedback"/>
+    <bpmn:exclusiveGateway id="Sprint_Continue" name="Continuar ou ajustar no tempo restante?"/>
+    <bpmn:task id="Sprint_Meeting" name="Aula Meeting"/>
+    <bpmn:parallelGateway id="Sprint_Split"/>
+    <bpmn:parallelGateway id="Sprint_Join"/>
+    <bpmn:endEvent id="Sprint_End" name="Fim"/>
+    <bpmn:sequenceFlow id="SF1" sourceRef="Sprint_Start" targetRef="Sprint_Planning"/>
+    <bpmn:sequenceFlow id="SF2" sourceRef="Sprint_Planning" targetRef="Sprint_Split"/>
+    <bpmn:sequenceFlow id="SF3" sourceRef="Sprint_Split" targetRef="Sprint_Work"/>
+    <bpmn:sequenceFlow id="SF4" sourceRef="Sprint_Split" targetRef="Sprint_Meeting"/>
+    <bpmn:sequenceFlow id="SF5" sourceRef="Sprint_Work" targetRef="Sprint_BlockFeedback"/>
+    <bpmn:sequenceFlow id="SF6" sourceRef="Sprint_Meeting" targetRef="Sprint_Join"/>
+    <bpmn:sequenceFlow id="SF7" sourceRef="Sprint_BlockFeedback" targetRef="Sprint_Continue"/>
+    <bpmn:sequenceFlow id="SF8" name="Sim: próximo bloco/ajuste" sourceRef="Sprint_Continue" targetRef="Sprint_Work"/>
+    <bpmn:sequenceFlow id="SF9" name="Não: blocos concluídos" sourceRef="Sprint_Continue" targetRef="Sprint_Join"/>
+    <bpmn:sequenceFlow id="SF10" sourceRef="Sprint_Join" targetRef="Sprint_End"/>
   </bpmn:process>
-  <di:BPMNDiagram id="Diagram_Proposto" name="O Fluxo AGES Proposto Sugerido">
-    <di:BPMNPlane id="Plane_Proposto" bpmnElement="Collaboration_Proposto">
-      <di:BPMNShape id="DI_Pool" bpmnElement="Participant_Proposto" isHorizontal="true" isExpanded="true">
-        <dc:Bounds x="160" y="150" width="7300" height="1000" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_LaneI_II" bpmnElement="Lane_AGESI_II" isHorizontal="true">
-        <dc:Bounds x="190" y="820" width="7270" height="330" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_LaneIII" bpmnElement="Lane_AGESIII" isHorizontal="true">
-        <dc:Bounds x="190" y="660" width="7270" height="160" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_LaneIV" bpmnElement="Lane_AGESIV" isHorizontal="true">
-        <dc:Bounds x="190" y="510" width="7270" height="150" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_LaneProf" bpmnElement="Lane_Professor" isHorizontal="true">
-        <dc:Bounds x="190" y="380" width="7270" height="130" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_LaneCoord" bpmnElement="Lane_Coordenacao" isHorizontal="true">
-        <dc:Bounds x="190" y="150" width="7270" height="230" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Start" bpmnElement="Start">
-        <dc:Bounds x="175" y="197" width="36" height="36" />
-        <di:BPMNLabel>
-          <dc:Bounds x="240" y="283" width="27" height="14" />
-        </di:BPMNLabel>
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Ideia" bpmnElement="A_Ideia">
-        <dc:Bounds x="360" y="169" width="190" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Semestre" bpmnElement="A_Semestre">
-        <dc:Bounds x="740" y="169" width="175" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ReqStakeholders" bpmnElement="A_ReqStakeholders">
-        <dc:Bounds x="925" y="169" width="220" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ValidarReq" bpmnElement="A_ValidarReq">
-        <dc:Bounds x="1155" y="169" width="170" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Termo" bpmnElement="A_Termo">
-        <dc:Bounds x="1340" y="169" width="205" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_G_Aprovado" bpmnElement="G_Aprovado" isMarkerVisible="true">
-        <dc:Bounds x="1555" y="178" width="54" height="54" />
-        <di:BPMNLabel>
-          <dc:Bounds x="1515" y="282" width="84" height="40" />
-        </di:BPMNLabel>
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Intro" bpmnElement="A_Intro">
-        <dc:Bounds x="1710" y="169" width="175" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Sprints" bpmnElement="A_Sprints">
-        <dc:Bounds x="5100" y="849" width="170" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_EntregaSprint" bpmnElement="A_EntregaSprint">
-        <dc:Bounds x="5320" y="169" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_RetroSprint" bpmnElement="A_RetroSprint">
-        <dc:Bounds x="5660" y="849" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Andamento" bpmnElement="A_Andamento">
-        <dc:Bounds x="6000" y="169" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_OneOnOne" bpmnElement="A_OneOnOne">
-        <dc:Bounds x="6170" y="354" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Bancas" bpmnElement="A_Bancas">
-        <dc:Bounds x="6340" y="169" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_RetroGeral" bpmnElement="A_RetroGeral">
-        <dc:Bounds x="6510" y="169" width="160" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_RelatorioFinal" bpmnElement="A_RelatorioFinal">
-        <dc:Bounds x="6690" y="169" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ApresentacaoFinal" bpmnElement="A_ApresentacaoFinal">
-        <dc:Bounds x="6850" y="169" width="160" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_End" bpmnElement="End">
-        <dc:Bounds x="7030" y="187" width="36" height="36" />
-        <di:BPMNLabel>
-          <dc:Bounds x="5979" y="273" width="19" height="14" />
-        </di:BPMNLabel>
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ValidarIdeia" bpmnElement="A_ValidarIdeia">
-        <dc:Bounds x="555" y="169" width="175" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_MiniSprints" bpmnElement="Note_MiniSprints">
-        <dc:Bounds x="5030" y="940" width="970" height="75" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false">
-        <dc:Bounds x="160" y="1160" width="7300" height="90" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Users" bpmnElement="Participant_Usuarios" isHorizontal="true" isExpanded="false">
-        <dc:Bounds x="160" y="1270" width="7300" height="90" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Etapa1" bpmnElement="Note_Etapa1">
-        <dc:Bounds x="300" y="80" width="950" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Etapa2" bpmnElement="Note_Etapa2">
-        <dc:Bounds x="1790" y="80" width="620" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Sprint0" bpmnElement="Note_Sprint0">
-        <dc:Bounds x="2610" y="80" width="570" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Diamond1" bpmnElement="Note_Diamond1">
-        <dc:Bounds x="310" y="125" width="1050" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Diamond2" bpmnElement="Note_Diamond2">
-        <dc:Bounds x="2560" y="125" width="920" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Etapa3" bpmnElement="Note_Etapa3">
-        <dc:Bounds x="5000" y="80" width="650" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Etapa4" bpmnElement="Note_Etapa4">
-        <dc:Bounds x="6100" y="80" width="300" height="42" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_MapearJornada" bpmnElement="A_MapearJornada">
-        <dc:Bounds x="1900" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DefinirMVP" bpmnElement="A_DefinirMVP">
-        <dc:Bounds x="2040" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DefinirEpicos" bpmnElement="A_DefinirEpicos">
-        <dc:Bounds x="2180" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DefinirHistorias" bpmnElement="A_DefinirHistorias">
-        <dc:Bounds x="2320" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_FormarSquads" bpmnElement="A_FormarSquads">
-        <dc:Bounds x="2460" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DecomporTasks" bpmnElement="A_DecomporTasks">
-        <dc:Bounds x="2740" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DefinirGuardrails" bpmnElement="A_DefinirGuardrails">
-        <dc:Bounds x="2880" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_CoordPoC" bpmnElement="A_CoordPoC">
-        <dc:Bounds x="3020" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DesignSystem" bpmnElement="A_DesignSystem">
-        <dc:Bounds x="3160" y="644" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ConfigIA" bpmnElement="A_ConfigIA">
-        <dc:Bounds x="3300" y="644" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Wireframes" bpmnElement="A_Wireframes">
-        <dc:Bounds x="3440" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Wireflows" bpmnElement="A_Wireflows">
-        <dc:Bounds x="3580" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ConstruirPoC" bpmnElement="A_ConstruirPoC">
-        <dc:Bounds x="3720" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_DemoPoC" bpmnElement="A_DemoPoC">
-        <dc:Bounds x="4280" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_ValidarUsuarios" bpmnElement="A_ValidarUsuarios">
-        <dc:Bounds x="4420" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_G_PoCValidada" bpmnElement="G_PoCValidada">
-        <dc:Bounds x="4560" y="858" width="54" height="54" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_AjustarPoC" bpmnElement="A_AjustarPoC">
-        <dc:Bounds x="4700" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_Planning" bpmnElement="A_Planning">
-        <dc:Bounds x="4840" y="849" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_StoryMap" bpmnElement="DOR_StoryMap">
-        <dc:Bounds x="1906" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_MVP" bpmnElement="DOR_MVP">
-        <dc:Bounds x="2046" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Epicos" bpmnElement="DOR_Epicos">
-        <dc:Bounds x="2186" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Historias" bpmnElement="DOR_Historias">
-        <dc:Bounds x="2326" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Squads" bpmnElement="DOR_Squads">
-        <dc:Bounds x="2466" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_TaskBacklog" bpmnElement="DOR_TaskBacklog">
-        <dc:Bounds x="2746" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Guardrails" bpmnElement="DOR_Guardrails">
-        <dc:Bounds x="2886" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_AgendaPoC" bpmnElement="DOR_AgendaPoC">
-        <dc:Bounds x="3026" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_DesignSystem" bpmnElement="DOR_DesignSystem">
-        <dc:Bounds x="3166" y="715" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_AgenteIA" bpmnElement="DOR_AgenteIA">
-        <dc:Bounds x="3306" y="715" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Wireframes" bpmnElement="DOR_Wireframes">
-        <dc:Bounds x="3446" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Wireflows" bpmnElement="DOR_Wireflows">
-        <dc:Bounds x="3586" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_PoC" bpmnElement="DOR_PoC">
-        <dc:Bounds x="3726" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_ReviewTasks" bpmnElement="DOR_ReviewTasks">
-        <dc:Bounds x="4146" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Critique" bpmnElement="DOR_Critique">
-        <dc:Bounds x="4286" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Validacao" bpmnElement="DOR_Validacao">
-        <dc:Bounds x="4426" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_SprintBacklog" bpmnElement="DOR_SprintBacklog">
-        <dc:Bounds x="4846" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_CodeReview" bpmnElement="A_CodeReview">
-        <dc:Bounds x="3860" y="644" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_AprovarTaskIII" bpmnElement="A_AprovarTaskIII">
-        <dc:Bounds x="4000" y="644" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_AprovarTaskIV" bpmnElement="A_AprovarTaskIV">
-        <dc:Bounds x="4140" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_EnviarNPS" bpmnElement="A_EnviarNPS">
-        <dc:Bounds x="5490" y="169" width="145" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Req" bpmnElement="DOR_Req">
-        <dc:Bounds x="930" y="258" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Charter" bpmnElement="DOR_Charter">
-        <dc:Bounds x="1345" y="258" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_NPS" bpmnElement="DOR_NPS">
-        <dc:Bounds x="5496" y="258" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_Note_Pairing" bpmnElement="Note_Pairing">
-        <dc:Bounds x="3550" y="1005" width="760" height="55" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_G_SprintsConcluidas" bpmnElement="G_SprintsConcluidas">
-        <dc:Bounds x="5830" y="858" width="54" height="54" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_Incremento" bpmnElement="DOR_Incremento">
-        <dc:Bounds x="5326" y="258" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_RetroActions" bpmnElement="DOR_RetroActions">
-        <dc:Bounds x="5666" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_A_GerirSquads" bpmnElement="A_GerirSquads">
-        <dc:Bounds x="2600" y="499" width="130" height="72" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_AcordosSquad" bpmnElement="DOR_AcordosSquad">
-        <dc:Bounds x="2606" y="555" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNShape id="DI_DOR_BacklogAtualizado" bpmnElement="DOR_BacklogAtualizado">
-        <dc:Bounds x="4706" y="930" width="118" height="48" />
-      </di:BPMNShape>
-      <di:BPMNEdge id="DI_F01" bpmnElement="F01">
-        <di:waypoint x="211" y="215" />
-        <di:waypoint x="285" y="215" />
-        <di:waypoint x="285" y="205" />
-        <di:waypoint x="360" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F02" bpmnElement="F02">
-        <di:waypoint x="550" y="205" />
-        <di:waypoint x="555" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F03" bpmnElement="F03">
-        <di:waypoint x="730" y="205" />
-        <di:waypoint x="740" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F04" bpmnElement="F04">
-        <di:waypoint x="915" y="205" />
-        <di:waypoint x="925" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F09" bpmnElement="F09">
-        <di:waypoint x="1609" y="205" />
-        <di:waypoint x="925" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F05" bpmnElement="F05">
-        <di:waypoint x="1145" y="205" />
-        <di:waypoint x="1155" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F06" bpmnElement="F06">
-        <di:waypoint x="1325" y="205" />
-        <di:waypoint x="1340" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F07" bpmnElement="F07">
-        <di:waypoint x="1545" y="205" />
-        <di:waypoint x="1555" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F08" bpmnElement="F08">
-        <di:waypoint x="1609" y="205" />
-        <di:waypoint x="1710" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F25" bpmnElement="F25">
-        <di:waypoint x="5270" y="885" />
-        <di:waypoint x="5295" y="885" />
-        <di:waypoint x="5295" y="205" />
-        <di:waypoint x="5320" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F30" bpmnElement="F30">
-        <di:waypoint x="6485" y="205" />
-        <di:waypoint x="6510" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F31" bpmnElement="F31">
-        <di:waypoint x="6670" y="205" />
-        <di:waypoint x="6690" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F32" bpmnElement="F32">
-        <di:waypoint x="6835" y="205" />
-        <di:waypoint x="6850" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F33" bpmnElement="F33">
-        <di:waypoint x="7010" y="205" />
-        <di:waypoint x="7030" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F10" bpmnElement="F10">
-        <di:waypoint x="1885" y="205" />
-        <di:waypoint x="1892" y="205" />
-        <di:waypoint x="1892" y="885" />
-        <di:waypoint x="1900" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F11" bpmnElement="F11">
-        <di:waypoint x="2030" y="885" />
-        <di:waypoint x="2040" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F12" bpmnElement="F12">
-        <di:waypoint x="2170" y="885" />
-        <di:waypoint x="2175" y="885" />
-        <di:waypoint x="2175" y="535" />
-        <di:waypoint x="2180" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F13" bpmnElement="F13">
-        <di:waypoint x="2310" y="535" />
-        <di:waypoint x="2320" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F14" bpmnElement="F14">
-        <di:waypoint x="2450" y="535" />
-        <di:waypoint x="2460" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F15" bpmnElement="F15">
-        <di:waypoint x="2590" y="535" />
-        <di:waypoint x="2600" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F16" bpmnElement="F16">
-        <di:waypoint x="2870" y="885" />
-        <di:waypoint x="2875" y="885" />
-        <di:waypoint x="2875" y="535" />
-        <di:waypoint x="2880" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F17" bpmnElement="F17">
-        <di:waypoint x="3010" y="535" />
-        <di:waypoint x="3020" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F18" bpmnElement="F18">
-        <di:waypoint x="3150" y="535" />
-        <di:waypoint x="3155" y="535" />
-        <di:waypoint x="3155" y="680" />
-        <di:waypoint x="3160" y="680" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F19" bpmnElement="F19">
-        <di:waypoint x="3290" y="680" />
-        <di:waypoint x="3300" y="680" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F20" bpmnElement="F20">
-        <di:waypoint x="3430" y="680" />
-        <di:waypoint x="3435" y="680" />
-        <di:waypoint x="3435" y="885" />
-        <di:waypoint x="3440" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F21" bpmnElement="F21">
-        <di:waypoint x="3570" y="885" />
-        <di:waypoint x="3580" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F22" bpmnElement="F22">
-        <di:waypoint x="3710" y="885" />
-        <di:waypoint x="3720" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F34" bpmnElement="F34">
-        <di:waypoint x="4410" y="885" />
-        <di:waypoint x="4420" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F35" bpmnElement="F35">
-        <di:waypoint x="4550" y="885" />
-        <di:waypoint x="4560" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F36" bpmnElement="F36">
-        <di:waypoint x="4614" y="885" />
-        <di:waypoint x="4700" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F37" bpmnElement="F37">
-        <di:waypoint x="4830" y="885" />
-        <di:waypoint x="3720" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F38" bpmnElement="F38">
-        <di:waypoint x="4614" y="885" />
-        <di:waypoint x="4840" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F39" bpmnElement="F39">
-        <di:waypoint x="4970" y="885" />
-        <di:waypoint x="5100" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F23" bpmnElement="F23">
-        <di:waypoint x="3850" y="885" />
-        <di:waypoint x="3855" y="885" />
-        <di:waypoint x="3855" y="680" />
-        <di:waypoint x="3860" y="680" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F24" bpmnElement="F24">
-        <di:waypoint x="3990" y="680" />
-        <di:waypoint x="4000" y="680" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F40" bpmnElement="F40">
-        <di:waypoint x="4130" y="680" />
-        <di:waypoint x="4135" y="680" />
-        <di:waypoint x="4135" y="535" />
-        <di:waypoint x="4140" y="535" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F41" bpmnElement="F41">
-        <di:waypoint x="4270" y="535" />
-        <di:waypoint x="4275" y="535" />
-        <di:waypoint x="4275" y="885" />
-        <di:waypoint x="4280" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F26" bpmnElement="F26">
-        <di:waypoint x="5465" y="205" />
-        <di:waypoint x="5490" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F27" bpmnElement="F27">
-        <di:waypoint x="5635" y="205" />
-        <di:waypoint x="5647" y="205" />
-        <di:waypoint x="5647" y="885" />
-        <di:waypoint x="5660" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F28" bpmnElement="F28">
-        <di:waypoint x="5805" y="885" />
-        <di:waypoint x="5830" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F42" bpmnElement="F42">
-        <di:waypoint x="5884" y="885" />
-        <di:waypoint x="5942" y="885" />
-        <di:waypoint x="5942" y="205" />
-        <di:waypoint x="6000" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F43" bpmnElement="F43">
-        <di:waypoint x="5884" y="912" />
-        <di:waypoint x="5884" y="1080" />
-        <di:waypoint x="4905" y="1080" />
-        <di:waypoint x="4905" y="921" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F29" bpmnElement="F29">
-        <di:waypoint x="6145" y="205" />
-        <di:waypoint x="6157" y="205" />
-        <di:waypoint x="6157" y="390" />
-        <di:waypoint x="6170" y="390" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_F44" bpmnElement="F44">
-        <di:waypoint x="2730" y="535" />
-        <di:waypoint x="2735" y="535" />
-        <di:waypoint x="2735" y="885" />
-        <di:waypoint x="2740" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_StoryMap" bpmnElement="Assoc_StoryMap">
-        <di:waypoint x="2030" y="921" />
-        <di:waypoint x="1968" y="921" />
-        <di:waypoint x="1968" y="954" />
-        <di:waypoint x="1906" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_MVP" bpmnElement="Assoc_MVP">
-        <di:waypoint x="2170" y="921" />
-        <di:waypoint x="2108" y="921" />
-        <di:waypoint x="2108" y="954" />
-        <di:waypoint x="2046" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Epicos" bpmnElement="Assoc_Epicos">
-        <di:waypoint x="2310" y="571" />
-        <di:waypoint x="2248" y="571" />
-        <di:waypoint x="2248" y="579" />
-        <di:waypoint x="2186" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Historias" bpmnElement="Assoc_Historias">
-        <di:waypoint x="2450" y="571" />
-        <di:waypoint x="2388" y="571" />
-        <di:waypoint x="2388" y="579" />
-        <di:waypoint x="2326" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Squads" bpmnElement="Assoc_Squads">
-        <di:waypoint x="2590" y="571" />
-        <di:waypoint x="2528" y="571" />
-        <di:waypoint x="2528" y="579" />
-        <di:waypoint x="2466" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_TaskBacklog" bpmnElement="Assoc_TaskBacklog">
-        <di:waypoint x="2870" y="921" />
-        <di:waypoint x="2808" y="921" />
-        <di:waypoint x="2808" y="954" />
-        <di:waypoint x="2746" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Guardrails" bpmnElement="Assoc_Guardrails">
-        <di:waypoint x="3010" y="571" />
-        <di:waypoint x="2948" y="571" />
-        <di:waypoint x="2948" y="579" />
-        <di:waypoint x="2886" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_AgendaPoC" bpmnElement="Assoc_AgendaPoC">
-        <di:waypoint x="3150" y="571" />
-        <di:waypoint x="3088" y="571" />
-        <di:waypoint x="3088" y="579" />
-        <di:waypoint x="3026" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_DesignSystem" bpmnElement="Assoc_DesignSystem">
-        <di:waypoint x="3290" y="716" />
-        <di:waypoint x="3228" y="716" />
-        <di:waypoint x="3228" y="739" />
-        <di:waypoint x="3166" y="739" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_AgenteIA" bpmnElement="Assoc_AgenteIA">
-        <di:waypoint x="3430" y="716" />
-        <di:waypoint x="3368" y="716" />
-        <di:waypoint x="3368" y="739" />
-        <di:waypoint x="3306" y="739" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Wireframes" bpmnElement="Assoc_Wireframes">
-        <di:waypoint x="3570" y="921" />
-        <di:waypoint x="3508" y="921" />
-        <di:waypoint x="3508" y="954" />
-        <di:waypoint x="3446" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Wireflows" bpmnElement="Assoc_Wireflows">
-        <di:waypoint x="3710" y="921" />
-        <di:waypoint x="3648" y="921" />
-        <di:waypoint x="3648" y="954" />
-        <di:waypoint x="3586" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_PoC" bpmnElement="Assoc_PoC">
-        <di:waypoint x="3850" y="921" />
-        <di:waypoint x="3788" y="921" />
-        <di:waypoint x="3788" y="954" />
-        <di:waypoint x="3726" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_ReviewTasks" bpmnElement="Assoc_ReviewTasks">
-        <di:waypoint x="4270" y="571" />
-        <di:waypoint x="4208" y="571" />
-        <di:waypoint x="4208" y="579" />
-        <di:waypoint x="4146" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Critique" bpmnElement="Assoc_Critique">
-        <di:waypoint x="4410" y="921" />
-        <di:waypoint x="4348" y="921" />
-        <di:waypoint x="4348" y="954" />
-        <di:waypoint x="4286" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Validacao" bpmnElement="Assoc_Validacao">
-        <di:waypoint x="4550" y="921" />
-        <di:waypoint x="4488" y="921" />
-        <di:waypoint x="4488" y="954" />
-        <di:waypoint x="4426" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_SprintBacklog" bpmnElement="Assoc_SprintBacklog">
-        <di:waypoint x="4970" y="921" />
-        <di:waypoint x="4908" y="921" />
-        <di:waypoint x="4908" y="954" />
-        <di:waypoint x="4846" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_NPS" bpmnElement="Assoc_NPS">
-        <di:waypoint x="5635" y="241" />
-        <di:waypoint x="5565" y="241" />
-        <di:waypoint x="5565" y="282" />
-        <di:waypoint x="5496" y="282" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Req" bpmnElement="Assoc_Req">
-        <di:waypoint x="1145" y="241" />
-        <di:waypoint x="1037" y="241" />
-        <di:waypoint x="1037" y="282" />
-        <di:waypoint x="930" y="282" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Charter" bpmnElement="Assoc_Charter">
-        <di:waypoint x="1545" y="241" />
-        <di:waypoint x="1445" y="241" />
-        <di:waypoint x="1445" y="282" />
-        <di:waypoint x="1345" y="282" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Pairing" bpmnElement="Assoc_Pairing">
-        <di:waypoint x="3850" y="921" />
-        <di:waypoint x="3700" y="921" />
-        <di:waypoint x="3700" y="1032" />
-        <di:waypoint x="3550" y="1032" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_Incremento" bpmnElement="Assoc_Incremento">
-        <di:waypoint x="5465" y="241" />
-        <di:waypoint x="5395" y="241" />
-        <di:waypoint x="5395" y="282" />
-        <di:waypoint x="5326" y="282" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_RetroActions" bpmnElement="Assoc_RetroActions">
-        <di:waypoint x="5805" y="921" />
-        <di:waypoint x="5735" y="921" />
-        <di:waypoint x="5735" y="954" />
-        <di:waypoint x="5666" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_AcordosSquad" bpmnElement="Assoc_AcordosSquad">
-        <di:waypoint x="2730" y="571" />
-        <di:waypoint x="2668" y="571" />
-        <di:waypoint x="2668" y="579" />
-        <di:waypoint x="2606" y="579" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_Assoc_BacklogAtualizado" bpmnElement="Assoc_BacklogAtualizado">
-        <di:waypoint x="4830" y="921" />
-        <di:waypoint x="4768" y="921" />
-        <di:waypoint x="4768" y="954" />
-        <di:waypoint x="4706" y="954" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_Ideia" bpmnElement="MF_Ideia">
-        <di:waypoint x="130" y="1155" />
-        <di:waypoint x="245" y="1155" />
-        <di:waypoint x="245" y="205" />
-        <di:waypoint x="360" y="205" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_Requisitos" bpmnElement="MF_Requisitos">
-        <di:waypoint x="1145" y="205" />
-        <di:waypoint x="637" y="205" />
-        <di:waypoint x="637" y="1155" />
-        <di:waypoint x="130" y="1155" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_PoC" bpmnElement="MF_PoC">
-        <di:waypoint x="4410" y="885" />
-        <di:waypoint x="2270" y="885" />
-        <di:waypoint x="2270" y="1155" />
-        <di:waypoint x="130" y="1155" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_Usuario" bpmnElement="MF_Usuario">
-        <di:waypoint x="130" y="1265" />
-        <di:waypoint x="2275" y="1265" />
-        <di:waypoint x="2275" y="885" />
-        <di:waypoint x="4420" y="885" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_Entrega" bpmnElement="MF_Entrega">
-        <di:waypoint x="5465" y="205" />
-        <di:waypoint x="2797" y="205" />
-        <di:waypoint x="2797" y="1155" />
-        <di:waypoint x="130" y="1155" />
-      </di:BPMNEdge>
-      <di:BPMNEdge id="DI_MF_NPS" bpmnElement="MF_NPS">
-        <di:waypoint x="5635" y="205" />
-        <di:waypoint x="2882" y="205" />
-        <di:waypoint x="2882" y="1155" />
-        <di:waypoint x="130" y="1155" />
-      </di:BPMNEdge>
-    </di:BPMNPlane>
-  </di:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_Proposto" name="O Fluxo AGES Proposto Sugerido">
+    <bpmndi:BPMNPlane id="Plane_Proposto" bpmnElement="Collaboration_Proposto">
+      <bpmndi:BPMNShape id="DI_Participant_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true">
+        <dc:Bounds x="100" y="110" width="8000" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Participant_Proposto" bpmnElement="Participant_Proposto" isHorizontal="true" isExpanded="true">
+        <dc:Bounds x="100" y="240" width="8000" height="1220"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_Coordenacao" bpmnElement="Lane_Coordenacao" isHorizontal="true">
+        <dc:Bounds x="130" y="240" width="7970" height="230"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_Professor" bpmnElement="Lane_Professor" isHorizontal="true">
+        <dc:Bounds x="130" y="470" width="7970" height="150"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESIV" bpmnElement="Lane_AGESIV" isHorizontal="true">
+        <dc:Bounds x="130" y="620" width="7970" height="210"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESIII" bpmnElement="Lane_AGESIII" isHorizontal="true">
+        <dc:Bounds x="130" y="830" width="7970" height="210"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESI_II" bpmnElement="Lane_AGESI_II" isHorizontal="true">
+        <dc:Bounds x="130" y="1040" width="7970" height="420"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Participant_Usuarios" bpmnElement="Participant_Usuarios" isHorizontal="true">
+        <dc:Bounds x="100" y="1520" width="8000" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Start" bpmnElement="Start">
+        <dc:Bounds x="182" y="297" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="172" y="339" width="56" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Ideia" bpmnElement="A_Ideia">
+        <dc:Bounds x="315" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ValidarIdeia" bpmnElement="A_ValidarIdeia">
+        <dc:Bounds x="505" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Semestre" bpmnElement="A_Semestre">
+        <dc:Bounds x="695" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ReqStakeholders" bpmnElement="A_ReqStakeholders">
+        <dc:Bounds x="885" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ValidarReq" bpmnElement="A_ValidarReq">
+        <dc:Bounds x="1075" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Termo" bpmnElement="A_Termo">
+        <dc:Bounds x="1265" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_Aprovado" bpmnElement="G_Aprovado" isMarkerVisible="true">
+        <dc:Bounds x="1505" y="290" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1470" y="346" width="120" height="40"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Intro" bpmnElement="A_Intro">
+        <dc:Bounds x="1645" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_MapearJornada" bpmnElement="A_MapearJornada">
+        <dc:Bounds x="1835" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirMVP" bpmnElement="A_DefinirMVP">
+        <dc:Bounds x="2025" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirEpicos" bpmnElement="A_DefinirEpicos">
+        <dc:Bounds x="2215" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirHistorias" bpmnElement="A_DefinirHistorias">
+        <dc:Bounds x="2405" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_FormarSquads" bpmnElement="A_FormarSquads">
+        <dc:Bounds x="2595" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_GerirSquads" bpmnElement="A_GerirSquads">
+        <dc:Bounds x="2785" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DecomporTasks" bpmnElement="A_DecomporTasks">
+        <dc:Bounds x="2975" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DefinirGuardrails" bpmnElement="A_DefinirGuardrails">
+        <dc:Bounds x="3165" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_CoordPoC" bpmnElement="A_CoordPoC">
+        <dc:Bounds x="3355" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DesignSystem" bpmnElement="A_DesignSystem">
+        <dc:Bounds x="3545" y="860" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ConfigIA" bpmnElement="A_ConfigIA">
+        <dc:Bounds x="3735" y="860" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Wireframes" bpmnElement="A_Wireframes">
+        <dc:Bounds x="3925" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Wireflows" bpmnElement="A_Wireflows">
+        <dc:Bounds x="4115" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ConstruirPoC" bpmnElement="A_ConstruirPoC">
+        <dc:Bounds x="4305" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_CodeReview" bpmnElement="A_CodeReview">
+        <dc:Bounds x="4495" y="860" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_AprovarTaskIII" bpmnElement="A_AprovarTaskIII">
+        <dc:Bounds x="4685" y="860" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_AprovarTaskIV" bpmnElement="A_AprovarTaskIV">
+        <dc:Bounds x="4875" y="650" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_DemoPoC" bpmnElement="A_DemoPoC">
+        <dc:Bounds x="5065" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ValidarUsuarios" bpmnElement="A_ValidarUsuarios">
+        <dc:Bounds x="5255" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_PoCValidada" bpmnElement="G_PoCValidada" isMarkerVisible="true">
+        <dc:Bounds x="5495" y="1085" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5460" y="1045" width="120" height="34"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Planning" bpmnElement="A_Planning">
+        <dc:Bounds x="5635" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Sprints" bpmnElement="A_Sprints">
+        <dc:Bounds x="5825" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_EntregaSprint" bpmnElement="A_EntregaSprint">
+        <dc:Bounds x="6015" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_EnviarNPS" bpmnElement="A_EnviarNPS">
+        <dc:Bounds x="6205" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_RetroSprint" bpmnElement="A_RetroSprint">
+        <dc:Bounds x="6395" y="1070" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_SprintsConcluidas" bpmnElement="G_SprintsConcluidas" isMarkerVisible="true">
+        <dc:Bounds x="6635" y="1085" width="50" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6600" y="1045" width="120" height="34"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Andamento" bpmnElement="A_Andamento">
+        <dc:Bounds x="6775" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_OneOnOne" bpmnElement="A_OneOnOne">
+        <dc:Bounds x="6965" y="505" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_Bancas" bpmnElement="A_Bancas">
+        <dc:Bounds x="7155" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_RetroGeral" bpmnElement="A_RetroGeral">
+        <dc:Bounds x="7345" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_RelatorioFinal" bpmnElement="A_RelatorioFinal">
+        <dc:Bounds x="7535" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_ApresentacaoFinal" bpmnElement="A_ApresentacaoFinal">
+        <dc:Bounds x="7725" y="275" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_End" bpmnElement="End">
+        <dc:Bounds x="7972" y="297" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="7962" y="339" width="56" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_A_AjustarPoC" bpmnElement="A_AjustarPoC">
+        <dc:Bounds x="4780" y="1260" width="150" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_StoryMap" bpmnElement="DOR_StoryMap">
+        <dc:Bounds x="1892" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1870" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_MVP" bpmnElement="DOR_MVP">
+        <dc:Bounds x="2082" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2060" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Epicos" bpmnElement="DOR_Epicos">
+        <dc:Bounds x="2272" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2250" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Historias" bpmnElement="DOR_Historias">
+        <dc:Bounds x="2462" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2440" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Squads" bpmnElement="DOR_Squads">
+        <dc:Bounds x="2652" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2630" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_TaskBacklog" bpmnElement="DOR_TaskBacklog">
+        <dc:Bounds x="3032" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3010" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Guardrails" bpmnElement="DOR_Guardrails">
+        <dc:Bounds x="3222" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3200" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_AgendaPoC" bpmnElement="DOR_AgendaPoC">
+        <dc:Bounds x="3412" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3390" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_DesignSystem" bpmnElement="DOR_DesignSystem">
+        <dc:Bounds x="3602" y="960" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3580" y="1014" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_AgenteIA" bpmnElement="DOR_AgenteIA">
+        <dc:Bounds x="3792" y="960" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3770" y="1014" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Wireframes" bpmnElement="DOR_Wireframes">
+        <dc:Bounds x="3982" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3960" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Wireflows" bpmnElement="DOR_Wireflows">
+        <dc:Bounds x="4172" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4150" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_PoC" bpmnElement="DOR_PoC">
+        <dc:Bounds x="4352" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4330" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_ReviewTasks" bpmnElement="DOR_ReviewTasks">
+        <dc:Bounds x="4932" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4910" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Critique" bpmnElement="DOR_Critique">
+        <dc:Bounds x="5122" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5100" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Validacao" bpmnElement="DOR_Validacao">
+        <dc:Bounds x="5312" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5290" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_SprintBacklog" bpmnElement="DOR_SprintBacklog">
+        <dc:Bounds x="5692" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5670" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_NPS" bpmnElement="DOR_NPS">
+        <dc:Bounds x="6262" y="375" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6240" y="429" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Req" bpmnElement="DOR_Req">
+        <dc:Bounds x="942" y="375" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="920" y="429" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Charter" bpmnElement="DOR_Charter">
+        <dc:Bounds x="1322" y="375" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1300" y="429" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_Incremento" bpmnElement="DOR_Incremento">
+        <dc:Bounds x="6072" y="375" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6050" y="429" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_RetroActions" bpmnElement="DOR_RetroActions">
+        <dc:Bounds x="6452" y="1170" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6430" y="1224" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_AcordosSquad" bpmnElement="DOR_AcordosSquad">
+        <dc:Bounds x="2842" y="750" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2820" y="804" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_DOR_BacklogAtualizado" bpmnElement="DOR_BacklogAtualizado">
+        <dc:Bounds x="4837" y="1360" width="36" height="50"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="4815" y="1414" width="80" height="27"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Etapa1" bpmnElement="Note_Etapa1">
+        <dc:Bounds x="330" y="20" width="1260" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Etapa2" bpmnElement="Note_Etapa2">
+        <dc:Bounds x="1660" y="20" width="1260" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Sprint0" bpmnElement="Note_Sprint0">
+        <dc:Bounds x="2990" y="20" width="2590" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Etapa3" bpmnElement="Note_Etapa3">
+        <dc:Bounds x="5650" y="20" width="1070" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Etapa4" bpmnElement="Note_Etapa4">
+        <dc:Bounds x="6790" y="20" width="1260" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Diamond1" bpmnElement="Note_Diamond1">
+        <dc:Bounds x="330" y="62" width="2400" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Diamond2" bpmnElement="Note_Diamond2">
+        <dc:Bounds x="2800" y="62" width="5250" height="32"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_Pairing" bpmnElement="Note_Pairing">
+        <dc:Bounds x="4020" y="1265" width="320" height="75"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Note_MiniSprints" bpmnElement="Note_MiniSprints">
+        <dc:Bounds x="5790" y="1255" width="330" height="95"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DI_F01" bpmnElement="F01">
+        <di:waypoint x="218" y="315"/>
+        <di:waypoint x="315" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F02" bpmnElement="F02">
+        <di:waypoint x="465" y="315"/>
+        <di:waypoint x="505" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F03" bpmnElement="F03">
+        <di:waypoint x="655" y="315"/>
+        <di:waypoint x="695" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F04" bpmnElement="F04">
+        <di:waypoint x="845" y="315"/>
+        <di:waypoint x="885" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F09" bpmnElement="F09">
+        <di:waypoint x="1530" y="290"/>
+        <di:waypoint x="1530" y="265"/>
+        <di:waypoint x="990" y="265"/>
+        <di:waypoint x="990" y="275"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1170" y="248" width="110" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F05" bpmnElement="F05">
+        <di:waypoint x="1035" y="315"/>
+        <di:waypoint x="1075" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F06" bpmnElement="F06">
+        <di:waypoint x="1225" y="315"/>
+        <di:waypoint x="1265" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F07" bpmnElement="F07">
+        <di:waypoint x="1415" y="315"/>
+        <di:waypoint x="1505" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F08" bpmnElement="F08">
+        <di:waypoint x="1555" y="315"/>
+        <di:waypoint x="1645" y="315"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1563" y="293" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F25" bpmnElement="F25">
+        <di:waypoint x="5975" y="1110"/>
+        <di:waypoint x="5995" y="1110"/>
+        <di:waypoint x="5995" y="315"/>
+        <di:waypoint x="6015" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F30" bpmnElement="F30">
+        <di:waypoint x="7305" y="315"/>
+        <di:waypoint x="7345" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F31" bpmnElement="F31">
+        <di:waypoint x="7495" y="315"/>
+        <di:waypoint x="7535" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F32" bpmnElement="F32">
+        <di:waypoint x="7685" y="315"/>
+        <di:waypoint x="7725" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F33" bpmnElement="F33">
+        <di:waypoint x="7875" y="315"/>
+        <di:waypoint x="7972" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F10" bpmnElement="F10">
+        <di:waypoint x="1795" y="315"/>
+        <di:waypoint x="1815" y="315"/>
+        <di:waypoint x="1815" y="1110"/>
+        <di:waypoint x="1835" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F11" bpmnElement="F11">
+        <di:waypoint x="1985" y="1110"/>
+        <di:waypoint x="2025" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F12" bpmnElement="F12">
+        <di:waypoint x="2175" y="1110"/>
+        <di:waypoint x="2195" y="1110"/>
+        <di:waypoint x="2195" y="690"/>
+        <di:waypoint x="2215" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F13" bpmnElement="F13">
+        <di:waypoint x="2365" y="690"/>
+        <di:waypoint x="2405" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F14" bpmnElement="F14">
+        <di:waypoint x="2555" y="690"/>
+        <di:waypoint x="2595" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F15" bpmnElement="F15">
+        <di:waypoint x="2745" y="690"/>
+        <di:waypoint x="2785" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F16" bpmnElement="F16">
+        <di:waypoint x="3125" y="1110"/>
+        <di:waypoint x="3145" y="1110"/>
+        <di:waypoint x="3145" y="690"/>
+        <di:waypoint x="3165" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F17" bpmnElement="F17">
+        <di:waypoint x="3315" y="690"/>
+        <di:waypoint x="3355" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F18" bpmnElement="F18">
+        <di:waypoint x="3505" y="690"/>
+        <di:waypoint x="3525" y="690"/>
+        <di:waypoint x="3525" y="900"/>
+        <di:waypoint x="3545" y="900"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F19" bpmnElement="F19">
+        <di:waypoint x="3695" y="900"/>
+        <di:waypoint x="3735" y="900"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F20" bpmnElement="F20">
+        <di:waypoint x="3885" y="900"/>
+        <di:waypoint x="3905" y="900"/>
+        <di:waypoint x="3905" y="1110"/>
+        <di:waypoint x="3925" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F21" bpmnElement="F21">
+        <di:waypoint x="4075" y="1110"/>
+        <di:waypoint x="4115" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F22" bpmnElement="F22">
+        <di:waypoint x="4265" y="1110"/>
+        <di:waypoint x="4305" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F34" bpmnElement="F34">
+        <di:waypoint x="5215" y="1110"/>
+        <di:waypoint x="5255" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F35" bpmnElement="F35">
+        <di:waypoint x="5405" y="1110"/>
+        <di:waypoint x="5495" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F36" bpmnElement="F36">
+        <di:waypoint x="5520" y="1135"/>
+        <di:waypoint x="5520" y="1300"/>
+        <di:waypoint x="4930" y="1300"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5527" y="1240" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F37" bpmnElement="F37">
+        <di:waypoint x="4780" y="1300"/>
+        <di:waypoint x="4420" y="1300"/>
+        <di:waypoint x="4420" y="1150"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F38" bpmnElement="F38">
+        <di:waypoint x="5545" y="1110"/>
+        <di:waypoint x="5635" y="1110"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5553" y="1088" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F39" bpmnElement="F39">
+        <di:waypoint x="5785" y="1110"/>
+        <di:waypoint x="5825" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F23" bpmnElement="F23">
+        <di:waypoint x="4455" y="1110"/>
+        <di:waypoint x="4475" y="1110"/>
+        <di:waypoint x="4475" y="900"/>
+        <di:waypoint x="4495" y="900"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F24" bpmnElement="F24">
+        <di:waypoint x="4645" y="900"/>
+        <di:waypoint x="4685" y="900"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F40" bpmnElement="F40">
+        <di:waypoint x="4835" y="900"/>
+        <di:waypoint x="4855" y="900"/>
+        <di:waypoint x="4855" y="690"/>
+        <di:waypoint x="4875" y="690"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F41" bpmnElement="F41">
+        <di:waypoint x="5025" y="690"/>
+        <di:waypoint x="5045" y="690"/>
+        <di:waypoint x="5045" y="1110"/>
+        <di:waypoint x="5065" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F26" bpmnElement="F26">
+        <di:waypoint x="6165" y="315"/>
+        <di:waypoint x="6205" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F27" bpmnElement="F27">
+        <di:waypoint x="6355" y="315"/>
+        <di:waypoint x="6375" y="315"/>
+        <di:waypoint x="6375" y="1110"/>
+        <di:waypoint x="6395" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F28" bpmnElement="F28">
+        <di:waypoint x="6545" y="1110"/>
+        <di:waypoint x="6635" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F42" bpmnElement="F42">
+        <di:waypoint x="6685" y="1110"/>
+        <di:waypoint x="6730" y="1110"/>
+        <di:waypoint x="6730" y="315"/>
+        <di:waypoint x="6775" y="315"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6693" y="1088" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F43" bpmnElement="F43">
+        <di:waypoint x="6660" y="1135"/>
+        <di:waypoint x="6660" y="1410"/>
+        <di:waypoint x="5770" y="1410"/>
+        <di:waypoint x="5770" y="1150"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6667" y="1360" width="30" height="14"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F29" bpmnElement="F29">
+        <di:waypoint x="6925" y="315"/>
+        <di:waypoint x="6945" y="315"/>
+        <di:waypoint x="6945" y="545"/>
+        <di:waypoint x="6965" y="545"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F44" bpmnElement="F44">
+        <di:waypoint x="2935" y="690"/>
+        <di:waypoint x="2955" y="690"/>
+        <di:waypoint x="2955" y="1110"/>
+        <di:waypoint x="2975" y="1110"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F45" bpmnElement="F45">
+        <di:waypoint x="7115" y="545"/>
+        <di:waypoint x="7135" y="545"/>
+        <di:waypoint x="7135" y="315"/>
+        <di:waypoint x="7155" y="315"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_StoryMap" bpmnElement="Assoc_StoryMap">
+        <di:waypoint x="1910" y="1150"/>
+        <di:waypoint x="1910" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_MVP" bpmnElement="Assoc_MVP">
+        <di:waypoint x="2100" y="1150"/>
+        <di:waypoint x="2100" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Epicos" bpmnElement="Assoc_Epicos">
+        <di:waypoint x="2290" y="730"/>
+        <di:waypoint x="2290" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Historias" bpmnElement="Assoc_Historias">
+        <di:waypoint x="2480" y="730"/>
+        <di:waypoint x="2480" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Squads" bpmnElement="Assoc_Squads">
+        <di:waypoint x="2670" y="730"/>
+        <di:waypoint x="2670" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_TaskBacklog" bpmnElement="Assoc_TaskBacklog">
+        <di:waypoint x="3050" y="1150"/>
+        <di:waypoint x="3050" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Guardrails" bpmnElement="Assoc_Guardrails">
+        <di:waypoint x="3240" y="730"/>
+        <di:waypoint x="3240" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_AgendaPoC" bpmnElement="Assoc_AgendaPoC">
+        <di:waypoint x="3430" y="730"/>
+        <di:waypoint x="3430" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_DesignSystem" bpmnElement="Assoc_DesignSystem">
+        <di:waypoint x="3620" y="940"/>
+        <di:waypoint x="3620" y="960"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_AgenteIA" bpmnElement="Assoc_AgenteIA">
+        <di:waypoint x="3810" y="940"/>
+        <di:waypoint x="3810" y="960"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Wireframes" bpmnElement="Assoc_Wireframes">
+        <di:waypoint x="4000" y="1150"/>
+        <di:waypoint x="4000" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Wireflows" bpmnElement="Assoc_Wireflows">
+        <di:waypoint x="4190" y="1150"/>
+        <di:waypoint x="4190" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_PoC" bpmnElement="Assoc_PoC">
+        <di:waypoint x="4370" y="1150"/>
+        <di:waypoint x="4370" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_ReviewTasks" bpmnElement="Assoc_ReviewTasks">
+        <di:waypoint x="4950" y="730"/>
+        <di:waypoint x="4950" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Critique" bpmnElement="Assoc_Critique">
+        <di:waypoint x="5140" y="1150"/>
+        <di:waypoint x="5140" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Validacao" bpmnElement="Assoc_Validacao">
+        <di:waypoint x="5330" y="1150"/>
+        <di:waypoint x="5330" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_SprintBacklog" bpmnElement="Assoc_SprintBacklog">
+        <di:waypoint x="5710" y="1150"/>
+        <di:waypoint x="5710" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_NPS" bpmnElement="Assoc_NPS">
+        <di:waypoint x="6280" y="355"/>
+        <di:waypoint x="6280" y="375"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Req" bpmnElement="Assoc_Req">
+        <di:waypoint x="960" y="355"/>
+        <di:waypoint x="960" y="375"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Charter" bpmnElement="Assoc_Charter">
+        <di:waypoint x="1340" y="355"/>
+        <di:waypoint x="1340" y="375"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Incremento" bpmnElement="Assoc_Incremento">
+        <di:waypoint x="6090" y="355"/>
+        <di:waypoint x="6090" y="375"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_RetroActions" bpmnElement="Assoc_RetroActions">
+        <di:waypoint x="6470" y="1150"/>
+        <di:waypoint x="6470" y="1170"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_AcordosSquad" bpmnElement="Assoc_AcordosSquad">
+        <di:waypoint x="2860" y="730"/>
+        <di:waypoint x="2860" y="750"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_BacklogAtualizado" bpmnElement="Assoc_BacklogAtualizado">
+        <di:waypoint x="4855" y="1340"/>
+        <di:waypoint x="4855" y="1360"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_Pairing" bpmnElement="Assoc_Pairing">
+        <di:waypoint x="4312" y="1150"/>
+        <di:waypoint x="4312" y="1265"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_Assoc_MiniSprints" bpmnElement="Assoc_MiniSprints">
+        <di:waypoint x="5900" y="1150"/>
+        <di:waypoint x="5900" y="1255"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Ideia" bpmnElement="MF_Ideia">
+        <di:waypoint x="390" y="180"/>
+        <di:waypoint x="390" y="275"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="396" y="188" width="150" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Requisitos" bpmnElement="MF_Requisitos">
+        <di:waypoint x="930" y="275"/>
+        <di:waypoint x="930" y="180"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="936" y="188" width="150" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_PoC" bpmnElement="MF_PoC">
+        <di:waypoint x="5140" y="1070"/>
+        <di:waypoint x="5140" y="180"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5146" y="188" width="150" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Entrega" bpmnElement="MF_Entrega">
+        <di:waypoint x="6090" y="275"/>
+        <di:waypoint x="6090" y="180"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6096" y="188" width="150" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_NPS" bpmnElement="MF_NPS">
+        <di:waypoint x="6280" y="275"/>
+        <di:waypoint x="6280" y="180"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="6286" y="188" width="150" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Usuario" bpmnElement="MF_Usuario">
+        <di:waypoint x="5380" y="1520"/>
+        <di:waypoint x="5380" y="1150"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5386" y="1468" width="140" height="28"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
 </bpmn:definitions>

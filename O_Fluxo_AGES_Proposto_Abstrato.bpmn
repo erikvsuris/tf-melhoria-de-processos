@@ -2,23 +2,18 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_AGES_Abstrato" name="Fluxo AGES" targetNamespace="https://ages.pucrs.br/bpmn/o-fluxo-ages-proposto-abstrato" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.33.1">
   <bpmn:documentation>Processo geral abstrato proposto para a equipe AGES. O diagrama não impõe metodologia, Sprint 0, cerimônias ou cadência específicas. AGES IV define e adapta o processo próprio da equipe; AGES III oferece liderança técnica e habilitação como Enabling Team; a equipe executa conforme os acordos. O processo escolhido e seus resultados são avaliáveis na banca. Este BPMN é distinto da instância concreta descrita em O_Fluxo_AGES_Proposto_Sugerido.bpmn.</bpmn:documentation>
   <bpmn:collaboration id="Collaboration_AGES_Abstrato">
-    <bpmn:participant id="Participant_Processo" name="Fluxo AGES" processRef="Processo_Abstrato" />
-    <bpmn:participant id="Participant_Stakeholders" name="Coordenação e Stakeholders" />
-    <bpmn:messageFlow id="MF_Contexto" name="Objetivos, contexto e restrições" sourceRef="Participant_Stakeholders" targetRef="A_Contexto" />
-    <bpmn:messageFlow id="MF_Feedback" name="Feedback sobre resultados e adequação do processo" sourceRef="A_Avaliar" targetRef="Participant_Stakeholders" />
+    <bpmn:participant id="Participant_Processo" name="Fluxo AGES" processRef="Processo_Abstrato"/>
+    <bpmn:participant id="Participant_Stakeholders" name="Coordenação e Stakeholders"/>
+    <bpmn:messageFlow id="MF_Contexto" name="Objetivos, contexto e restrições" sourceRef="Participant_Stakeholders" targetRef="A_Contexto"/>
+    <bpmn:messageFlow id="MF_Entregas" name="Entregas e resultados" sourceRef="A_Avaliar" targetRef="Participant_Stakeholders"/>
+    <bpmn:messageFlow id="MF_Feedback" name="Feedback sobre resultados e adequação do processo" sourceRef="Participant_Stakeholders" targetRef="A_Avaliar"/>
   </bpmn:collaboration>
   <bpmn:process id="Processo_Abstrato" name="Fluxo AGES" isExecutable="false">
     <bpmn:laneSet id="LaneSet_Abstrato">
-      <bpmn:lane id="Lane_Equipe" name="Equipe AGES">
-        <bpmn:flowNodeRef>A_Executar</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_AGESIII" name="AGES III">
-        <bpmn:flowNodeRef>A_AnalisarTecnico</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>A_HabilitarTecnico</bpmn:flowNodeRef>
-      </bpmn:lane>
       <bpmn:lane id="Lane_AGESIV" name="AGES IV">
         <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Contexto</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_MergeDefinir</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_DefinirMetodo</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_DefinirPoliticasIA</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>G_ClarezaViabilidade</bpmn:flowNodeRef>
@@ -29,214 +24,312 @@
         <bpmn:flowNodeRef>G_Concluido</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
       </bpmn:lane>
+      <bpmn:lane id="Lane_AGESIII" name="AGES III">
+        <bpmn:flowNodeRef>A_AnalisarTecnico</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_HabilitarTecnico</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Equipe" name="Equipe AGES">
+        <bpmn:flowNodeRef>G_MergeExecutar</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_Executar</bpmn:flowNodeRef>
+      </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start" name="Projeto/equipe designados" />
-    <bpmn:task id="A_Contexto" name="Alinhar objetivos e restrições" />
-    <bpmn:task id="A_AnalisarTecnico" name="Analisar viabilidade técnica e plataforma" />
-    <bpmn:task id="A_DefinirMetodo" name="Definir processo da equipe" />
-    <bpmn:task id="A_DefinirPoliticasIA" name="Definir políticas de IA" />
-    <bpmn:exclusiveGateway id="G_ClarezaViabilidade" name="Processo viável?" />
-    <bpmn:task id="A_HabilitarTecnico" name="Habilitar recursos técnicos e de IA" />
-    <bpmn:task id="A_Comunicar" name="Comunicar acordos à equipe" />
-    <bpmn:task id="A_Executar" name="Executar processo acordado" />
-    <bpmn:task id="A_Avaliar" name="Avaliar entregas e processo" />
-    <bpmn:exclusiveGateway id="G_Ajustar" name="Ajustar processo?" />
-    <bpmn:task id="A_AjustarProcesso" name="Ajustar processo" />
-    <bpmn:exclusiveGateway id="G_Concluido" name="Projeto concluído?" />
-    <bpmn:endEvent id="End" name="Fim" />
-    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Contexto" />
-    <bpmn:sequenceFlow id="F02" sourceRef="A_Contexto" targetRef="A_AnalisarTecnico" />
-    <bpmn:sequenceFlow id="F03" sourceRef="A_AnalisarTecnico" targetRef="A_DefinirMetodo" />
-    <bpmn:sequenceFlow id="F06" name="Não" sourceRef="G_ClarezaViabilidade" targetRef="A_DefinirMetodo" />
-    <bpmn:sequenceFlow id="F13" sourceRef="A_AjustarProcesso" targetRef="A_DefinirMetodo" />
-    <bpmn:sequenceFlow id="F04" sourceRef="A_DefinirMetodo" targetRef="A_DefinirPoliticasIA" />
-    <bpmn:sequenceFlow id="F05" sourceRef="A_DefinirPoliticasIA" targetRef="G_ClarezaViabilidade" />
-    <bpmn:sequenceFlow id="F07" name="Sim" sourceRef="G_ClarezaViabilidade" targetRef="A_HabilitarTecnico" />
-    <bpmn:sequenceFlow id="F08" sourceRef="A_HabilitarTecnico" targetRef="A_Comunicar" />
-    <bpmn:sequenceFlow id="F09" sourceRef="A_Comunicar" targetRef="A_Executar" />
-    <bpmn:sequenceFlow id="F15" name="Não" sourceRef="G_Concluido" targetRef="A_Executar" />
-    <bpmn:sequenceFlow id="F10" sourceRef="A_Executar" targetRef="A_Avaliar" />
-    <bpmn:sequenceFlow id="F11" sourceRef="A_Avaliar" targetRef="G_Ajustar" />
-    <bpmn:sequenceFlow id="F12" name="Sim" sourceRef="G_Ajustar" targetRef="A_AjustarProcesso" />
-    <bpmn:sequenceFlow id="F14" name="Não" sourceRef="G_Ajustar" targetRef="G_Concluido" />
-    <bpmn:sequenceFlow id="F16" name="Sim" sourceRef="G_Concluido" targetRef="End" />
+    <bpmn:startEvent id="Start" name="Projeto/equipe designados">
+      <bpmn:outgoing>F01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="A_Contexto" name="Alinhar objetivos e restrições">
+      <bpmn:incoming>F01</bpmn:incoming>
+      <bpmn:outgoing>F02</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="A_AnalisarTecnico" name="Analisar viabilidade técnica e plataforma">
+      <bpmn:incoming>F02</bpmn:incoming>
+      <bpmn:outgoing>F03</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_MergeDefinir" gatewayDirection="Converging">
+      <bpmn:incoming>F03</bpmn:incoming>
+      <bpmn:incoming>F06</bpmn:incoming>
+      <bpmn:incoming>F13</bpmn:incoming>
+      <bpmn:outgoing>F03b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_DefinirMetodo" name="Definir processo da equipe">
+      <bpmn:incoming>F03b</bpmn:incoming>
+      <bpmn:outgoing>F04</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="A_DefinirPoliticasIA" name="Definir políticas de IA">
+      <bpmn:incoming>F04</bpmn:incoming>
+      <bpmn:outgoing>F05</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_ClarezaViabilidade" name="Processo viável?" gatewayDirection="Diverging">
+      <bpmn:incoming>F05</bpmn:incoming>
+      <bpmn:outgoing>F06</bpmn:outgoing>
+      <bpmn:outgoing>F07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_HabilitarTecnico" name="Habilitar recursos técnicos e de IA">
+      <bpmn:incoming>F07</bpmn:incoming>
+      <bpmn:outgoing>F08</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="A_Comunicar" name="Comunicar acordos à equipe">
+      <bpmn:incoming>F08</bpmn:incoming>
+      <bpmn:outgoing>F09</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_MergeExecutar" gatewayDirection="Converging">
+      <bpmn:incoming>F09</bpmn:incoming>
+      <bpmn:incoming>F15</bpmn:incoming>
+      <bpmn:outgoing>F09b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_Executar" name="Executar processo acordado">
+      <bpmn:incoming>F09b</bpmn:incoming>
+      <bpmn:outgoing>F10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="A_Avaliar" name="Avaliar entregas e processo">
+      <bpmn:incoming>F10</bpmn:incoming>
+      <bpmn:outgoing>F11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_Ajustar" name="Ajustar processo?" gatewayDirection="Diverging">
+      <bpmn:incoming>F11</bpmn:incoming>
+      <bpmn:outgoing>F12</bpmn:outgoing>
+      <bpmn:outgoing>F14</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_AjustarProcesso" name="Ajustar processo">
+      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:outgoing>F13</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_Concluido" name="Projeto concluído?" gatewayDirection="Diverging">
+      <bpmn:incoming>F14</bpmn:incoming>
+      <bpmn:outgoing>F15</bpmn:outgoing>
+      <bpmn:outgoing>F16</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End" name="Fim">
+      <bpmn:incoming>F16</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F01" sourceRef="Start" targetRef="A_Contexto"/>
+    <bpmn:sequenceFlow id="F02" sourceRef="A_Contexto" targetRef="A_AnalisarTecnico"/>
+    <bpmn:sequenceFlow id="F03" sourceRef="A_AnalisarTecnico" targetRef="G_MergeDefinir"/>
+    <bpmn:sequenceFlow id="F03b" sourceRef="G_MergeDefinir" targetRef="A_DefinirMetodo"/>
+    <bpmn:sequenceFlow id="F04" sourceRef="A_DefinirMetodo" targetRef="A_DefinirPoliticasIA"/>
+    <bpmn:sequenceFlow id="F05" sourceRef="A_DefinirPoliticasIA" targetRef="G_ClarezaViabilidade"/>
+    <bpmn:sequenceFlow id="F06" sourceRef="G_ClarezaViabilidade" targetRef="G_MergeDefinir" name="Não"/>
+    <bpmn:sequenceFlow id="F07" sourceRef="G_ClarezaViabilidade" targetRef="A_HabilitarTecnico" name="Sim"/>
+    <bpmn:sequenceFlow id="F08" sourceRef="A_HabilitarTecnico" targetRef="A_Comunicar"/>
+    <bpmn:sequenceFlow id="F09" sourceRef="A_Comunicar" targetRef="G_MergeExecutar"/>
+    <bpmn:sequenceFlow id="F09b" sourceRef="G_MergeExecutar" targetRef="A_Executar"/>
+    <bpmn:sequenceFlow id="F10" sourceRef="A_Executar" targetRef="A_Avaliar"/>
+    <bpmn:sequenceFlow id="F11" sourceRef="A_Avaliar" targetRef="G_Ajustar"/>
+    <bpmn:sequenceFlow id="F12" sourceRef="G_Ajustar" targetRef="A_AjustarProcesso" name="Sim"/>
+    <bpmn:sequenceFlow id="F13" sourceRef="A_AjustarProcesso" targetRef="G_MergeDefinir"/>
+    <bpmn:sequenceFlow id="F14" sourceRef="G_Ajustar" targetRef="G_Concluido" name="Não"/>
+    <bpmn:sequenceFlow id="F15" sourceRef="G_Concluido" targetRef="G_MergeExecutar" name="Não"/>
+    <bpmn:sequenceFlow id="F16" sourceRef="G_Concluido" targetRef="End" name="Sim"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_AGES_Abstrato" name="Fluxo AGES">
     <bpmndi:BPMNPlane id="Plane_AGES_Abstrato" bpmnElement="Collaboration_AGES_Abstrato">
       <bpmndi:BPMNShape id="DI_Participant_Processo" bpmnElement="Participant_Processo" isHorizontal="true" isExpanded="true">
-        <dc:Bounds x="160" y="100" width="3650" height="570" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DI_Lane_Equipe" bpmnElement="Lane_Equipe" isHorizontal="true">
-        <dc:Bounds x="190" y="460" width="3620" height="210" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="DI_Lane_AGESIII" bpmnElement="Lane_AGESIII" isHorizontal="true">
-        <dc:Bounds x="190" y="290" width="3620" height="170" />
+        <dc:Bounds x="160" y="100" width="3380" height="580"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_Lane_AGESIV" bpmnElement="Lane_AGESIV" isHorizontal="true">
-        <dc:Bounds x="190" y="100" width="3620" height="190" />
+        <dc:Bounds x="190" y="100" width="3350" height="220"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_AGESIII" bpmnElement="Lane_AGESIII" isHorizontal="true">
+        <dc:Bounds x="190" y="320" width="3350" height="160"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Lane_Equipe" bpmnElement="Lane_Equipe" isHorizontal="true">
+        <dc:Bounds x="190" y="480" width="3350" height="200"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_Participant_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false">
+        <dc:Bounds x="160" y="740" width="3380" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_Start" bpmnElement="Start">
-        <dc:Bounds x="235" y="177" width="36" height="36" />
+        <dc:Bounds x="232" y="197" width="36" height="36"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="218" y="213" width="71" height="27" />
+          <dc:Bounds x="205" y="240" width="90" height="27"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_Contexto" bpmnElement="A_Contexto">
-        <dc:Bounds x="320" y="155" width="240" height="80" />
+        <dc:Bounds x="320" y="175" width="200" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_AnalisarTecnico" bpmnElement="A_AnalisarTecnico">
-        <dc:Bounds x="600" y="335" width="250" height="80" />
+        <dc:Bounds x="580" y="360" width="220" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_MergeDefinir" bpmnElement="G_MergeDefinir" isMarkerVisible="true">
+        <dc:Bounds x="855" y="190" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_DefinirMetodo" bpmnElement="A_DefinirMetodo">
-        <dc:Bounds x="890" y="155" width="250" height="80" />
+        <dc:Bounds x="960" y="175" width="220" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_DefinirPoliticasIA" bpmnElement="A_DefinirPoliticasIA">
-        <dc:Bounds x="1180" y="155" width="240" height="80" />
+        <dc:Bounds x="1240" y="175" width="210" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_G_ClarezaViabilidade" bpmnElement="G_ClarezaViabilidade" isMarkerVisible="true">
-        <dc:Bounds x="1470" y="168" width="54" height="54" />
+        <dc:Bounds x="1510" y="190" width="50" height="50"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1455" y="222" width="84" height="14" />
+          <dc:Bounds x="1492" y="166" width="86" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_HabilitarTecnico" bpmnElement="A_HabilitarTecnico">
-        <dc:Bounds x="1570" y="335" width="270" height="80" />
+        <dc:Bounds x="1630" y="360" width="230" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_Comunicar" bpmnElement="A_Comunicar">
-        <dc:Bounds x="1880" y="155" width="260" height="80" />
+        <dc:Bounds x="1920" y="175" width="220" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DI_G_MergeExecutar" bpmnElement="G_MergeExecutar" isMarkerVisible="true">
+        <dc:Bounds x="2195" y="545" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_Executar" bpmnElement="A_Executar">
-        <dc:Bounds x="2180" y="525" width="240" height="80" />
+        <dc:Bounds x="2300" y="530" width="210" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_Avaliar" bpmnElement="A_Avaliar">
-        <dc:Bounds x="2460" y="155" width="260" height="80" />
+        <dc:Bounds x="2570" y="175" width="220" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_G_Ajustar" bpmnElement="G_Ajustar" isMarkerVisible="true">
-        <dc:Bounds x="2760" y="168" width="54" height="54" />
+        <dc:Bounds x="2855" y="190" width="50" height="50"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2742" y="144" width="89" height="14" />
+          <dc:Bounds x="2836" y="166" width="89" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_A_AjustarProcesso" bpmnElement="A_AjustarProcesso">
-        <dc:Bounds x="2860" y="155" width="250" height="80" />
+        <dc:Bounds x="2970" y="175" width="210" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_G_Concluido" bpmnElement="G_Concluido" isMarkerVisible="true">
-        <dc:Bounds x="3160" y="168" width="54" height="54" />
+        <dc:Bounds x="3255" y="190" width="50" height="50"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3160" y="130.5" width="54" height="27" />
+          <dc:Bounds x="3250" y="156" width="62" height="27"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="DI_End" bpmnElement="End">
-        <dc:Bounds x="3340" y="177" width="36" height="36" />
+        <dc:Bounds x="3392" y="197" width="36" height="36"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3349" y="213" width="19" height="14" />
+          <dc:Bounds x="3400" y="240" width="20" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DI_F01" bpmnElement="F01">
-        <di:waypoint x="271" y="195" />
-        <di:waypoint x="320" y="195" />
+        <di:waypoint x="268" y="215"/>
+        <di:waypoint x="320" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F02" bpmnElement="F02">
-        <di:waypoint x="560" y="195" />
-        <di:waypoint x="600" y="375" />
+        <di:waypoint x="520" y="215"/>
+        <di:waypoint x="550" y="215"/>
+        <di:waypoint x="550" y="400"/>
+        <di:waypoint x="580" y="400"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F03" bpmnElement="F03">
-        <di:waypoint x="850" y="375" />
-        <di:waypoint x="890" y="195" />
+        <di:waypoint x="800" y="400"/>
+        <di:waypoint x="828" y="400"/>
+        <di:waypoint x="828" y="215"/>
+        <di:waypoint x="855" y="215"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F03b" bpmnElement="F03b">
+        <di:waypoint x="905" y="215"/>
+        <di:waypoint x="960" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F04" bpmnElement="F04">
-        <di:waypoint x="1140" y="195" />
-        <di:waypoint x="1180" y="195" />
+        <di:waypoint x="1180" y="215"/>
+        <di:waypoint x="1240" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F05" bpmnElement="F05">
-        <di:waypoint x="1420" y="195" />
-        <di:waypoint x="1470" y="195" />
+        <di:waypoint x="1450" y="215"/>
+        <di:waypoint x="1510" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F06" bpmnElement="F06">
-        <di:waypoint x="1497" y="168" />
-        <di:waypoint x="1497" y="125" />
-        <di:waypoint x="1015" y="125" />
-        <di:waypoint x="1015" y="155" />
+        <di:waypoint x="1535" y="240"/>
+        <di:waypoint x="1535" y="290"/>
+        <di:waypoint x="880" y="290"/>
+        <di:waypoint x="880" y="240"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1246" y="100" width="21" height="14" />
+          <dc:Bounds x="1195" y="272" width="22" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F07" bpmnElement="F07">
-        <di:waypoint x="1524" y="195" />
-        <di:waypoint x="1570" y="375" />
+        <di:waypoint x="1560" y="215"/>
+        <di:waypoint x="1595" y="215"/>
+        <di:waypoint x="1595" y="400"/>
+        <di:waypoint x="1630" y="400"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1538" y="260" width="19" height="14" />
+          <dc:Bounds x="1568" y="195" width="20" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F08" bpmnElement="F08">
-        <di:waypoint x="1840" y="375" />
-        <di:waypoint x="1880" y="195" />
+        <di:waypoint x="1860" y="400"/>
+        <di:waypoint x="1890" y="400"/>
+        <di:waypoint x="1890" y="215"/>
+        <di:waypoint x="1920" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F09" bpmnElement="F09">
-        <di:waypoint x="2140" y="195" />
-        <di:waypoint x="2180" y="565" />
+        <di:waypoint x="2140" y="215"/>
+        <di:waypoint x="2168" y="215"/>
+        <di:waypoint x="2168" y="570"/>
+        <di:waypoint x="2195" y="570"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_F09b" bpmnElement="F09b">
+        <di:waypoint x="2245" y="570"/>
+        <di:waypoint x="2300" y="570"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F10" bpmnElement="F10">
-        <di:waypoint x="2420" y="565" />
-        <di:waypoint x="2460" y="195" />
+        <di:waypoint x="2510" y="570"/>
+        <di:waypoint x="2540" y="570"/>
+        <di:waypoint x="2540" y="215"/>
+        <di:waypoint x="2570" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F11" bpmnElement="F11">
-        <di:waypoint x="2720" y="195" />
-        <di:waypoint x="2760" y="195" />
+        <di:waypoint x="2790" y="215"/>
+        <di:waypoint x="2855" y="215"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F12" bpmnElement="F12">
-        <di:waypoint x="2814" y="195" />
-        <di:waypoint x="2860" y="195" />
+        <di:waypoint x="2905" y="215"/>
+        <di:waypoint x="2970" y="215"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2828" y="170" width="19" height="14" />
+          <dc:Bounds x="2926" y="195" width="20" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F13" bpmnElement="F13">
-        <di:waypoint x="2985" y="155" />
-        <di:waypoint x="2985" y="120" />
-        <di:waypoint x="1015" y="120" />
-        <di:waypoint x="1015" y="155" />
+        <di:waypoint x="3075" y="175"/>
+        <di:waypoint x="3075" y="128"/>
+        <di:waypoint x="880" y="128"/>
+        <di:waypoint x="880" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F14" bpmnElement="F14">
-        <di:waypoint x="2787" y="222" />
-        <di:waypoint x="2787" y="270" />
-        <di:waypoint x="3187" y="270" />
-        <di:waypoint x="3187" y="222" />
+        <di:waypoint x="2880" y="240"/>
+        <di:waypoint x="2880" y="290"/>
+        <di:waypoint x="3220" y="290"/>
+        <di:waypoint x="3220" y="215"/>
+        <di:waypoint x="3255" y="215"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2799" y="253" width="21" height="14" />
+          <dc:Bounds x="2890" y="272" width="22" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F15" bpmnElement="F15">
-        <di:waypoint x="3187" y="222" />
-        <di:waypoint x="3187" y="640" />
-        <di:waypoint x="2300" y="640" />
-        <di:waypoint x="2300" y="605" />
+        <di:waypoint x="3280" y="240"/>
+        <di:waypoint x="3280" y="648"/>
+        <di:waypoint x="2220" y="648"/>
+        <di:waypoint x="2220" y="595"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2733" y="615" width="21" height="14" />
+          <dc:Bounds x="3290" y="260" width="22" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_F16" bpmnElement="F16">
-        <di:waypoint x="3214" y="195" />
-        <di:waypoint x="3340" y="195" />
+        <di:waypoint x="3305" y="215"/>
+        <di:waypoint x="3392" y="215"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3268" y="170" width="19" height="14" />
+          <dc:Bounds x="3338" y="195" width="20" height="14"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="DI_Participant_Stakeholders" bpmnElement="Participant_Stakeholders" isHorizontal="true" isExpanded="false">
-        <dc:Bounds x="160" y="720" width="3650" height="90" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DI_MF_Contexto" bpmnElement="MF_Contexto">
-        <di:waypoint x="180" y="765" />
-        <di:waypoint x="440" y="235" />
+        <di:waypoint x="420" y="740"/>
+        <di:waypoint x="420" y="255"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="285" y="475" width="51" height="40" />
+          <dc:Bounds x="428" y="690" width="110" height="38"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DI_MF_Entregas" bpmnElement="MF_Entregas">
+        <di:waypoint x="2645" y="255"/>
+        <di:waypoint x="2645" y="740"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2540" y="695" width="98" height="27"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="DI_MF_Feedback" bpmnElement="MF_Feedback">
-        <di:waypoint x="2590" y="155" />
-        <di:waypoint x="180" y="765" />
+        <di:waypoint x="2715" y="740"/>
+        <di:waypoint x="2715" y="255"/>
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1346" y="435" width="79" height="53" />
+          <dc:Bounds x="2723" y="686" width="130" height="42"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
